@@ -173,6 +173,12 @@ ol.steps p{margin:0;color:var(--dim);font-size:.93rem}
 #tab-brief .cols{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
 .rpgrid{grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
 .rp-btns{flex-wrap:wrap}
+
+/* Pantallas grandes: se escala todo para que no se vea chico */
+@media (min-width:1500px){header.top .nav,.pane,footer.made{zoom:1.25}}
+@media (min-width:1900px){header.top .nav,.pane,footer.made{zoom:1.5}}
+@media (min-width:2500px){header.top .nav,.pane,footer.made{zoom:2}}
+@media (min-width:3400px){header.top .nav,.pane,footer.made{zoom:2.6}}
 /* Botón "Cómo hacer este video" bien visible */
 details.how summary{border-radius:14px;background:var(--yellow);border-color:var(--yellow);color:var(--black);min-height:48px}
 details.how summary::before{content:"▶";font-size:.7em;margin-right:2px}
