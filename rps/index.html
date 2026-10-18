@@ -1,0 +1,721 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Carrera Hangar 2026 · RPs</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:wght@400;500;700&display=swap">
+<style>
+/* Layout: una sola página con dos pestañas (Brief y Guiones). Barra fija con logo y pestañas; Brief en columna angosta; Guiones con tarjetas por RP y los ejemplos de UGC y trends debajo. Tema oscuro único por marca. */
+/* Layout: kit de marca Ingenioso. Doble columna en pantallas anchas (una en celular), dos secciones (UGC / Trends y frases), barra fija con logo y saltos. Tema oscuro único por marca. */
+:root{
+  --black:#0a0a0a; --raise:#131313; --yellow:#f5d400; --yellow-dim:#8f7c00;
+  --white:#ffffff; --dim:rgba(255,255,255,.64); --faint:rgba(255,255,255,.14);
+  --radius:16px; --font:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--black);color:var(--white);font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--black)}
+h1,h2,h3{margin:0;letter-spacing:-.03em;line-height:1.05}
+a{color:inherit}
+.accent{color:var(--yellow)}
+.wrap{max-width:2000px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(10,10,10,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid var(--faint)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
+.logo{height:20px;width:auto;display:block}
+.jumps{display:flex;gap:8px}
+.chip{font:inherit;font-size:.8rem;font-weight:700;padding:8px 14px;border-radius:999px;border:1px solid var(--faint);background:transparent;color:var(--dim);text-decoration:none;white-space:nowrap}
+.chip.on{background:var(--yellow);border-color:var(--yellow);color:var(--black)}
+
+/* Hero */
+.hero{padding-block:44px 30px}
+.hero .lead,section.part .lead{max-width:70ch}
+.kicker{display:inline-flex;align-items:center;gap:9px;text-transform:uppercase;letter-spacing:.06em;font-size:.78rem;color:var(--dim);margin:0 0 16px}
+.kicker::before{content:"";width:8px;height:8px;background:var(--yellow)}
+.hero h1{font-size:clamp(2.6rem,11vw,4.4rem);font-weight:800;text-wrap:balance}
+.lead{color:var(--dim);max-width:62ch;margin:14px 0 0}
+.stats{display:flex;gap:28px;margin-top:26px}
+.stat .num{font-size:2.4rem;font-weight:800;color:var(--yellow);line-height:1;font-variant-numeric:tabular-nums}
+.stat .lbl{color:var(--dim);font-size:.82rem;margin-top:6px}
+
+/* Secciones */
+section.part{border-top:1px solid var(--faint);padding-block:44px 20px;scroll-margin-top:calc(env(safe-area-inset-top,0px) + 56px)}
+.sec-num{text-transform:uppercase;letter-spacing:.06em;color:var(--yellow);font-size:.8rem;margin:0 0 10px}
+section.part h2{font-size:clamp(1.9rem,7vw,2.6rem);font-weight:800}
+.feed{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start;margin-top:28px}
+@media (min-width:900px){.feed{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}}
+@media (min-width:1280px){.feed{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}}
+@media (min-width:1700px){.feed{grid-template-columns:repeat(5,minmax(0,1fr));gap:22px}}
+
+
+/* Tarjeta de video */
+.card{background:var(--raise);border:1px solid var(--faint);border-radius:var(--radius);overflow:hidden;scroll-margin-top:calc(env(safe-area-inset-top,0px) + 64px)}
+.head{display:flex;gap:14px;align-items:flex-start;padding:18px 18px 14px}
+.n{font-size:1.9rem;font-weight:800;color:var(--yellow);line-height:.9;letter-spacing:-.04em;min-width:42px;font-variant-numeric:tabular-nums}
+.head div{min-width:0}
+.head h3{font-size:1.2rem;font-weight:800}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tag{display:inline-block;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:999px;border:1px solid var(--yellow-dim);color:var(--yellow)}
+.tag.plain{border-color:var(--faint);color:var(--dim)}
+.tag.solid{background:var(--yellow);border-color:var(--yellow);color:var(--black)}
+
+.player{position:relative;background:#000;display:flex;justify-content:center;border-block:1px solid var(--faint)}
+.player.emb{min-height:240px}
+.player .embposter{display:block;width:auto;max-width:100%;max-height:min(72vh,680px);height:auto;object-fit:contain}
+.player iframe{display:block;width:100%;border:0;aspect-ratio:9/16;max-height:min(78vh,720px);background:#000}
+.orig{align-self:flex-start;font-size:.82rem;color:var(--dim);text-decoration:underline;text-underline-offset:3px}
+.orig:hover{color:var(--yellow)}
+.bigplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:rgba(10,10,10,.6);border:2px solid rgba(255,255,255,.9);display:grid;place-items:center;color:#fff;cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent}
+.bigplay svg{width:34px;height:34px;margin-left:5px}
+.bigplay:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.player.playing .bigplay{display:none}
+.player video{display:block;width:100%;max-width:100%;max-height:min(72vh,680px);aspect-ratio:9/16;object-fit:contain;background:#000}
+
+.shot{display:block;position:relative;background:#000;border-block:1px solid var(--faint)}
+.shot{display:flex;justify-content:center}
+.shot img{display:block;width:auto;height:auto;max-width:100%;max-height:min(72vh,680px);object-fit:contain}
+.shot .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:68px;height:68px;border-radius:50%;background:rgba(10,10,10,.55);border:2px solid rgba(255,255,255,.85);display:grid;place-items:center;color:#fff}
+.shot .play svg{width:30px;height:30px;margin-left:4px}
+.shot:focus-visible{outline:3px solid var(--yellow);outline-offset:-3px}
+.hook{background:#000;border-block:1px solid var(--faint);padding:30px 22px;display:flex;flex-direction:column;gap:14px}
+.hook small{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--dim)}
+.hook q{font-size:clamp(1.35rem,5.6vw,1.75rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;quotes:"“" "”"}
+.hook .who{font-size:.85rem;color:var(--dim)}
+
+.body{padding:18px;display:flex;flex-direction:column;gap:16px}
+.idea{margin:0;color:var(--dim);font-size:.95rem}
+.idea b{color:var(--white)}
+.need{display:flex;flex-wrap:wrap;gap:6px}
+.need span{font-size:.8rem;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--faint);color:var(--white)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:inherit;font-weight:800;font-size:.95rem;padding:14px 22px;border-radius:999px;border:1px solid transparent;text-decoration:none;cursor:pointer;width:100%}
+.btn-primary{background:var(--yellow);color:var(--black)}
+.btn-ghost{background:transparent;color:var(--white);border-color:var(--faint)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+
+details.how summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:800;font-size:.95rem;padding:14px 20px;border-radius:999px;border:1px solid var(--faint)}
+details.how summary::-webkit-details-marker{display:none}
+details.how summary .arr{transition:transform .2s}
+details.how[open] summary{border-color:var(--yellow);color:var(--yellow)}
+details.how[open] summary .arr{transform:rotate(180deg)}
+ol.steps{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:16px;counter-reset:s}
+ol.steps li{display:grid;grid-template-columns:34px 1fr;gap:12px;counter-increment:s}
+ol.steps li::before{content:counter(s);width:34px;height:34px;border-radius:50%;border:1px solid var(--yellow-dim);color:var(--yellow);display:grid;place-items:center;font-weight:800;font-size:.95rem}
+ol.steps li div{min-width:0}
+ol.steps b{display:block;font-size:1rem;margin-bottom:2px}
+ol.steps p{margin:0;color:var(--dim);font-size:.93rem}
+.tip{border-top:1px solid var(--faint);padding-top:14px;font-size:.9rem;color:var(--dim)}
+.tip b{color:var(--white)}
+
+.general{border:1px solid var(--faint);border-radius:var(--radius);padding:20px;margin-block:30px 10px;color:var(--dim);font-size:.93rem}
+.general h3{color:var(--white);font-size:1.05rem;margin-bottom:10px}
+.general ul{margin:0;padding-left:18px}
+.general li{margin:6px 0}
+
+/* Pie obligatorio */
+.made{border-top:1px solid var(--faint);padding-block:46px 54px;text-align:center;margin-top:30px}
+.made p{margin:0 0 14px;color:var(--dim);font-size:.82rem;text-transform:uppercase;letter-spacing:.14em}
+.made a{display:inline-block}
+.made .logo{height:34px;margin:0 auto}
+/* Celular: 2 columnas, tarjetas compactas */
+@media (max-width:899px){
+  .card .head{flex-direction:column;gap:6px;padding:12px 12px 10px}
+  .card .n{font-size:1.4rem;min-width:0}
+  .card .head h3{font-size:.95rem;line-height:1.15}
+  .meta{gap:4px;margin-top:6px}
+  .meta .tag{font-size:.56rem;padding:3px 7px;letter-spacing:.05em}
+  .card .body{padding:12px;gap:12px}
+  .idea{font-size:.82rem;line-height:1.4}
+  .need span{font-size:.7rem;padding:4px 9px}
+  details.how summary{font-size:.82rem;padding:11px 14px}
+  ol.steps li{grid-template-columns:26px 1fr;gap:9px}
+  ol.steps li::before{width:26px;height:26px;font-size:.8rem}
+  ol.steps b{font-size:.88rem}ol.steps p{font-size:.8rem}
+  .tip{font-size:.78rem;padding-top:10px}
+  .bigplay{width:52px;height:52px}.bigplay svg{width:24px;height:24px;margin-left:3px}
+  .orig{font-size:.72rem}
+}
+
+/* Pestañas */
+.tabs{display:flex;gap:8px}
+.tabbtn{cursor:pointer}
+.tabbtn:focus-visible,.dl:focus-visible,.view:focus-visible,.sub button:focus-visible{outline:3px solid var(--white);outline-offset:2px}
+.pane[hidden]{display:none}
+/* Guiones de RPs */
+.rps{padding-block:40px 24px}
+.rps h2{font-size:clamp(1.9rem,7vw,2.6rem);font-weight:800}
+.rpgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:26px}
+.rp{background:var(--raise);border:1px solid var(--faint);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;min-width:0}
+.rp-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.rp h3{font-size:1.35rem;font-weight:800}
+.rp-l{margin:14px 0 4px;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--dim)}
+.rp ol{margin:0 0 18px;padding-left:20px;color:var(--white);display:grid;gap:4px}
+.rp-btns{display:flex;gap:10px;align-items:center;margin-top:auto}
+.dl{font:inherit;font-weight:800;font-size:.9rem;border:0;border-radius:999px;background:var(--yellow);color:var(--black);padding:11px 18px;cursor:pointer}
+.dl.ok{background:var(--white)}
+.view{color:var(--dim);font-size:.85rem;font-weight:700}
+.msg{min-height:1.4em;color:var(--dim);font-size:.85rem;margin:14px 0 0}
+.sub{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.sub button{font:inherit;cursor:pointer}
+.gap-hero .hero{padding-top:30px}
+#tab-brief{padding-block:0}
+#tab-brief .brief-in{max-width:860px;margin:0 auto}
+#tab-brief section.last{border:0;padding-bottom:0}
+#tab-brief h1,#tab-brief h2{letter-spacing:0}
+
+#tab-brief{--sky:#1d1d1b;--display:'Anton','Impact','Arial Narrow',sans-serif;--bodyf:'Hanken Grotesk','Helvetica Neue',Arial,sans-serif;font-family:var(--bodyf)}
+#tab-brief .bhero{padding:48px 0 36px;border-bottom:1px solid var(--faint)}
+#tab-brief .eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);font-weight:700;margin:0 0 14px}
+#tab-brief h1{font-family:var(--display);font-weight:400;font-size:clamp(52px,13vw,112px);line-height:.92;text-transform:uppercase;margin:0;text-wrap:balance}
+#tab-brief h1 span{color:var(--yellow)}
+#tab-brief .lead{font-size:19px;max-width:34em;margin:20px 0 0;color:var(--dim)}
+#tab-brief .lead b{color:var(--white)}
+#tab-brief .date{display:inline-flex;gap:14px;align-items:baseline;margin-top:26px;background:var(--yellow);color:var(--black);padding:10px 18px;border-radius:6px;font-family:var(--display);font-size:28px;text-transform:uppercase;letter-spacing:.02em}
+#tab-brief .date small{font-family:var(--bodyf);font-size:14px;font-weight:700;letter-spacing:.04em}
+#tab-brief section{padding:36px 0;border-bottom:1px solid var(--faint)}
+#tab-brief h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,6vw,42px);text-transform:uppercase;margin:0 0 16px;line-height:1.05;text-wrap:balance}
+#tab-brief h3{font-size:17px;margin:12px 0 4px}
+#tab-brief p{margin:0 0 12px;max-width:40em}
+#tab-brief .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+#tab-brief .box{background:var(--raise);border:1px solid var(--faint);border-radius:12px;padding:18px;min-width:0}
+#tab-brief .box h3{margin-top:0}
+#tab-brief .box p{color:var(--dim);margin:0}
+#tab-brief .big{font-family:var(--display);font-size:30px;color:var(--yellow);text-transform:uppercase;line-height:1;margin-bottom:8px;display:block}
+#tab-brief .htags{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 10px}
+#tab-brief .htag{font:inherit;font-weight:700;color:var(--black);background:var(--yellow);border:0;border-radius:999px;padding:9px 16px;cursor:pointer}
+#tab-brief .htag:focus-visible,#tab-brief .link:focus-visible{outline:3px solid var(--white);outline-offset:2px}
+#tab-brief .htag.ok{background:var(--white)}
+#tab-brief .note{font-size:14px;color:var(--dim)}
+#tab-brief .links{display:grid;gap:10px}
+#tab-brief .link{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--white);text-decoration:none;background:var(--raise);border:1px solid var(--faint);border-radius:12px;padding:16px 18px}
+#tab-brief .link:hover{border-color:var(--yellow)}
+#tab-brief .link span{min-width:0;overflow-wrap:anywhere}
+#tab-brief .link b{color:var(--yellow);white-space:nowrap}
+#tab-brief ul.rules{margin:0;padding-left:20px;display:grid;gap:8px}
+#tab-brief .panel{background:var(--raise);border:1px solid var(--faint);border-radius:16px;padding:24px 18px;margin-top:6px}
+#tab-brief .panel>h2{margin-bottom:6px}
+#tab-brief .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:22px;margin-top:22px}
+#tab-brief .shot{min-width:0}
+#tab-brief .shot .frame{width:100%;max-width:190px;aspect-ratio:9/16;border:2px dashed var(--faint);border-radius:12px;overflow:hidden;background:var(--black)}
+#tab-brief .shot .frame svg{display:block;width:100%;height:100%}
+#tab-brief .shot p{font-size:15px;color:var(--dim);margin:0 0 8px}
+#tab-brief .shot .use{font-size:13px}
+#tab-brief .shot .use b{color:var(--yellow);text-transform:uppercase;letter-spacing:.08em;font-size:11px;margin-right:4px}
+#tab-brief footer.made{display:flex;flex-direction:column;align-items:center;gap:10px;padding:36px 0 44px;color:var(--dim);font-size:13px}
+#tab-brief footer.made p{margin:0}
+#tab-brief footer.made svg{height:26px;width:auto;display:block}
+</style>
+<header class="top">
+  <div class="wrap nav">
+    <a href="https://www.instagram.com/ingeniosomx/" target="_blank" rel="noopener" aria-label="Ingenioso en Instagram"><svg class="logo" viewBox="0 0 183.53 36.97" fill="#ffffff" role="img" aria-label="Ingenioso"><path d="M57.11,9.31l-2.35,16.74c-1.05,7.48-5.57,10.92-12.82,10.92-3.81,0-7.38-.93-9.48-2.76l2.91-4.18c1.52,1.38,4.2,2.28,6.78,2.28,4.11,0,6.17-1.87,6.67-5.49l.12-.86c-1.77,1.68-4.09,2.5-6.7,2.5-5.57,0-9.51-3.85-8.69-9.72.82-5.87,5.85-9.72,11.42-9.72,2.8,0,4.99.94,6.25,2.88l.36-2.58h5.53ZM50.03,18.73c.42-2.95-1.51-4.93-4.58-4.93s-5.58,1.98-6,4.93c-.42,2.95,1.55,4.93,4.61,4.93s5.55-1.98,5.96-4.93"/><path d="M79.09,21.11h-15.21c.21,2.5,2.12,4.03,5.19,4.03,2.13,0,3.75-.63,5.32-1.94l2.63,3.36c-2.17,2.13-5.13,3.25-8.75,3.25-6.95,0-10.86-4.37-10.02-10.35.85-6.02,6.05-10.36,12.18-10.36s9.9,3.97,8.99,10.43c-.06.44-.23,1.08-.33,1.57M64.29,17.71h9.9c-.05-2.54-1.73-4.19-4.34-4.19s-4.78,1.61-5.56,4.19"/><path d="M94.62,9.11c-2.72,0-5.21.93-7.03,2.65l.33-2.35h-5.57l-2.83,20.11h5.83l1.4-9.94c.52-3.7,2.78-5.42,5.58-5.42,2.58,0,3.86,1.49,3.4,4.75l-1.49,10.61h3.67s.08,0,.13,0c1.14-.05,2.08-.88,2.3-1.97.02-.09.03-.18.04-.27l1.3-9.27c.86-6.13-2.34-8.9-7.08-8.9"/><path d="M24.19,9.11c-2.73,0-5.21.93-7.03,2.65l.33-2.35h-5.57l-2.83,20.11h5.83l1.4-9.94c.52-3.7,2.78-5.42,5.58-5.42,2.58,0,3.86,1.49,3.4,4.75l-1.49,10.61h3.67s.09,0,.13,0c1.14-.05,2.08-.88,2.3-1.97.02-.09.03-.18.04-.27l1.3-9.27c.86-6.13-2.34-8.9-7.08-8.9"/><path d="M111.98,19.46c.85-6.06,6.13-10.36,12.51-10.36s10.42,4.3,9.57,10.36c-.85,6.06-6.09,10.35-12.48,10.35s-10.46-4.3-9.61-10.35M128.16,19.46c.49-3.48-1.42-5.57-4.34-5.57s-5.45,2.09-5.94,5.57c-.49,3.48,1.46,5.57,4.38,5.57s5.41-2.09,5.9-5.57"/><path d="M133.71,27.64l2.53-4.19c1.63,1.16,4.25,1.94,6.71,1.94,2.69,0,3.8-.71,3.96-1.83.46-3.29-12.16.08-11.03-7.96.54-3.81,4.35-6.51,10.22-6.51,2.76,0,5.74.64,7.49,1.76l-2.53,4.15c-1.82-1.12-3.75-1.49-5.58-1.49-2.61,0-3.85.83-4,1.87-.48,3.44,12.13.12,11.02,8.04-.52,3.74-4.38,6.39-10.39,6.39-3.4,0-6.7-.93-8.4-2.17"/><path d="M154.39,19.46c.85-6.06,6.13-10.36,12.51-10.36s10.42,4.3,9.57,10.36-6.09,10.35-12.48,10.35-10.46-4.3-9.6-10.35M170.57,19.46c.49-3.48-1.42-5.57-4.34-5.57s-5.45,2.09-5.94,5.57c-.49,3.48,1.46,5.57,4.38,5.57s5.41-2.09,5.9-5.57"/><path d="M2.53,29.42h0c-1.61,0-2.73-1.31-2.51-2.91l2.01-14.28c.23-1.61,1.71-2.92,3.32-2.92h2.91l-2.42,17.2c-.23,1.61-1.72,2.91-3.32,2.91"/><path d="M9.47,3.25c0,1.8-1.46,3.25-3.25,3.25s-3.25-1.46-3.25-3.25S4.42,0,6.22,0s3.25,1.46,3.25,3.25"/><path d="M105.89,29.42h0c-1.61,0-2.73-1.31-2.5-2.91l2.01-14.28c.23-1.61,1.72-2.91,3.32-2.91h2.92l-2.42,17.2c-.23,1.61-1.71,2.91-3.32,2.91"/><path d="M112.83,3.25c0,1.8-1.46,3.25-3.25,3.25s-3.25-1.46-3.25-3.25S107.78,0,109.58,0s3.25,1.46,3.25,3.25"/><path d="M178.94,7.33c-.17-.09-.43-.17-.78-.26s-.57-.16-.66-.24c-.07-.06-.11-.13-.11-.22,0-.09.04-.17.11-.22.12-.09.28-.13.49-.13s.36.04.46.12c.1.08.17.21.2.4l.72-.03c-.01-.33-.13-.59-.36-.79-.23-.2-.56-.3-1.01-.3-.27,0-.51.04-.71.12-.19.08-.34.2-.44.36-.1.16-.15.33-.15.51,0,.28.11.52.33.72.16.14.43.26.81.35.3.08.5.13.58.16.12.04.21.1.26.16.05.06.07.13.07.22,0,.13-.06.25-.18.34-.12.1-.29.15-.53.15-.22,0-.39-.06-.52-.17-.13-.11-.22-.28-.26-.52l-.7.07c.05.4.19.7.43.91.24.21.59.31,1.04.31.31,0,.57-.04.78-.13.21-.09.37-.22.48-.4.11-.18.17-.37.17-.58,0-.23-.05-.41-.14-.57-.1-.15-.23-.28-.4-.36"/><polygon points="182.44 5.73 181.8 8.17 181.15 5.73 180.07 5.73 180.07 9.31 180.74 9.31 180.74 6.49 181.45 9.31 182.15 9.31 182.86 6.49 182.86 9.31 183.53 9.31 183.53 5.73 182.44 5.73"/></svg></a>
+    <nav class="tabs" role="tablist" aria-label="Secciones">
+      <button class="chip tabbtn on" role="tab" type="button" data-tab="brief" aria-selected="true">Brief</button>
+      <button class="chip tabbtn" role="tab" type="button" data-tab="guiones" aria-selected="false">Guiones</button>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap pane" id="tab-brief" role="tabpanel">
+<div class="brief-in">
+<header class="bhero">
+<p class="eyebrow">Hangar por Ingenioso · Brief para RPs</p>
+<h1>Carrera <span>Hangar</span> 2026</h1>
+<p class="lead">Una carrera para todos los que entrenan en Hangar, sepan correr o no. <b>Tú eres la cara</b> que invita a los demás a inscribirse, con un video contado a tu manera.</p>
+<div class="date">22 nov <small>DOMINGO · VILLAHERMOSA</small></div>
+</header>
+
+<section>
+<h2>De qué va</h2>
+<p>Hangar va a hacer su carrera y queremos que se llene de gente. En vez de anuncios, la invitación la hacen ustedes, los RPs, porque la gente confía más en alguien que ve todos los días en el gym.</p>
+<p>Grabas un video corto (reel o TikTok) contando <b>tu historia con la carrera</b>: tus miedos, tus bromas, por qué te inscribiste. Nada de actuar ni de hablar como comercial. Cuéntalo como se lo contarías a un amigo.</p>
+<div class="cols" style="margin-top:18px">
+<div class="box"><span class="big">1</span><h3>Revisa tu guion</h3><p>Ya tienes dos propuestas hechas con tus respuestas del formulario. Escoge la que más se parezca a ti y cámbiale lo que quieras.</p></div>
+<div class="box"><span class="big">2</span><h3>Graba en tu Hangar</h3><p>En tu sucursal, en los días y horario que nos dijiste. Si necesitas quien te grabe, avísanos.</p></div>
+<div class="box"><span class="big">3</span><h3>Publica y etiqueta</h3><p>Usa los hashtags de abajo y cierra con la palabra para comentar: <b style="color:var(--white)">CARRERA</b>.</p></div>
+</div>
+</section>
+
+<section>
+<h2>Hashtags</h2>
+<p>Toca uno para copiarlo. Ponlos todos al final de tu descripción.</p>
+<div class="tags"><button class="htag" type="button" data-copy="#CarreraHangar">#CarreraHangar</button><button class="htag" type="button" data-copy="#CarreraHangar2026">#CarreraHangar2026</button><button class="htag" type="button" data-copy="#AgarraVuelo">#AgarraVuelo</button><button class="htag" type="button" data-copy="#HangarGym">#HangarGym</button><button class="htag" type="button" data-copy="#HangarVillahermosa">#HangarVillahermosa</button><button class="htag" type="button" data-copy="#CarreraHangar #CarreraHangar2026 #AgarraVuelo #HangarGym #HangarVillahermosa">Copiar todos</button></div>
+<p class="note" id="copied" aria-live="polite">&nbsp;</p>
+</section>
+
+<section>
+<h2>Links</h2>
+<div class="links">
+<a class="link" href="https://hangargym.com.mx/carrera/" target="_blank" rel="noopener"><span>Página de la Carrera Hangar · info e inscripción</span><b>Abrir →</b></a>
+</div>
+</section>
+
+<section>
+<h2>Para que se vea bien</h2>
+<ul class="rules">
+<li>Graba <b>vertical</b> (9:16) y con la cámara trasera si puedes.</li>
+<li>Luz de frente o de lado. Nunca con una ventana atrás de ti.</li>
+<li>Limpia el lente con tu playera antes de grabar.</li>
+<li>Graba cada toma 2 o 3 veces. Es más fácil escoger que repetir.</li>
+<li>Lo primero que dices es lo que decide si la gente se queda. Que se entienda en un segundo.</li>
+<li>Cuida el audio: lejos de máquinas y de música fuerte.</li>
+</ul>
+</section>
+
+<section class="last">
+<div class="panel">
+<h2>Tipos de planos que puedes usar</h2>
+<div class="shots"><div class="shot"><div class="frame"></div></div><div class="shot"><div class="frame"></div></div><div class="shot"><div class="frame"></div></div><div class="shot"><div class="frame"></div></div><div class="shot"><div class="frame"></div></div><div class="shot"><div class="frame"></div></div><div class="shot"><div class="frame"></div></div><div class="shot"><div class="frame"></div></div></div>
+</div>
+</section>
+
+</div>
+</div>
+
+<main class="wrap pane" id="tab-guiones" role="tabpanel" hidden>
+  <section class="rps" id="rps">
+    <p class="sec-num">Guiones de los RPs</p>
+    <h2>Tus <span class="accent">2 guiones</span></h2>
+    <p class="lead">Estos son los RPs que ya respondieron el formulario (7). Cada quien tiene 2 propuestas hechas con sus respuestas. Descarga tu PDF, escoge la que más se parezca a ti y cámbiale lo que quieras.</p>
+    <div class="rpgrid"><article class="rp"><div class="rp-top"><h3>Karen</h3><span class="tag plain">Americas</span></div>
+<p class="rp-l">2 propuestas</p><ol><li>El outfit</li><li>Nunca he corrido</li></ol>
+<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Karen.pdf" data-n="Guiones para Karen · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Karen.pdf" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Nutrí</h3><span class="tag plain">Terranova</span></div>
+<p class="rp-l">2 propuestas</p><ol><li>Nunca seré runner</li><li>¿Y si te está funcionando?</li></ol>
+<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Nutri.pdf" data-n="Guiones para Nutrí · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Nutri.pdf" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Lucii</h3><span class="tag plain">Arenas</span></div>
+<p class="rp-l">2 propuestas</p><ol><li>Holii, ya tuu</li><li>Mi voz ronca</li></ol>
+<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Lucii.pdf" data-n="Guiones para Lucii · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Lucii.pdf" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Ary</h3><span class="tag plain">Gemelos</span></div>
+<p class="rp-l">2 propuestas</p><ol><li>Retador</li><li>El gym no es para chismear</li></ol>
+<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Ary.pdf" data-n="Guiones para Ary · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Ary.pdf" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Guiochin</h3><span class="tag plain">Gemelos</span></div>
+<p class="rp-l">2 propuestas</p><ol><li>De flaco a la carrera de los mamados</li><li>Sin consejos</li></ol>
+<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Guiochin.pdf" data-n="Guiones para Guiochin · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Guiochin.pdf" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Muñe</h3><span class="tag plain">Arenas</span></div>
+<p class="rp-l">2 propuestas</p><ol><li>20 años y no se nota</li><li>¿Qué hiciste, muñeco?</li></ol>
+<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Mune.pdf" data-n="Guiones para Muñe · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Mune.pdf" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Mirinda</h3><span class="tag plain">Gemelos</span></div>
+<p class="rp-l">2 propuestas</p><ol><li>Llegué por una amiga</li><li>Entrenar todos los días</li></ol>
+<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Mirinda.pdf" data-n="Guiones para Mirinda · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Mirinda.pdf" target="_blank" rel="noopener">Ver</a></div></article></div>
+    <p class="msg" id="dlmsg" aria-live="polite"></p>
+    <div class="sub" aria-label="Ir a ejemplos"><button class="chip" type="button" data-go="ugc">Ejemplos UGC</button><button class="chip" type="button" data-go="trends">Trends y frases</button></div>
+  </section>
+<div class="hero" style="border-top:1px solid var(--faint)">
+    <p class="kicker">Guía de grabación · Running</p>
+    <h1>Corre y graba. <span class="accent">Paso a paso.</span></h1>
+    <p class="lead">Así vamos a trabajar contigo: grabamos juntos un UGC con guion y, aparte, tú grabas de 1 a 5 videos sencillos, tipo trend o frase. Para esos sencillos no necesitas guion: dale play, escoge uno, grábalo igual y súbelo.</p>
+    <div class="stats">
+      <div class="stat"><div class="num">1</div><div class="lbl">UGC con guion<br>(lo hacemos contigo)</div></div>
+      <div class="stat"><div class="num">1–5</div><div class="lbl">videos sencillos<br>(los haces tú)</div></div>
+    </div>
+  </div>
+
+  <section class="part" id="ugc">
+    <p class="sec-num">01 · Con guion</p>
+    <h2>Ejemplos de <span class="accent">UGC</span></h2>
+    <p class="lead">Estos videos llevan voz, vlog o explicación. Son ejemplos del UGC que vamos a trabajar contigo: nosotros te damos el guion y te acompañamos. No tienes que hacerlos tú solo.</p>
+    <div class="feed" id="feedU"></div>
+  </section>
+
+  <section class="part" id="trends">
+    <p class="sec-num">02 · Sin guion</p>
+    <h2>Trends y <span class="accent">frases</span></h2>
+    <p class="lead">Frases, memes y tendencias. Escoge uno y cópialo tal cual. Unos son para antes de la carrera (tú entrenando, haciendo cardio o preparándote, con una frase como “Preparándome para la carrera de ___”) y otros para el día de la carrera: la salida, el recorrido y la llegada a la meta.</p>
+    <div class="feed" id="feedT"></div>
+  </section>
+  <div class="general">
+    <h3>Reglas para cualquier video</h3>
+    <ul>
+      <li>Graba siempre con el celular en vertical.</li>
+      <li>Limpia la cámara con tu playera antes de grabar.</li>
+      <li>Graba cada toma 2 o 3 veces. Es más fácil escoger que repetir.</li>
+      <li>El texto de arriba es lo primero que la gente lee: que se entienda en un segundo.</li>
+    </ul>
+  </div>
+</main>
+
+<footer class="wrap made">
+  <p>Hecho por</p>
+  <a href="https://www.instagram.com/ingeniosomx/" target="_blank" rel="noopener" aria-label="Ingenioso en Instagram"><svg class="logo" viewBox="0 0 183.53 36.97" fill="#ffffff" role="img" aria-label="Ingenioso"><path d="M57.11,9.31l-2.35,16.74c-1.05,7.48-5.57,10.92-12.82,10.92-3.81,0-7.38-.93-9.48-2.76l2.91-4.18c1.52,1.38,4.2,2.28,6.78,2.28,4.11,0,6.17-1.87,6.67-5.49l.12-.86c-1.77,1.68-4.09,2.5-6.7,2.5-5.57,0-9.51-3.85-8.69-9.72.82-5.87,5.85-9.72,11.42-9.72,2.8,0,4.99.94,6.25,2.88l.36-2.58h5.53ZM50.03,18.73c.42-2.95-1.51-4.93-4.58-4.93s-5.58,1.98-6,4.93c-.42,2.95,1.55,4.93,4.61,4.93s5.55-1.98,5.96-4.93"/><path d="M79.09,21.11h-15.21c.21,2.5,2.12,4.03,5.19,4.03,2.13,0,3.75-.63,5.32-1.94l2.63,3.36c-2.17,2.13-5.13,3.25-8.75,3.25-6.95,0-10.86-4.37-10.02-10.35.85-6.02,6.05-10.36,12.18-10.36s9.9,3.97,8.99,10.43c-.06.44-.23,1.08-.33,1.57M64.29,17.71h9.9c-.05-2.54-1.73-4.19-4.34-4.19s-4.78,1.61-5.56,4.19"/><path d="M94.62,9.11c-2.72,0-5.21.93-7.03,2.65l.33-2.35h-5.57l-2.83,20.11h5.83l1.4-9.94c.52-3.7,2.78-5.42,5.58-5.42,2.58,0,3.86,1.49,3.4,4.75l-1.49,10.61h3.67s.08,0,.13,0c1.14-.05,2.08-.88,2.3-1.97.02-.09.03-.18.04-.27l1.3-9.27c.86-6.13-2.34-8.9-7.08-8.9"/><path d="M24.19,9.11c-2.73,0-5.21.93-7.03,2.65l.33-2.35h-5.57l-2.83,20.11h5.83l1.4-9.94c.52-3.7,2.78-5.42,5.58-5.42,2.58,0,3.86,1.49,3.4,4.75l-1.49,10.61h3.67s.09,0,.13,0c1.14-.05,2.08-.88,2.3-1.97.02-.09.03-.18.04-.27l1.3-9.27c.86-6.13-2.34-8.9-7.08-8.9"/><path d="M111.98,19.46c.85-6.06,6.13-10.36,12.51-10.36s10.42,4.3,9.57,10.36c-.85,6.06-6.09,10.35-12.48,10.35s-10.46-4.3-9.61-10.35M128.16,19.46c.49-3.48-1.42-5.57-4.34-5.57s-5.45,2.09-5.94,5.57c-.49,3.48,1.46,5.57,4.38,5.57s5.41-2.09,5.9-5.57"/><path d="M133.71,27.64l2.53-4.19c1.63,1.16,4.25,1.94,6.71,1.94,2.69,0,3.8-.71,3.96-1.83.46-3.29-12.16.08-11.03-7.96.54-3.81,4.35-6.51,10.22-6.51,2.76,0,5.74.64,7.49,1.76l-2.53,4.15c-1.82-1.12-3.75-1.49-5.58-1.49-2.61,0-3.85.83-4,1.87-.48,3.44,12.13.12,11.02,8.04-.52,3.74-4.38,6.39-10.39,6.39-3.4,0-6.7-.93-8.4-2.17"/><path d="M154.39,19.46c.85-6.06,6.13-10.36,12.51-10.36s10.42,4.3,9.57,10.36-6.09,10.35-12.48,10.35-10.46-4.3-9.6-10.35M170.57,19.46c.49-3.48-1.42-5.57-4.34-5.57s-5.45,2.09-5.94,5.57c-.49,3.48,1.46,5.57,4.38,5.57s5.41-2.09,5.9-5.57"/><path d="M2.53,29.42h0c-1.61,0-2.73-1.31-2.51-2.91l2.01-14.28c.23-1.61,1.71-2.92,3.32-2.92h2.91l-2.42,17.2c-.23,1.61-1.72,2.91-3.32,2.91"/><path d="M9.47,3.25c0,1.8-1.46,3.25-3.25,3.25s-3.25-1.46-3.25-3.25S4.42,0,6.22,0s3.25,1.46,3.25,3.25"/><path d="M105.89,29.42h0c-1.61,0-2.73-1.31-2.5-2.91l2.01-14.28c.23-1.61,1.72-2.91,3.32-2.91h2.92l-2.42,17.2c-.23,1.61-1.71,2.91-3.32,2.91"/><path d="M112.83,3.25c0,1.8-1.46,3.25-3.25,3.25s-3.25-1.46-3.25-3.25S107.78,0,109.58,0s3.25,1.46,3.25,3.25"/><path d="M178.94,7.33c-.17-.09-.43-.17-.78-.26s-.57-.16-.66-.24c-.07-.06-.11-.13-.11-.22,0-.09.04-.17.11-.22.12-.09.28-.13.49-.13s.36.04.46.12c.1.08.17.21.2.4l.72-.03c-.01-.33-.13-.59-.36-.79-.23-.2-.56-.3-1.01-.3-.27,0-.51.04-.71.12-.19.08-.34.2-.44.36-.1.16-.15.33-.15.51,0,.28.11.52.33.72.16.14.43.26.81.35.3.08.5.13.58.16.12.04.21.1.26.16.05.06.07.13.07.22,0,.13-.06.25-.18.34-.12.1-.29.15-.53.15-.22,0-.39-.06-.52-.17-.13-.11-.22-.28-.26-.52l-.7.07c.05.4.19.7.43.91.24.21.59.31,1.04.31.31,0,.57-.04.78-.13.21-.09.37-.22.48-.4.11-.18.17-.37.17-.58,0-.23-.05-.41-.14-.57-.1-.15-.23-.28-.4-.36"/><polygon points="182.44 5.73 181.8 8.17 181.15 5.73 180.07 5.73 180.07 9.31 180.74 9.31 180.74 6.49 181.45 9.31 182.15 9.31 182.86 6.49 182.86 9.31 183.53 9.31 183.53 5.73 182.44 5.73"/></svg></a>
+</footer>
+
+<script>
+const TT='https://www.tiktok.com/';
+const A=[
+ {tt:'@camberitoss/video/7572774727933005064',h:'camberitoss',d:'0:52',t:'A 3 semanas de la carrera',kind:'Vlog de entrenamiento',
+  hook:'A 3 semanas de la CARRERAAAA',
+  idea:'Cuentas cómo va tu entrenamiento cuando ya falta poco. Calientas frente al tripié y luego te grabas corriendo desde arriba.',
+  need:['Celular','Tripié','Gorra o outfit llamativo'],
+  s:[['Pon la fecha en el texto','Escribe arriba cuánto falta: “A 3 semanas de la carrera”. Eso engancha a quien también se está preparando.'],
+     ['Graba tu calentamiento','Pon el celular en el tripié a la altura de tu cintura y grábate haciendo sentadillas o estiramientos de cuerpo completo.'],
+     ['Cambia a selfie desde arriba','Usa la cámara de enfrente en modo gran angular (0.5x). Estira el brazo hacia arriba y un poco adelante de ti.'],
+     ['Grábate corriendo','Corre con el brazo firme. Desde arriba se ve tu outfit y el camino al mismo tiempo.'],
+     ['Habla a la cámara','Cuenta en una frase cómo te sientes o cuántos km llevas. Así el video se siente cercano.'],
+     ['Corta y une','Deja solo lo mejor: clips de 3 a 5 segundos. Pon música tranquila de fondo y baja su volumen si hablas.']],
+  tip:'El modo 0.5x hace que todo se vea más amplio y dinámico. Búscalo en la cámara de tu celular.'},
+
+ {tt:'@jackmostuart/video/7663675267654733077',h:'jackmostuart',d:'1:06',t:'6 días antes de mi primer 10K',kind:'Rutina de mañana',
+  hook:'Preparándome 6 días antes para correr una carrera 10K (no tiene experiencia en running)',
+  idea:'Muestras tu mañana antes de entrenar: te amarras los tenis, te lavas los dientes, estiras y sales a correr. El texto en rojo es el chiste.',
+  need:['Celular','Algo para recargarlo'],
+  s:[['Escribe dos textos','Arriba en blanco lo que estás haciendo. Abajo, en rojo y más chiquito, el remate: “(no tiene experiencia en running)”.'],
+     ['Graba de muy cerca','Acerca el celular a tus tenis mientras te los amarras. Las tomas de cerca se ven muy bien.'],
+     ['Graba tu rutina','Lavarte los dientes, tomar agua, estirar. Recarga el celular en una pared o mueble y graba 2 o 3 segundos de cada cosa.'],
+     ['Graba tus pies corriendo','Apunta la cámara hacia abajo mientras corres, para que se vean tus tenis y el piso.'],
+     ['Pide consejos al final','En la descripción escribe: “Si eres corredor, déjame tips en los comentarios”. Eso trae muchos comentarios.'],
+     ['Edita en orden','Pon todo en el orden en que pasó, con cortes rápidos de 2 segundos.']],
+  tip:'Pedir consejos en la descripción hace que la gente comente, y eso ayuda a que el video llegue a más personas.'},
+
+ {tt:'@salma.lg/video/7537449624605314311',h:'salma.lg',d:'1:33',t:'Así me preparé para mi primer 5K',kind:'Mini documental',
+  hook:'Así me preparé para mi primer 5K',
+  idea:'Un video largo que cuenta toda tu preparación, desde comprar tenis hasta entrenar, con música inspiradora.',
+  need:['Celular','Varias semanas de clips','Música inspiradora'],
+  s:[['Graba durante semanas','Cada vez que entrenes o hagas algo para la carrera, graba 5 a 10 segundos. Guárdalos en un álbum aparte.'],
+     ['Graba momentos distintos','Comprando tenis, escogiendo ropa, calentando, corriendo, descansando. Entre más variado, mejor.'],
+     ['Haz selfies corriendo','Cámara de enfrente, brazo estirado, y grábate de frente con el camino detrás.'],
+     ['Graba tu voz','Al final, graba un audio contando por qué te inscribiste y cómo te sentiste. Úsalo como narración.'],
+     ['Ordena la historia','Inicio: por qué empezaste. En medio: el entrenamiento. Final: el día de la carrera.'],
+     ['Música inspiradora','Busca en la app un audio “cinematográfico” o “inspirador” y ponlo bajito debajo de tu voz.']],
+  tip:'Si la carrera es de una marca, etiquétala. Muchas marcas comparten los videos de sus corredores.'},
+
+ {tt:'@valeriamazvi/video/7613921490660003092',h:'valeriamazvi',d:'1:12',t:'Último entreno de la semana',kind:'Vlog hablando a cámara',
+  hook:'Para mi carrera de 10K',
+  idea:'Te grabas mientras trotas y vas platicando con la cámara como si fuera una amiga que te acompaña.',
+  need:['Celular','Audífonos (opcional)'],
+  s:[['Empieza con tus pies','Primera toma: la cámara apuntando a tus tenis y al camino, con el texto “Para mi carrera de 10K”.'],
+     ['Selfie de frente','Cámara de enfrente, brazo estirado, el celular a la altura de tu cara.'],
+     ['Platica mientras trotas','Cuenta qué entrenamiento toca hoy, cómo te sientes o qué te cuesta. Habla natural.'],
+     ['Graba el paisaje','Unos segundos del cielo, los árboles o la pista. Sirven para cambiar de toma.'],
+     ['Cierra agradeciendo','Al final di algo como “gracias por acompañarme en esta preparación”.'],
+     ['Agrega subtítulos','En la app de edición usa “subtítulos automáticos” para que se entienda aunque no tengan sonido.']],
+  tip:'Muchas personas ven videos sin sonido. Los subtítulos hacen que se queden a verlo.'},
+
+ {tt:'@paulinarua0812/video/7532919199094590726',h:'paulinarua0812',d:'0:18',t:'Entrenando porque alguien (yo) me inscribió',kind:'Humor · selfie de perfil',
+  hook:'Entrenando porque a alguien (yo) se le ocurrió inscribirme a una carrera de 10km',
+  idea:'Te ríes de ti mismo. Te grabas de lado corriendo con una canción de moda y el texto hace el chiste.',
+  need:['Celular','Canción de moda'],
+  s:[['Escribe la frase','Arriba: “Entrenando porque a alguien (yo) se le ocurrió inscribirme a una carrera de 10km”.'],
+     ['Estira el brazo de lado','Cámara de enfrente. Estira el brazo hacia un lado para que se vea tu perfil y el camino.'],
+     ['Corre mirando al frente','No veas a la cámara. Así parece que alguien te está grabando.'],
+     ['Graba en un lugar con árboles','Un parque o camino verde con cielo azul se ve mucho mejor.'],
+     ['Pon la canción','Escoge un audio que esté de moda en TikTok. Revisa que el texto se lea antes de que cambie la toma.'],
+     ['Deja el video corto','Entre 10 y 20 segundos es suficiente.']],
+  tip:'Usar “alguien (yo)” es un chiste que la gente reconoce y comparte.'},
+
+ {src:'video1.mp4',poster:'poster1.jpg',tt:'@conaghkathleen',profile:true,h:'conaghkathleen',d:'0:12',t:'De la cama a los 8 km',kind:'Tendencia con canción',
+  idea:'Primero te ves con flojera en la cama y, justo cuando cambia la canción, apareces corriendo con tus resultados en grande.',
+  need:['Celular','Canción en tendencia','App que mida tu carrera'],
+  s:[['Escoge la canción','Busca en TikTok o Instagram un audio que esté de moda y escúchalo varias veces. Fíjate en qué segundo cambia el ritmo.'],
+     ['Graba la escena de la cama','Recarga el celular parado al pie de la cama, apuntando hacia ti. Acuéstate en pijama y haz como que no te quieres levantar. Graba unos 4 segundos.'],
+     ['Sal a correr y grábate','Con ropa de correr, usa la cámara de enfrente. Estira el brazo y pon el celular un poco más abajo de tu cara, para que se vea el cielo detrás.'],
+     ['Graba mientras trotas','Trota hacia adelante unos 6 segundos con el brazo estirado y firme. Repite la toma 2 o 3 veces.'],
+     ['Une las dos escenas','En la app de edición (CapCut o el editor de TikTok) pon primero la cama y luego la carrera. El cambio debe caer cuando cambia la canción.'],
+     ['Pon tus datos en grande','Escribe arriba la distancia, el tiempo y el ritmo (por ejemplo 8 KM · 52:15 · 6:32/km). Te los da tu reloj o app de correr.'],
+     ['Agrega la letra en la cama','En la parte de la cama, pon palabras de la canción como texto, una por una, al mismo tiempo que se escuchan.']],
+  tip:'Usa letras gruesas y de color claro para tus datos: es lo primero que la gente lee.'},
+
+ {src:'video7.mp4',poster:'poster7.jpg',tt:'@fernandatobitto',profile:true,h:'fernandatobitto',d:'0:14',t:'Si nadie va contigo, ve solo',kind:'Motivacional · cámara lenta',
+  idea:'Una frase motivadora en dos partes y tú corriendo en cámara lenta, de lado.',
+  need:['Celular','Tripié','Día soleado'],
+  s:[['Busca un buen fondo','Un camino o calle tranquila con campo, árboles o montañas detrás, con buena luz de sol.'],
+     ['Pon el tripié bajito','A la altura de tu rodilla, a un lado del camino, con el celular en vertical.'],
+     ['Graba tu preparación','Frente a la cámara, ajusta tu reloj o estírate. Aquí va el texto “Si nadie va contigo…”.'],
+     ['Corre de lado','Arranca a correr pasando de lado frente a la cámara. Hazlo 3 o 4 veces.'],
+     ['Activa la cámara lenta','Usa el modo “Cámara lenta”. Si tu celular no lo tiene, baja la velocidad después en la app de edición.'],
+     ['Cambia el texto','Justo cuando empiezas a correr, cambia el texto a “Ve solo.”, al mismo tiempo que cambia la música.'],
+     ['Música motivadora','Agrega una canción con fuerza y sube un poco el contraste para que los colores se vean vivos.']],
+  tip:'Corre más rápido de lo normal en esta toma: en cámara lenta se ve mucho más impresionante.'},
+
+ {src:'video6.mp4',poster:'poster6.jpg',tt:'@breemaliafox',profile:true,h:'breemaliafox',d:'0:14',t:'Nuestra cita es correr',kind:'En pareja · atardecer',
+  idea:'Una cita diferente. Corren juntos al atardecer y se ven como siluetas contra el cielo.',
+  need:['Celular','Tripié','Atardecer'],
+  s:[['Elige la hora y el lugar','Ve 20 minutos antes de que se meta el sol. Busca un camino recto con algo bonito al fondo.'],
+     ['Pon el celular en el tripié','En vertical, a la altura de la cadera, con la cámara de atrás apuntando al camino.'],
+     ['Baja la luz para las siluetas','Toca el cielo en la pantalla y baja un poco el brillo con el dedo. Ustedes se verán oscuros y el cielo naranja.'],
+     ['Toma de espaldas','Párense de espaldas a la cámara, mirando el atardecer. Estiren un poco.'],
+     ['Corran ida y vuelta','Corran alejándose de la cámara. Luego regresen corriendo hacia ella.'],
+     ['Toma final','Cierren tomándose una foto o abrazados viendo el atardecer.'],
+     ['Texto y canción','Una línea chiquita: “pov: esta es nuestra versión de cita” y una canción romántica.']],
+  tip:'Revisa que el tripié esté firme antes de correr. Si hay viento, ponle peso abajo.'},
+
+ {tt:'@vgsqaud/video/7648394432496127263',h:'vgsqaud',d:'0:12',t:'Torturar el cuerpo por puro gusto',kind:'Grabado desde un coche',
+  hook:'Preparándome… para volver a torturar el cuerpo por puro gusto.',
+  idea:'Alguien te graba desde un coche que va a tu lado mientras corres en carretera al amanecer.',
+  need:['Celular','Alguien que maneje','Otra persona que grabe'],
+  s:[['Elige la hora','Al amanecer o al atardecer el cielo se ve naranja y azul. Es la mejor luz.'],
+     ['Busca un camino seguro','Una carretera con poco tráfico y buena orilla. La seguridad va primero.'],
+     ['Toma desde atrás','Desde el coche, a unos metros detrás, graba a la persona corriendo por la orilla.'],
+     ['Toma de lado','El coche avanza despacio a su lado y quien graba apunta por la ventana. Que el celular no toque el vidrio.'],
+     ['Escribe la frase','Arriba en blanco: “Preparándome… para volver a torturar el cuerpo por puro gusto.”'],
+     ['Agrega una etiqueta','Abajo, chiquito, pon la meta: “Maratón”, “21K” o la carrera que vas a correr.']],
+  tip:'El coche debe ir muy despacio y con luces intermitentes. Nunca grabe quien maneja.'},
+
+ {tt:'@chrisquiroz/video/7489258608220294455',h:'chrisquiroz',d:'0:35',t:'Parezco NPC preparándome',kind:'Humor · tripié fijo',
+  hook:'Yo con la realidad bien alterada preparándome para correr',
+  idea:'Calientas haciendo movimientos exagerados y repetitivos, como personaje de videojuego, frente a una cámara fija.',
+  need:['Celular','Tripié'],
+  s:[['Pon el tripié lejos','A unos 4 o 5 metros, para que se vea tu cuerpo completo y el lugar.'],
+     ['Escribe la frase','Arriba: “Yo con la realidad bien alterada preparándome para correr”.'],
+     ['Haz movimientos exagerados','Estira, brinca, ajusta tus lentes o tu reloj de forma muy exagerada y repetida, como robot.'],
+     ['Graba de corrido','No cortes. Graba 30 segundos seguidos haciendo varias cosas.'],
+     ['Agrega sonido divertido','Si quieres, pon efectos de sonido de videojuego en cada movimiento.'],
+     ['Publica con humor','En la descripción algo corto como “Parezco NPC lol”.']],
+  tip:'Mientras más serio pongas la cara, más chistoso se ve.'},
+
+ {tt:'@korellanat/video/7550095776412749061',h:'korellanat',d:'0:14',t:'Prepararme para 2K en 30 minutos',kind:'Humor · música épica',
+  hook:'Preparándome para correr 2k en 30 minutos',
+  idea:'Calientas como si fueras atleta olímpico con música épica, pero la meta es chiquita. El contraste es el chiste.',
+  need:['Celular','Música épica de tráiler'],
+  s:[['Pon el celular en el piso','Recárgalo en algo bajito, apuntando hacia arriba. Así te ves grande y heroico.'],
+     ['Escribe una meta pequeña','Arriba: “Preparándome para correr 2K en 30 minutos”. Lo chistoso es lo poco que es.'],
+     ['Calienta muy en serio','Sentadillas, estiramientos, golpes al aire. Todo con cara de concentración total.'],
+     ['Acércate a la cámara','Camina hacia el celular hasta que tu pierna o tu tenis tapen la pantalla.'],
+     ['Música épica','Busca un audio de “tráiler” o “película épica”.'],
+     ['Si sale tu mascota, déjala','Lo que pasa sin planear también hace reír.']],
+  tip:'Escribe la meta real en la descripción: “Broma, en 17 minutos”. Eso genera comentarios.'},
+
+ {tt:'@orlandolopezr/video/7531123576146234642',h:'orlandolopezr',d:'0:15',t:'Me estoy preparando… mis historias',kind:'Humor · hablando a cámara',
+  hook:'“Me estoy preparando para la carrera…” Mis historias:',
+  idea:'Comparas lo que dices con lo que en verdad muestras en tus historias. Hablas a la cámara con cara de cansado.',
+  need:['Celular','Cielo despejado'],
+  s:[['Escribe el formato','Arriba entre comillas lo que dices, y abajo “Mis historias:”.'],
+     ['Grábate desde abajo','Cámara de enfrente, el celular a la altura del pecho apuntando a tu cara. Así sale el cielo detrás.'],
+     ['Habla como en una historia','Cuenta el entrenamiento como si estuvieras agotado o exagerando el sufrimiento.'],
+     ['Una sola toma','No necesitas cortes. Unos 15 segundos hablando.'],
+     ['Pon subtítulos','Usa subtítulos automáticos para que se entienda sin sonido.'],
+     ['Descripción corta','Algo como “No salió como esperaba” y hashtags de humor.']],
+  tip:'Grábalo de día y con el sol de frente: tu cara se ve mucho mejor.'},
+
+ {tt:'@adi.viillegas/video/7654843340675943701',h:'adi.viillegas',d:'0:05',t:'Entrenando duro… y ya es mañana',kind:'Humor · 5 segundos',
+  hook:'Entrenando duro porque me inscribí a una carrera y ya es mañana…',
+  idea:'Un video cortísimo: alguien te graba de espaldas corriendo y la frase cuenta que dejaste todo para el último día.',
+  need:['Celular','Alguien que te grabe','Audio de moda'],
+  s:[['Busca un camino largo','Un camino de tierra o una calle recta que se vea lejos.'],
+     ['Que te graben de espaldas','La otra persona se queda quieta y te graba mientras te alejas corriendo.'],
+     ['Corre con ganas','Corre rápido aunque sea poco. Se trata de verse “entrenando duro”.'],
+     ['Escribe la frase','“Entrenando duro porque me inscribí a una carrera y ya es mañana…”'],
+     ['Usa un audio de moda','Pon un sonido que esté sonando en TikTok.'],
+     ['Que dure 5 segundos','Corto hace que la gente lo vea varias veces.']],
+  tip:'Los videos de 5 a 7 segundos se repiten solos, y eso ayuda a que TikTok los muestre más.'},
+
+ {tt:'@tab.iker.daniel/video/7632882295623421201',h:'tab.iker.daniel',d:'0:09',t:'Entrenando rapidito',kind:'Humor · video acelerado',
+  hook:'Entrenando rapidito porque me inscribí a una carrera y ya es mañana 🤡',
+  idea:'La misma idea del último día, pero acelerado y con varias tomas desde distintos lugares.',
+  need:['Celular','Alguien que te grabe'],
+  s:[['Elige un camino con vista','Un sendero o bajada con la ciudad o el atardecer al fondo.'],
+     ['Toma desde lejos','Que te graben desde arriba del camino mientras corres hacia abajo.'],
+     ['Toma de cerca','Luego que te graben pasando a su lado.'],
+     ['Toma de espaldas','Al final, te alejas corriendo de la cámara.'],
+     ['Acelera el video','En la app de edición cambia la velocidad a 2x. Te verás corriendo rapidísimo.'],
+     ['Texto y payasito','Escribe la frase y termina con un emoji 🤡 para dejar claro que es broma.']],
+  tip:'Acelerar el video hace que hasta un trote lento se vea chistoso.'},
+
+ {tt:'@levincb95/video/7544919808790334726',h:'levincb95',d:'0:13',t:'Preparando mi outfit',kind:'Outfit · vista desde arriba',
+  hook:'Preparando mi outfit para una carrera',
+  idea:'Las prendas aparecen una por una sobre la cama, vistas desde arriba, y al final sales con todo puesto en la carrera.',
+  need:['Celular','Tu ropa de carrera','Número de corredor'],
+  s:[['Despeja la cama','Que quede lisa y de un solo color. Así la ropa resalta.'],
+     ['Graba desde arriba','Párate sobre la cama o una silla y sostén el celular apuntando hacia abajo, sin moverlo.'],
+     ['Pon una prenda a la vez','Pon el short y graba 1 segundo. Pausa. Agrega la playera y graba otro segundo. Sigue así.'],
+     ['Termina con el número y tenis','Lo último que aparece son el número de corredor y los tenis.'],
+     ['Graba el día de la carrera','Una toma tuya con todo puesto caminando hacia el arco de salida.'],
+     ['Une todo rápido','Cada prenda dura medio segundo. Que caiga con el ritmo de la canción.']],
+  tip:'Marca con cinta dónde está el celular para que todas las tomas salgan desde el mismo punto.'},
+
+ {tt:'@running_eagles_team/video/7386134798307167493',h:'running_eagles_team',d:'0:39',t:'Cómo nos preparamos para una ultra',kind:'Explicativo por pasos',
+  hook:'Cómo nos preparamos para una carrera ultra',
+  idea:'Explicas tu preparación en pasos, y cada toma tiene un texto que dice qué estás haciendo.',
+  need:['Celular','Tu equipo de carrera'],
+  s:[['Haz una lista','Antes de grabar, escribe los pasos: inscribirte, armar tu lugar, ponerte el equipo, ir a la salida.'],
+     ['Graba un paso por toma','Cada paso es una toma de 3 a 5 segundos.'],
+     ['Pon texto en cada toma','Arriba el título del paso y abajo un detalle útil, por ejemplo “Vaselina para el frío y las rozaduras”.'],
+     ['Graba de lejos y de cerca','Alterna tomas del lugar completo con tomas de cerca de tus manos y tu equipo.'],
+     ['Cierra en la salida','La última toma: todos en el arco de salida, con el texto “Y arrancamos”.'],
+     ['Música con energía','Pon una canción con ritmo que acompañe los cambios de toma.']],
+  tip:'Los videos que enseñan algo se guardan mucho. Y lo guardado le dice a TikTok que el video es bueno.'},
+
+ {tt:'@javiloes_/video/7534174871069445381',h:'javiloes_',d:'0:10',t:'Hay que dormir bien antes de la carrera',kind:'Humor · noche anterior',
+  hook:'“Hay que dormir bien antes de la carrera” · Yo:',
+  idea:'Dejas tu outfit listo en la cama y luego te grabas sin poder dormir por los nervios.',
+  need:['Celular','Algo para recargarlo','Tu outfit de carrera'],
+  s:[['Acomoda tu outfit','Pon la ropa, el número y los tenis acomodados sobre la cama, como si fuera una persona.'],
+     ['Recarga el celular','Al pie de la cama, apuntando hacia ti y hacia la ropa.'],
+     ['Escribe el formato','Arriba entre comillas: “Hay que dormir bien antes de la carrera”. Debajo: “Yo:”.'],
+     ['Actúa los nervios','Acuéstate, da vueltas, levántate, revisa la ropa, vuelve a acostarte.'],
+     ['Graba de corrido','Unos 10 segundos sin cortar.'],
+     ['Pregunta en la descripción','“¿Quién más corre mañana?” para que te comenten otros corredores.']],
+  tip:'Si la carrera es conocida, pon su nombre en el texto o hashtag: la gente que va a correrla te encuentra.'}
+];
+
+const B=[
+ {src:'video4.mp4',poster:'poster4.jpg',tt:'@daira.cnp',profile:true,h:'daira.cnp',d:'0:24',t:'Prepárate conmigo para la carrera',kind:'Mi día de carrera',
+  idea:'Cuentas tu mañana de carrera en orden: te arreglas, te pones el outfit y luego la carrera con tu amiga.',
+  need:['Celular','Algo para recargarlo','Amiga o compañera'],
+  s:[['Grábate arreglándote','En casa, recarga el celular en el lavabo o un mueble y grábate peinándote o poniéndote bloqueador. 2 o 3 segundos basta.'],
+     ['Muestra tu outfit','Recárgalo en la cama o el piso y aléjate para que se vea tu ropa completa. Haz una pose divertida.'],
+     ['Graba la salida','Ya en la carrera, graba el arco de salida y a la gente con la cámara de atrás.'],
+     ['Selfie con tu amiga','Cámara de enfrente, brazo estirado, y grábense corriendo juntas.'],
+     ['Saluda en un lugar bonito','Cuando pases por un lugar que se vea padre (un arco, un parque), voltea a la cámara y saluda.'],
+     ['Edita al ritmo','Corta cada toma de 1 a 2 segundos y que cada cambio caiga en el golpe de la música.']],
+  tip:'Graba cada momento, aunque sea cortito. Al final es más fácil escoger que inventar.'},
+
+ {tt:'@jandreshj/video/7600586020240837908',h:'jandreshj',d:'0:10',t:'Calentando para por fin ganar',kind:'Humor · en la salida',
+  hook:'Calentando para por fin ganar una carrera',
+  idea:'Calientas de forma exagerada, primero en tu casa y luego en la salida frente a todos, como si fueras el favorito.',
+  need:['Celular','Un amigo que te grabe'],
+  s:[['Empieza en tu casa','Graba unos segundos calentando en tu patio o jardín, muy en serio, con la frase en pantalla.'],['Llega temprano a la salida','Ponte delante de la línea de salida, con los demás corredores detrás.'],
+     ['Que te graben de frente','Tu amigo se pone enfrente, a unos metros, y graba para que salgas tú y toda la gente.'],
+     ['Calienta exagerado','Brincos, estiramientos, golpes al aire. Como si fueras el favorito a ganar.'],
+     ['Escribe la frase','Abajo: “Calentando para por fin ganar una carrera”.'],
+     ['Una toma de 10 segundos','No hace falta cortar.'],
+     ['Ojo con el tiempo','Hazlo antes de que den la salida y regresa a tu lugar a tiempo.']],
+  tip:'Pide permiso a los organizadores si vas a estar delante de la línea.'},
+
+ {src:'video3.mp4',poster:'poster3.jpg',tt:'@katty_fitness',profile:true,h:'katty_fitness',d:'0:22',t:'¿Cómo le explicas esta sensación?',kind:'Emoción en la salida',
+  idea:'Muestras la emoción del arranque desde adentro del grupo. No necesitas salir en cámara.',
+  need:['Celular','Una carrera con mucha gente','Audio emotivo'],
+  s:[['Ponte en medio del grupo','Antes de la salida, colócate entre los corredores, mirando hacia el arco.'],
+     ['Sube el celular','Cámara de atrás, en vertical, a la altura de tu cabeza, para que se vea la gente y el arco.'],
+     ['Activa el estabilizador','Si tu celular tiene “modo acción” o estabilizador, actívalo para que no se vea temblando.'],
+     ['Graba sin cortar','Empieza cuando todos comienzan a avanzar. Camina despacio unos 20 segundos.'],
+     ['Escribe la pregunta','Arriba al centro: “¿Cómo le explicas esta sensación a alguien que no corre?”.'],
+     ['Pon un audio que emocione','Una canción épica o emotiva, y publícalo tal cual.']],
+  tip:'Este video funciona por el sentimiento, no por la edición. Entre menos le muevas, mejor.'},
+
+ {src:'video2.mp4',poster:'poster2.jpg',tt:'@luciaacolmenaress',profile:true,h:'luciaacolmenaress',d:'0:20',t:'Me inscribí a una 5K y ni corro',kind:'Humor · selfie corriendo',
+  idea:'Te ríes de ti mismo. Una frase chistosa arriba y clips cortitos de todo tu día de carrera.',
+  need:['Celular','Una amiga que te grabe','Audio divertido'],
+  s:[['Escribe tu frase chistosa','Por ejemplo: “Me inscribí en una carrera 5K y yo ni corro”. Abajo, chiquito, un remate.'],
+     ['Graba la salida','Antes de arrancar, graba 2 segundos a la gente y al arco de salida.'],
+     ['Hazte una selfie graciosa','Cámara de enfrente, una cara divertida, con la gente detrás.'],
+     ['Grábate corriendo','Estira el brazo hacia un lado y grábate de perfil. Celular a la altura del hombro y firme.'],
+     ['Pide que te graben','Que una amiga te grabe desde la orilla cuando pases o llegues a la meta.'],
+     ['Une clips cortos','Tomas de 2 a 3 segundos, un audio divertido y tu frase visible todo el video.']],
+  tip:'Mientras más honesta y chistosa la frase, más gente lo comparte.'},
+
+ {src:'video5.mp4',poster:'poster5.jpg',tt:'@bulldoglia',profile:true,h:'bulldoglia',d:'0:20',t:'Si tú te inscribes, yo me inscribo',kind:'Con tu amiga · desde arriba',
+  idea:'Presumes a tu compañera de carrera con tomas desde arriba y outfits iguales.',
+  need:['Celular','Palo selfie','Outfit igual con tu amiga'],
+  s:[['Pónganse de acuerdo','Vístanse del mismo color o con los mismos accesorios.'],
+     ['Toma de pies y números','Paradas juntas, sube el celular sobre tu cabeza apuntando hacia abajo y graba sus pies y números.'],
+     ['Usa el palo selfie','Pon el celular en el palo y súbelo alto, frente a ustedes, apuntando un poco hacia abajo.'],
+     ['Corran mirando a cámara','Lado a lado, volteen, sonrían y saluden.'],
+     ['Escribe la frase','Arriba: “Si tú te inscribes, yo me inscribo”. Abajo: “La amistad más peligrosa que uno puede tener”.'],
+     ['Edita y etiqueta','Tomas de 2 a 3 segundos, canción alegre, y etiqueta a tu amiga.']],
+  tip:'Sostén el palo selfie con las dos manos al correr para que salga firme.'},
+
+ {tt:'@martinalbornozz/video/7692929369190321422',h:'martinalbornozz',d:'0:46',t:'Del kilómetro 0 a la meta',kind:'Vlog con contador de km',
+  hook:'0 km → 3 km → 9 km → 10 km',
+  idea:'Te grabas en distintos momentos de la carrera y pones en grande en qué kilómetro vas, hasta la medalla.',
+  need:['Celular','Reloj o app que marque km'],
+  s:[['Empieza desde temprano','Primera toma en el coche o en casa, todavía de noche, con el texto “0 km”.'],
+     ['Graba en la salida','Selfie con la gente y el arco detrás. Sigue diciendo “0 km”.'],
+     ['Graba en varios kilómetros','Cada vez que tu reloj marque un km importante (3, 5, 9), grábate 2 segundos con cara de cómo vas.'],
+     ['Pon el km en grande','En cada toma escribe el kilómetro en letras grandes y gruesas, en el centro.'],
+     ['Cierra con la medalla','Última toma: tú en la meta enseñando la medalla, con “10 km”.'],
+     ['Música con energía','Que los cambios de toma caigan con el ritmo.']],
+  tip:'Ver cómo cambia tu cara del km 0 al km 10 es lo que hace que la gente lo vea hasta el final.'}
+];
+
+const ic='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>';
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function card(v,n,sec){
+  const media=v.src
+    ? `<div class="player"><video controls playsinline preload="metadata" poster="videos/${v.poster}" src="videos/${v.src}" aria-label="${esc(v.t)}"></video><button class="bigplay" type="button" aria-label="Reproducir ${esc(v.t)}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>`
+    : `<div class="player emb" data-id="${(v.tt.match(/video\/(\d+)/)||[])[1]||''}"><img class="embposter" src="videos/tt-${v.h}.jpg" alt="Captura del video de @${v.h}" loading="lazy" width="688" height="1076"><button class="bigplay" type="button" aria-label="Reproducir ${esc(v.t)}"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button></div>`;
+  return `<article class="card" id="${sec}${n}">
+    <div class="head"><div class="n">${String(n).padStart(2,'0')}</div>
+      <div><h3>${esc(v.t)}</h3><div class="meta">${sec==='u'?'<span class="tag solid">Con guion</span>':'<span class="tag solid">Sin guion</span>'}<span class="tag">${v.kind}</span>${v.etapa?`<span class="tag plain">${v.etapa}</span>`:''}<span class="tag plain">${v.d}</span></div></div></div>
+    ${media}
+    <div class="body">
+      ${v.src||!v.tt.includes('/video/')?'':`<a class="orig" href="${TT}${v.tt}" target="_blank" rel="noopener">Abrir el original en TikTok ↗</a>`}
+      <p class="idea"><b>La idea:</b> ${esc(v.idea)}</p>
+      <div class="need" aria-label="Qué necesitas">${v.need.map(x=>`<span>${x}</span>`).join('')}</div>
+      <details class="how">
+        <summary>Cómo hacer este video · ${v.s.length} pasos <span class="arr">⌄</span></summary>
+        <ol class="steps">${v.s.map(([b,p])=>`<li><div><b>${esc(b)}</b><p>${esc(p)}</p></div></li>`).join('')}</ol>
+      </details>
+      <p class="tip"><b>Tip:</b> ${esc(v.tip)}</p>
+    </div></article>`;
+}
+// Videos de TikTok que ya están dentro de la página
+const LOCAL=['adi.viillegas','camberitoss','chrisquiroz','jandreshj','javiloes_','korellanat','levincb95','martinalbornozz','orlandolopezr','paulinarua0812','running_eagles_team','tab.iker.daniel','valeriamazvi','vgsqaud'];
+const ALL=[...A,...B];
+ALL.forEach(v=>{if(!v.src&&LOCAL.includes(v.h)){v.src='tt-'+v.h+'.mp4';v.poster='tt-'+v.h+'-p.jpg'}});
+const pick=hs=>hs.map(h=>ALL.find(v=>v.h===h));
+const U=pick(['valeriamazvi','camberitoss','salma.lg','running_eagles_team','orlandolopezr']);
+const SA=pick(['jackmostuart','paulinarua0812','conaghkathleen','fernandatobitto','breemaliafox','vgsqaud','chrisquiroz','korellanat','adi.viillegas','tab.iker.daniel','levincb95','javiloes_']);
+const SB=pick(['daira.cnp','jandreshj','katty_fitness','luciaacolmenaress','bulldoglia','martinalbornozz']);
+document.getElementById('feedU').innerHTML=U.map((v,i)=>card(v,i+1,'u')).join('');
+const T=SA.map(v=>({...v,etapa:'Antes de la carrera'})).concat(SB.map(v=>({...v,etapa:'Día de la carrera'})));
+T.unshift(...T.splice(T.findIndex(v=>v.h==='martinalbornozz'),1));
+document.getElementById('feedT').innerHTML=T.map((v,i)=>card(v,i+1,'t')).join('');
+
+// Solo un video suena a la vez
+const vids=[...document.querySelectorAll('video')];
+vids.forEach(v=>{
+  const box=v.parentElement,btn=box.querySelector('.bigplay');
+  v.addEventListener('play',()=>{box.classList.add('playing');vids.forEach(o=>{if(o!==v)o.pause()})});
+  v.addEventListener('pause',()=>{if(!v.ended&&v.currentTime>0)return;box.classList.remove('playing')});
+  v.addEventListener('ended',()=>box.classList.remove('playing'));
+  if(btn)btn.addEventListener('click',()=>{v.play().catch(()=>{v.controls=true})});
+});
+
+
+// Videos de TikTok que no están guardados: se reproducen aquí mismo con el reproductor oficial de TikTok (sin comentarios)
+function bindEmb(box){
+  const btn=box.querySelector('.bigplay'),id=box.dataset.id;
+  if(!btn||!id)return;
+  btn.addEventListener('click',()=>{
+    vids.forEach(o=>o.pause());
+    document.querySelectorAll('.player.emb iframe').forEach(f=>{const b=f.parentElement;b.innerHTML=b.dataset.html;b.classList.remove('playing');bindEmb(b)});
+    box.dataset.html=box.innerHTML;
+    const f=document.createElement('iframe');
+    f.src='https://www.tiktok.com/player/v1/'+id+'?autoplay=1&rel=0&description=0&music_info=0&native_context_menu=0&closed_caption=0&fullscreen_button=1&progress_bar=1&volume_control=1&play_button=1';
+    f.allow='autoplay; fullscreen; encrypted-media';f.setAttribute('allowfullscreen','');f.title='Video de TikTok';
+    box.innerHTML='';box.appendChild(f);
+  });
+}
+document.querySelectorAll('.player.emb').forEach(bindEmb);
+
+// Pestañas
+const panes={brief:document.getElementById('tab-brief'),guiones:document.getElementById('tab-guiones')};
+const tabs=[...document.querySelectorAll('.tabbtn')];
+function showTab(k,push){
+  if(!panes[k])k='brief';
+  Object.keys(panes).forEach(x=>panes[x].hidden=x!==k);
+  tabs.forEach(t=>{const on=t.dataset.tab===k;t.classList.toggle('on',on);t.setAttribute('aria-selected',on)});
+  document.querySelectorAll('video').forEach(v=>v.pause());
+  if(push){try{history.replaceState(null,'','#'+k)}catch(e){}window.scrollTo(0,0)}
+}
+tabs.forEach(t=>t.addEventListener('click',()=>showTab(t.dataset.tab,true)));
+window.addEventListener('hashchange',()=>showTab(location.hash.slice(1)));
+showTab(location.hash.slice(1));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.go).scrollIntoView({behavior:'smooth'})));
+// Descargas de PDF
+const msg=document.getElementById('dlmsg');
+document.querySelectorAll('.dl').forEach(b=>b.addEventListener('click',async()=>{
+  msg.textContent='';
+  try{
+    const d=(typeof claude!=='undefined')?await claude.use('downloads'):null;
+    if(!d){const l=document.createElement('a');l.href='guiones/'+b.dataset.f;l.download=b.dataset.n;document.body.appendChild(l);l.click();l.remove();return}
+    const r=await fetch('guiones/'+b.dataset.f);
+    if(!r.ok)throw new Error('fetch');
+    await d.save({filename:b.dataset.n,data:await r.blob()});
+    b.classList.add('ok');setTimeout(()=>b.classList.remove('ok'),1500);
+  }catch(e){
+    if(e&&e.code==='declined')return;
+    msg.textContent='No se pudo descargar aquí. Usa "Ver" y guárdalo desde ahí.';
+  }
+}));
+
+(function(){
+var note=document.getElementById('copied');
+function done(btn,txt){note.textContent='Copiado: '+txt;btn.classList.add('ok');setTimeout(function(){btn.classList.remove('ok')},1200)}
+document.querySelectorAll('[data-copy]').forEach(function(b){
+ b.addEventListener('click',function(){
+  var t=b.getAttribute('data-copy');
+  function fallback(){var r=document.createRange();r.selectNodeContents(b);var s=getSelection();s.removeAllRanges();s.addRange(r);note.textContent='Selecciona y copia: '+t}
+  try{navigator.clipboard.writeText(t).then(function(){done(b,t)},fallback)}catch(e){fallback()}
+ })
+})
+})();
+
+</script>
+</body></html>
