@@ -319,71 +319,7 @@ html{overflow-x:clip;scroll-padding-top:24px}body{overflow-x:clip}main,section,.
 .signup-reminder.rem-hide{opacity:0!important;visibility:hidden}
 footer svg.logo-h{height:auto;width:min(380px,72vw);margin:0 auto 18px;overflow:visible}
 @media(min-width:1500px){footer svg.logo-h{width:clamp(380px,23vw,900px);margin-bottom:1.2vw}}
-/* Checkout / inscripción */
-.co[hidden]{display:none}
-.co{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px}
-.co-bg{position:absolute;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:cofade .3s both}
-.co-panel{position:relative;width:min(1040px,100%);max-height:min(760px,calc(100svh - 32px));display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);background:#0b0b0b;border:1px solid #ffffff1f;border-radius:28px;overflow:hidden;box-shadow:0 40px 120px -20px #000;animation:coin .45s cubic-bezier(.2,.8,.2,1) both}
 @keyframes cofade{from{opacity:0}}@keyframes coin{from{opacity:0;transform:translateY(24px) scale(.97)}}
-.co-x{position:absolute;top:14px;right:14px;z-index:3;width:42px;height:42px;border-radius:50%;border:1px solid #ffffff26;background:#151515;color:#fff;font-size:26px;line-height:1;cursor:pointer}
-.co-x:hover{background:#222}
-.co-main{display:flex;flex-direction:column;min-height:0;padding:clamp(22px,3vw,40px);overflow:auto}
-.co-kick{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--y);font-weight:700}
-.co-head h2{font-size:clamp(26px,3vw,38px);line-height:1.1;margin:8px 0 18px;font-weight:700;letter-spacing:-.03em;outline:0}
-.co-steps{list-style:none;display:flex;gap:8px;margin-bottom:12px}
-.co-steps button{display:flex;align-items:center;gap:8px;background:none;border:0;color:#777;font:600 13px var(--t);cursor:default;padding:4px 0;letter-spacing:-.01em}
-.co-steps i{font-style:normal;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;border:1px solid #444;font-size:12px;transition:.3s}
-.co-steps li{flex:1}
-.co-steps li.on button{color:#fff}.co-steps li.on i{background:var(--y);border-color:var(--y);color:#000}
-.co-steps li.done button{color:#bbb;cursor:pointer}.co-steps li.done i{background:#2a2a2a;border-color:var(--y);color:var(--y)}
-.co-bar{height:3px;background:#222;border-radius:9px;overflow:hidden;margin-bottom:22px}.co-bar i{display:block;height:100%;width:33.33%;background:var(--y);border-radius:9px;transition:width .5s cubic-bezier(.4,0,.2,1)}
-.co-step{animation:costep .4s cubic-bezier(.2,.8,.2,1) both}.co-step[hidden]{display:none}
-@keyframes costep{from{opacity:0;transform:translateX(18px)}}
-.co-hint{color:#aaa;margin-bottom:16px;font-size:15px}
-.co-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.co-opt{cursor:pointer;display:block}.co-opt input{position:absolute;opacity:0;pointer-events:none}
-.co-card{position:relative;display:flex;flex-direction:column;gap:2px;padding:20px 18px;min-height:150px;border-radius:20px;border:1.5px solid #333;background:#121212;transition:border-color .2s,background .2s,transform .2s}
-.co-card b{font-size:clamp(44px,6vw,64px);line-height:1;letter-spacing:-.05em}
-.co-card em{font-style:normal;color:var(--y);font-weight:700;font-size:15px}
-.co-card small{color:#999;font-size:13px;margin-top:8px;line-height:1.35}
-.co-tick{position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--y);color:#000;font-style:normal;font-size:14px;font-weight:800;transform:scale(0);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
-.co-opt:hover .co-card{border-color:#666;transform:translateY(-2px)}
-.co-opt input:checked+.co-card{border-color:var(--y);background:#f4af0f14}.co-opt input:checked+.co-card .co-tick{transform:scale(1)}
-.co-opt input:focus-visible+.co-card{outline:3px solid var(--y);outline-offset:3px}
-.co-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.co-w{grid-column:1/-1}
-.co-f label{display:block;font-size:13px;font-weight:600;color:#ccc;margin-bottom:6px}
-.co-f input{width:100%;height:54px;border-radius:14px;border:1.5px solid #333;background:#141414;color:#fff;font:500 17px var(--t);padding:0 16px;outline:0;transition:border-color .2s,box-shadow .2s;letter-spacing:-.01em}
-.co-f input::placeholder{color:#666}
-.co-f input:focus{border-color:var(--y);box-shadow:0 0 0 4px #f4af0026}
-.co-f.bad input{border-color:#ff6b5e}.co-f.ok input{border-color:#4cc38a}
-.co-f small{display:block;color:#888;font-size:12.5px;margin-top:6px}
-.co-err{color:#ff8a7e;font-size:13px;margin-top:6px;min-height:0}.co-err:empty{display:none}
-.co-coupon{margin-top:16px;color:#bbb;font-size:14px}.co-coupon summary{cursor:pointer;color:var(--y);font-weight:600;list-style:none;padding:6px 0}.co-coupon summary::-webkit-details-marker{display:none}.co-coupon .co-f{margin-top:8px;max-width:260px}
-.co-review{border:1px solid #2b2b2b;border-radius:18px;overflow:hidden;margin-bottom:16px}
-.co-review>div{display:grid;grid-template-columns:96px 1fr auto;gap:10px;align-items:center;padding:14px 16px;border-top:1px solid #222}.co-review>div:first-child{border-top:0}
-.co-review dt{color:#888;font-size:13px}.co-review dd{font-weight:600;word-break:break-word}
-.co-review button{background:none;border:0;color:var(--y);font:600 13px var(--t);cursor:pointer;text-decoration:underline;text-underline-offset:4px}
-.co-check{display:flex;gap:12px;align-items:flex-start;cursor:pointer;font-size:14.5px;color:#ddd;line-height:1.4;padding:4px 0}
-.co-check input{flex:none;width:24px;height:24px;margin-top:0;accent-color:var(--y)}
-.co-next{color:#999;font-size:13.5px;margin-top:12px}
-.co-actions{display:flex;gap:12px;margin-top:auto;padding-top:24px;position:sticky;bottom:0;background:linear-gradient(0deg,#0b0b0b 70%,transparent)}
-.co-back{flex:none;height:58px;padding:0 20px;border-radius:999px;border:1px solid #444;background:none;color:#fff;font:600 15px var(--t);cursor:pointer}.co-back:hover{background:#1a1a1a}
-.co-go{flex:1;height:58px;border-radius:999px;border:0;background:var(--y);color:#000;font:700 17px var(--t);letter-spacing:-.02em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:14px;transition:transform .15s,background .15s}
-.co-go:hover{background:var(--y2);transform:translateY(-1px)}.co-go:active{transform:scale(.98)}
-.co-go-a{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#000;color:var(--y);font-size:18px}
-.co-spin{display:none;width:22px;height:22px;border:3px solid #0003;border-top-color:#000;border-radius:50%;animation:spin2 .8s linear infinite}
-.co-go.busy{pointer-events:none;opacity:.9}.co-go.busy .co-go-a{display:none}.co-go.busy .co-spin{display:block}
-.co-go:focus-visible,.co-back:focus-visible,.co-x:focus-visible,.co-steps button:focus-visible{outline:3px solid #fff;outline-offset:3px}
-.co-sum{background:linear-gradient(180deg,#171717,#0e0e0e);border-left:1px solid #ffffff14;padding:clamp(22px,3vw,40px);overflow:auto}
-.co-sum-in{display:flex;flex-direction:column;gap:18px;position:sticky;top:0}
-.co-prod{display:flex;gap:14px;align-items:center;padding:16px;border-radius:18px;background:#1c1c1c;border:1px solid #2c2c2c}
-.co-prod svg{flex:none;width:52px;height:46px}
-.co-prod b{display:block;font-size:15.5px;line-height:1.25;letter-spacing:-.02em}.co-prod small{color:var(--y);font-weight:600;font-size:13px}
-.co-meta{list-style:none;display:grid;gap:10px;color:#bbb;font-size:14px}.co-meta i{font-style:normal;margin-right:10px}
-.co-tot{border-top:1px solid #2a2a2a;padding-top:16px;display:grid;gap:10px}.co-tot>div{display:flex;justify-content:space-between;color:#bbb;font-size:15px}
-.co-tot .co-t{color:#fff;font-size:22px;font-weight:700;letter-spacing:-.03em}.co-tot .co-t dd{color:var(--y)}.co-tot small{font-size:12px;color:#999}
-.co-pre{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:14px;background:#f4af0f1a;border:1px solid #f4af0f55;font-size:13px;color:#ddd}.co-pre b{color:var(--y)}
-.co-safe{font-size:13px;color:#888}
 @media(max-width:820px){
  .co{padding:0;align-items:end}
  .co-panel{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);max-height:96svh;height:96svh;border-radius:26px 26px 0 0;border-bottom:0;animation:coup .45s cubic-bezier(.2,.8,.2,1) both}
@@ -403,7 +339,6 @@ footer svg.logo-h{height:auto;width:min(380px,72vw);margin:0 auto 18px;overflow:
 @media(max-width:480px){.co-grid{grid-template-columns:1fr}.co-review>div{grid-template-columns:1fr auto}.co-review dt{grid-column:1/-1}}
 @media(min-width:1500px){.co-panel{width:min(1300px,75vw);max-height:min(900px,calc(100svh - 48px));font-size:1.15em}}
 @media(max-height:620px) and (min-width:821px){.co-panel{max-height:calc(100svh - 16px)}.co-card{min-height:110px}}
-body.co-lock{overflow:hidden}
 @media(max-width:800px){.signup-reminder{left:12px;right:12px;bottom:calc(14px + env(safe-area-inset-bottom,0px));width:auto;padding:13px 16px;z-index:90;border-radius:18px;background:linear-gradient(130deg,#ffffff24,#ffffff0d),#101010ee}.signup-reminder strong{font-size:14px}.signup-reminder small{font-size:10.5px}}
 </style></head>
 <body>
@@ -640,97 +575,4 @@ svg.addEventListener('mouseout',function(e){if(e.target.closest('[data-tip]'))ti
 function hit(x,y){var r=x.getBoundingClientRect(),q=y.getBoundingClientRect();return!(r.right<q.left||r.left>q.right||r.bottom<q.top||r.top>q.bottom)}
 function chk(){if(matchMedia('(max-width:800px)').matches){a.classList.remove('rem-hide');return}var t=document.querySelectorAll('.hero .count-panel,.hero .race,.hero .event-info,.hero .running-cta,.hd .wrap>*'),h=false;
 for(var i=0;i<t.length;i++){if(hit(a,t[i])){h=true;break}}a.classList.toggle('rem-hide',h)}
-setInterval(chk,250);addEventListener('resize',chk);addEventListener('scroll',chk,{passive:true});chk()})();</script><div class="co" id="co" hidden role="dialog" aria-modal="true" aria-labelledby="co-title"><div class="co-bg" data-close></div>
-<div class="co-panel">
-<button type="button" class="co-x" data-close aria-label="Cerrar">×</button>
-<div class="co-main">
-<header class="co-head"><span class="co-kick">Inscripción · Carrera Hangar 2026</span><h2 id="co-title" tabindex="-1">Elige tu distancia</h2>
-<ol class="co-steps" aria-label="Pasos de la inscripción"><li data-s="1"><button type="button"><i>1</i><span>Distancia</span></button></li><li data-s="2"><button type="button"><i>2</i><span>Tus datos</span></button></li><li data-s="3"><button type="button"><i>3</i><span>Confirmar</span></button></li></ol><div class="co-bar"><i></i></div></header>
-<form id="co-form" novalidate autocomplete="on">
-<section class="co-step" data-step="1"><p class="co-hint">Mismo precio en las dos. Tú pones el ritmo.</p>
-<div class="co-opts" role="radiogroup" aria-label="Distancia"><label class="co-opt"><input type="radio" name="dist" value="5K" checked><span class="co-card"><b>5K</b><em>1 vuelta</em><small>Para arrancar o disfrutarla en bola</small><i class="co-tick">✓</i></span></label><label class="co-opt"><input type="radio" name="dist" value="10K"><span class="co-card"><b>10K</b><em>2 vueltas</em><small>Para los que quieren más</small><i class="co-tick">✓</i></span></label></div></section>
-<section class="co-step" data-step="2" hidden><div class="co-grid">
-<div class="co-f"><label for="co-fn">Nombre</label><input id="co-fn" name="fn" autocomplete="given-name" required><p class="co-err" data-for="fn"></p></div>
-<div class="co-f"><label for="co-ln">Apellidos</label><input id="co-ln" name="ln" autocomplete="family-name" required><p class="co-err" data-for="ln"></p></div>
-<div class="co-f co-w"><label for="co-em">Correo electrónico</label><input id="co-em" name="em" type="email" inputmode="email" autocomplete="email" autocapitalize="off" placeholder="tucorreo@ejemplo.com" required><p class="co-err" data-for="em"></p><small>Aquí te llega tu confirmación.</small></div>
-<div class="co-f co-w"><label for="co-ph">Teléfono (WhatsApp)</label><input id="co-ph" name="ph" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="993 123 4567" maxlength="12" required><p class="co-err" data-for="ph"></p></div></div>
-<details class="co-coupon"><summary>¿Tienes un cupón?</summary><div class="co-f"><label for="co-cp">Código de cupón</label><input id="co-cp" name="cp" autocomplete="off" autocapitalize="characters"></div></details></section>
-<section class="co-step" data-step="3" hidden><dl class="co-review"><div><dt>Distancia</dt><dd id="rv-dist"></dd><button type="button" data-goto="1">Editar</button></div><div><dt>Corredor</dt><dd id="rv-name"></dd><button type="button" data-goto="2">Editar</button></div><div><dt>Contacto</dt><dd id="rv-contact"></dd><button type="button" data-goto="2">Editar</button></div></dl>
-<label class="co-check"><input type="checkbox" name="ok" required><span>Confirmo que mis datos son correctos y acepto los términos y el reglamento de la carrera.</span></label><p class="co-err" data-for="ok"></p>
-<p class="co-next">Al dar clic te llevamos al pago seguro para terminar tu inscripción.</p></section>
-<div class="co-actions"><button type="button" class="co-back" hidden>← Atrás</button><button type="submit" class="co-go"><span class="co-go-t">Continuar</span><span class="co-go-a">→</span><span class="co-spin" aria-hidden="true"></span></button></div>
-</form></div>
-<aside class="co-sum" aria-label="Resumen de tu inscripción"><div class="co-sum-in"><span class="co-kick">Tu pedido</span>
-<div class="co-prod"><svg viewBox="0 0 426 372" aria-hidden="true"><g fill="#F4AF00"><path d="M279.33,249.9c1.04-1.07,24.02,10.91,27.02,12.48,32.3,17,92.17,52.82,112.81,82.19,22.38,31.86-15.71,26-35.25,21.25-46.97-11.4-90.79-37.13-132.55-60.45-.68-.62-1.27-.81-1.02-1.96.21-.93,11.72-10.24,13.97-13.04,9.07-11.27,14.1-26.07,15.03-40.48Z"/><path d="M143.32,247.9c.25,23.19,14.15,40.03,31,53.99-26.19,16.08-52.4,32.18-80.32,45.19-21.44,9.99-60.83,27.45-84.07,24.71-21.27-2.51-2.87-26.2,4.36-34.42,23.47-26.64,64.62-53.59,95.35-71.65,8.37-4.92,21.59-13.52,29.96-17.04,1.26-.53,2.26-1.05,3.71-.79Z"/><path d="M242.32,182.9c-5.09-1.01-9.41-3.59-14.57-4.92-17.08-4.4-32.42-1.76-48.42,4.92-.44-16.49-1.49-32.93-1.05-49.54.7-26.26,6.84-113.35,26.53-130.47,6.32-5.5,10.43-2.39,15.02,3,9.37,11.02,13.64,33.67,16.17,47.83,7.57,42.36,7.7,86.31,6.31,129.18Z"/><path d="M264.26,245.36c0,29.57-23.97,53.54-53.54,53.54s-53.54-23.97-53.54-53.54,23.97-53.54,53.54-53.54,53.54,23.97,53.54,53.54ZM246.92,245.6c0-20-16.21-36.21-36.21-36.21s-36.21,16.21-36.21,36.21,16.21,36.21,36.21,36.21,36.21-16.21,36.21-36.21Z"/></g></svg><div><b>Inscripción Primera Carrera Hangar 2026</b><small id="sum-dist">5K · 1 vuelta</small></div></div>
-<ul class="co-meta"><li><i>📅</i>Domingo 22 de noviembre</li><li><i>📍</i>Hangar Petrolera · Salida y meta</li></ul>
-<dl class="co-tot"><div><dt>Subtotal</dt><dd>$250.00</dd></div><div class="co-t"><dt>Total</dt><dd>$250.00 <small>MXN</small></dd></div></dl>
-<p class="co-pre"><b>Preventa fase 1</b><span id="sum-left">Hasta el 25 de octubre</span></p>
-<p class="co-safe">🔒 Pago seguro en hangargym.com.mx</p></div></aside>
-</div></div>
-<script>(function(){
-var BASE='https://hangargym.com.mx/carrera/finalizar-compra/?add-to-cart=128';
-var root=document.getElementById('co');if(!root)return;
-var form=document.getElementById('co-form'),title=document.getElementById('co-title'),
- steps=[].slice.call(root.querySelectorAll('.co-step')),tabs=[].slice.call(root.querySelectorAll('.co-steps li')),
- bar=root.querySelector('.co-bar i'),back=root.querySelector('.co-back'),go=root.querySelector('.co-go'),gt=root.querySelector('.co-go-t');
-var T=['Elige tu distancia','¿Quién va a correr?','Revisa y confirma'],cur=1,opener=null,store=null;
-try{store=window.sessionStorage}catch(e){}
-var F={fn:form.fn,ln:form.ln,em:form.em,ph:form.ph};
-function $(s){return root.querySelector(s)}
-function dist(){return form.dist.value}
-function distLbl(){return dist()==='10K'?'10K · 2 vueltas':'5K · 1 vuelta'}
-function digits(v){return v.replace(/\D/g,'')}
-function fmtPh(v){var d=digits(v).slice(0,10);return d.replace(/^(\d{3})(\d{0,3})(\d{0,4}).*/,function(_,a,b,c){return a+(b?' '+b:'')+(c?' '+c:'')})}
-function err(n,m){var p=root.querySelector('.co-err[data-for="'+n+'"]');if(p)p.textContent=m||'';var f=(form[n]||{}).closest?form[n].closest('.co-f'):null;if(f){f.classList.toggle('bad',!!m);f.classList.toggle('ok',!m&&!!form[n].value)}}
-var V={
- fn:function(v){return v.trim().length>=2?'':'Escribe tu nombre'},
- ln:function(v){return v.trim().length>=2?'':'Escribe tus apellidos'},
- em:function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim())?'':'Revisa tu correo, parece incompleto'},
- ph:function(v){return digits(v).length===10?'':'Escribe tu número de 10 dígitos'}
-};
-function validate(step){var ok=true,first=null;
- if(step===2){['fn','ln','em','ph'].forEach(function(n){var m=V[n](form[n].value);err(n,m);if(m){ok=false;first=first||form[n]}})}
- if(step===3){var c=form.ok.checked;err('ok',c?'':'Marca la casilla para continuar');if(!c){ok=false;first=form.ok}}
- if(first)first.focus();return ok}
-function show(n,focus){cur=n;
- steps.forEach(function(s,i){s.hidden=(i+1)!==n});
- tabs.forEach(function(t,i){t.classList.toggle('on',i+1===n);t.classList.toggle('done',i+1<n);if(i+1===n)t.setAttribute('aria-current','step');else t.removeAttribute('aria-current')});
- bar.style.width=(n/3*100)+'%';title.textContent=T[n-1];back.hidden=n===1;
- gt.textContent=n===3?'Realizar pedido':'Continuar';root.querySelector('.co-go-a').textContent=n===3?'↗':'→';
- if(n===3){$('#rv-dist').textContent=distLbl();$('#rv-name').textContent=F.fn.value.trim()+' '+F.ln.value.trim();$('#rv-contact').innerHTML='';
-  var a=document.createElement('span');a.textContent=F.em.value.trim();var b=document.createElement('span');b.textContent=F.ph.value;$('#rv-contact').appendChild(a);$('#rv-contact').appendChild(document.createElement('br'));$('#rv-contact').appendChild(b)}
- $('#sum-dist').textContent=distLbl();
- if(focus){var el=n===1?root.querySelector('input[name=dist]:checked'):n===2?F.fn:go;setTimeout(function(){el&&el.focus({preventScroll:true})},60)}
- var m=root.querySelector('.co-main');if(m)m.scrollTop=0}
-function save(){if(!store)return;try{store.setItem('hg_co',JSON.stringify({d:dist(),fn:F.fn.value,ln:F.ln.value,em:F.em.value,ph:F.ph.value}))}catch(e){}}
-function load(){if(!store)return;try{var d=JSON.parse(store.getItem('hg_co')||'null');if(!d)return;F.fn.value=d.fn||'';F.ln.value=d.ln||'';F.em.value=d.em||'';F.ph.value=d.ph||'';var r=form.querySelector('input[name=dist][value="'+d.d+'"]');if(r)r.checked=true}catch(e){}}
-function left(){var d=Math.ceil((new Date('2026-10-25T23:59:59-06:00')-Date.now())/864e5),el=$('#sum-left');
- el.textContent=d>1?'Te quedan '+d+' días · hasta el 25 de octubre':d===1?'Último día · hasta hoy 25 de octubre':'Hasta el 25 de octubre'}
-function open(from){opener=from||document.activeElement;load();left();show(1,true);root.hidden=false;document.body.classList.add('co-lock');
- root.querySelector('.co-panel').scrollTop=0}
-function close(){root.hidden=true;document.body.classList.remove('co-lock');go.classList.remove('busy');if(opener&&opener.focus)opener.focus()}
-function url(){var p=new URLSearchParams();p.set('billing_first_name',F.fn.value.trim());p.set('billing_last_name',F.ln.value.trim());p.set('billing_email',F.em.value.trim());p.set('billing_phone',digits(F.ph.value));p.set('order_comments','Distancia: '+dist());
- var c=form.cp.value.trim();if(c)p.set('coupon_code',c);return BASE+'&'+p.toString()}
-form.addEventListener('submit',function(e){e.preventDefault();
- if(cur<3){if(!validate(cur))return;save();show(cur+1,true);return}
- if(!validate(2)){show(2,true);return}if(!validate(3))return;save();
- go.classList.add('busy');gt.textContent='Llevándote al pago…';
- setTimeout(function(){location.href=url()},650)});
-back.addEventListener('click',function(){if(cur>1)show(cur-1,true)});
-tabs.forEach(function(t,i){t.querySelector('button').addEventListener('click',function(){if(i+1<cur)show(i+1,true)})});
-root.querySelectorAll('[data-goto]').forEach(function(b){b.addEventListener('click',function(){show(+b.dataset.goto,true)})});
-root.querySelectorAll('[data-close]').forEach(function(b){b.addEventListener('click',close)});
-[].forEach.call(form.querySelectorAll('input[name=dist]'),function(r){r.addEventListener('change',function(){$('#sum-dist').textContent=distLbl()})});
-F.ph.addEventListener('input',function(){F.ph.value=fmtPh(F.ph.value)});
-['fn','ln','em','ph'].forEach(function(n){F[n].addEventListener('blur',function(){if(F[n].value)err(n,V[n](F[n].value))});F[n].addEventListener('input',function(){if(F[n].closest('.co-f').classList.contains('bad'))err(n,V[n](F[n].value))})});
-form.ok.addEventListener('change',function(){if(form.ok.checked)err('ok','')});
-document.addEventListener('keydown',function(e){if(root.hidden)return;
- if(e.key==='Escape'){close();return}
- if(e.key==='Tab'){var f=[].filter.call(root.querySelectorAll('button,input,summary,a[href]'),function(x){return !x.disabled&&x.offsetParent!==null&&!x.closest('[hidden]')});if(!f.length)return;var a=f[0],z=f[f.length-1];
-  if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
-window.addEventListener('pageshow',function(ev){if(ev.persisted){go.classList.remove('busy');if(!root.hidden)show(3)}});
-function bind(a){a.addEventListener('click',function(e){if(e.metaKey||e.ctrlKey||e.shiftKey||e.button)return;e.preventDefault();open(a)})}
-[].forEach.call(document.querySelectorAll('a[href*="add-to-cart=128"],[data-checkout]'),bind);
-window.HangarCheckout={open:open,close:close};
-})();
-</script></body></html>
+setInterval(chk,250);addEventListener('resize',chk);addEventListener('scroll',chk,{passive:true});chk()})();</script></body></html>
