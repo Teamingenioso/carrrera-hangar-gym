@@ -526,6 +526,47 @@ const A=[
      ['Agrega subtítulos','En la app de edición usa “subtítulos automáticos” para que se entienda aunque no tengan sonido.']],
   tip:'Muchas personas ven videos sin sonido. Los subtítulos hacen que se queden a verlo.'},
 
+ {tt:'@flokobus/video/7634308802841414932',h:'flokobus',d:'1:36',t:'Mi mañana de carrera, hora por hora',kind:'Voz en off · alistándote',
+  idea:'Te grabas desde que suena la alarma hasta que sales a correr. Arriba va la hora en grande y tu voz cuenta lo que haces en cada escena.',
+  need:['Celular','Tu rutina de la mañana'],
+  s:[['Abre con un título grande','Texto en pantalla: “Mi mañana de carrera” y el nombre de la carrera o el lugar.'],
+     ['Pon la hora en cada escena','Arriba, en grande: 4:45, 5:10, 7:15. Así se entiende cuánto falta para salir.'],
+     ['Graba escenas cortas','La alarma, el café, peinarte, vestirte, amarrarte los tenis, salir. De 3 a 5 segundos cada una.'],
+     ['Cuenta lo que haces con tu voz','Graba tu voz encima, como platicando: qué desayunas, qué te pones, cómo te sientes.'],
+     ['Agrega subtítulos','Usa “subtítulos automáticos” para que se entienda aunque no tengan sonido.']],
+  tip:'La hora arriba hace que la gente se quede a ver cómo termina la mañana.'},
+
+ {tt:'@iluvsarahiiii/video/7676518248216644895',h:'iluvsarahiiii',d:'1:35',t:'Todo lo que hago la noche antes',kind:'Voz en off · preparación',
+  idea:'Muestras todo lo que dejas listo la noche anterior, para que en la mañana solo tengas que salir a correr.',
+  need:['Celular','Tus cosas de correr'],
+  s:[['Empieza con una frase','Texto en pantalla, palabra por palabra: “Todo lo que hago para correr empieza la noche antes”.'],
+     ['Graba el reloj o la alarma','Una toma cerrada de tu despertador o de tu celular con la hora de mañana.'],
+     ['Muestra la ropa lista','Tu outfit tendido en la cama o en una silla, con los tenis abajo.'],
+     ['Muestra lo que dejas cargando','Reloj, audífonos, celular. Una toma cada uno.'],
+     ['Muestra lo que vas a tomar o comer','Agua, un snack o lo que uses antes y durante.'],
+     ['Cierra con una frase','“Así en la mañana solo me toca correr.”']],
+  tip:'Prepara y graba todo en una sola tarde. Así no se te olvida nada y sale corto.'},
+
+ {tt:'@guadacasa_/video/7519210145004408072',h:'guadacasa_',d:'0:47',t:'Preparando mi primer maratón',kind:'Hablando a cámara · vlog corriendo',
+  idea:'Te grabas en selfie mientras entrenas y platicas cómo vas: cuántos días faltan, cuánto corriste hoy y cómo te premias al terminar.',
+  need:['Celular','Ropa de correr'],
+  s:[['Selfie de frente','Cámara de enfrente, brazo estirado. Saluda con una sonrisa y di cuántos días faltan para tu carrera.'],
+     ['Cuenta el entreno de hoy','Qué distancia hiciste o qué te tocó. Habla natural, como con una amiga.'],
+     ['Cuenta algo que probaste','Un gel, una canción nueva, un desayuno diferente. Di si te funcionó.'],
+     ['Graba tu premio','Una toma de lo que te comes o tomas al terminar.'],
+     ['Cierra con una pregunta','“¿Ustedes cómo se premian?” Así la gente comenta.']],
+  tip:'La pregunta del final invita a comentar, y los comentarios ayudan a que más gente lo vea.'},
+
+ {tt:'@lauramade_ugc/video/7502410546541645078',h:'lauramade_ugc',d:'0:30',t:'Mi primera vez en un grupo de corredoras',kind:'Voz en off · primera vez',
+  idea:'Cuentas cómo fue ir sola por primera vez a un grupo nuevo. El texto aparece como si lo estuvieran escribiendo y vas mostrando el camino.',
+  need:['Celular','Un lugar donde corres'],
+  s:[['Empieza con tus tenis','Toma hacia el piso, con tus tenis caminando. Texto: “Casi no vengo”.'],
+     ['Cuenta por qué da miedo','Con texto o con tu voz: ir sola a algo nuevo da un poco de nervio.'],
+     ['Graba al grupo de espaldas','Una toma de las personas corriendo delante de ti. No necesitas mostrar sus caras.'],
+     ['Muestra el momento bonito','Una risa, una foto en grupo, alguien que te recibió bien.'],
+     ['Cierra con lo que sentiste','Una frase corta: “Valió la pena venir”.']],
+  tip:'Que el texto aparezca letra por letra, como escribiéndose. Hace que la gente lea hasta el final.'},
+
  {tt:'@paulinarua0812/video/7532919199094590726',h:'paulinarua0812',d:'0:18',t:'Entrenando porque alguien (yo) me inscribió',kind:'Humor · selfie de perfil',
   hook:'Entrenando porque a alguien (yo) se le ocurrió inscribirme a una carrera de 10km',
   idea:'Te ríes de ti mismo. Te grabas de lado corriendo con una canción de moda y el texto hace el chiste.',
@@ -779,7 +820,7 @@ const LOCAL=['adi.viillegas','camberitoss','chrisquiroz','jandreshj','javiloes_'
 const ALL=[...A,...B];
 ALL.forEach(v=>{if(!v.src&&LOCAL.includes(v.h)){v.src='tt-'+v.h+'.mp4';v.poster='tt-'+v.h+'-p.jpg'}});
 const pick=hs=>hs.map(h=>ALL.find(v=>v.h===h));
-const U=pick(['valeriamazvi','camberitoss','salma.lg','running_eagles_team','orlandolopezr']);
+const U=pick(['valeriamazvi','camberitoss','salma.lg','running_eagles_team','orlandolopezr','flokobus','iluvsarahiiii','guadacasa_','lauramade_ugc']);
 const SA=pick(['jackmostuart','paulinarua0812','conaghkathleen','fernandatobitto','breemaliafox','vgsqaud','chrisquiroz','korellanat','adi.viillegas','tab.iker.daniel','levincb95','javiloes_']);
 const SB=pick(['daira.cnp','jandreshj','katty_fitness','luciaacolmenaress','bulldoglia','martinalbornozz']);
 document.getElementById('feedU').innerHTML=U.map((v,i)=>card(v,i+1,'u')).join('');
@@ -814,6 +855,12 @@ function bindEmb(box){
 }
 document.querySelectorAll('.player.emb').forEach(bindEmb);
 
+// Marca la sección en la que estás
+const chips=[...document.querySelectorAll('.jumps .chip')];
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)chips.forEach(c=>c.classList.toggle('on',c.dataset.sec===e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+  ['ugc','trends'].forEach(id=>io.observe(document.getElementById(id)));
+}
 // Pestañas
 const pbrief=document.getElementById('tab-brief'),pg=document.getElementById('tab-guiones'),pb=document.getElementById('p-brief'),pm=document.getElementById('p-mood');
 const tabs=[...document.querySelectorAll('.tabbtn')];
