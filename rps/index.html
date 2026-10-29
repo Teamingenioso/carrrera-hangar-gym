@@ -308,7 +308,7 @@ ol.steps p{margin:0;color:var(--dim);font-size:.93rem}
 #tab-brief .gcard:focus-visible{outline:3px solid var(--white);outline-offset:2px}
 
 /* Portada + marca + pestañas relevantes */
-@media (max-width:899px){body.sc .tabbtn small,body.sc .brandrow{display:none}body.sc .tabbtn{min-height:40px}}
+
 #tab-brief [hidden],.pane[hidden]{display:none!important}
 .covr{padding-top:12px}
 img.cover{display:block;width:100%;max-width:900px;height:auto;aspect-ratio:800/317;object-fit:cover;border-radius:18px}
@@ -990,7 +990,7 @@ window.addEventListener('message',function(e){var pf=document.getElementById('pr
 tabs.forEach(t=>t.addEventListener('click',()=>showTab(t.dataset.tab,true)));
 window.addEventListener('hashchange',()=>showTab(location.hash.slice(1)));
 showTab(location.hash.slice(1));
-(function(){const f=()=>document.body.classList.toggle('sc',window.scrollY>260);addEventListener('scroll',f,{passive:true});f()})();
+
 document.querySelectorAll('[data-tab-go]').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tabGo,true)));
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.go).scrollIntoView({behavior:'smooth'})));
 // Descargas de PDF
