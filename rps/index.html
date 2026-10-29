@@ -213,6 +213,22 @@ ol.steps p{margin:0;color:var(--dim);font-size:.93rem}
 .tier .view:hover{background:#ddd}
 .tier .rpgrid{grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:12px}
 .tier[hidden]{display:none}
+.tprog{display:flex;align-items:center;gap:16px;margin-top:18px;background:var(--raise);border:1px solid var(--faint);border-radius:var(--radius);padding:14px 18px;position:relative}
+.tprog svg{flex:none;display:block}
+.tprog circle{fill:none;stroke-width:9}
+.tprog .tr{stroke:#ffffff1f}
+.tprog .tv{stroke:var(--yellow);stroke-linecap:round}
+.tprog .tpt{position:absolute;left:18px;top:14px;width:96px;height:96px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.tprog .tpt b{font-size:1.45rem;font-weight:800;line-height:1}
+.tprog .tpt small{font-size:.5rem;letter-spacing:.12em;font-weight:700;color:var(--dim);margin-top:3px}
+.tprog .tpl{margin:0;color:var(--dim)}
+.tprog .tpl b{color:var(--white)}
+#tab-brief .vplay{position:absolute;inset:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:linear-gradient(160deg,#1c1c1c,#0b0b0b);border:0;color:var(--white);font:inherit;cursor:pointer}
+#tab-brief .vplay b{font-size:.82rem;font-weight:700}
+#tab-brief .vtri{width:54px;height:54px;border-radius:50%;background:var(--yellow);position:relative}
+#tab-brief .vtri::after{content:"";position:absolute;left:21px;top:16px;border-left:18px solid #000;border-top:11px solid transparent;border-bottom:11px solid transparent}
+#tab-brief .vplay:hover .vtri{transform:scale(1.06)}
+
 .tempty{margin-top:18px;border:1px dashed var(--faint);border-radius:var(--radius);padding:28px 22px;text-align:center}
 .tempty b{font-size:1.3rem;font-weight:900;color:var(--yellow)}
 .tempty p{margin:6px 0 0;color:var(--dim)}
@@ -300,7 +316,7 @@ header.top .nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:f
 .brandrow .x{color:var(--yellow);font-weight:700;font-size:15px}
 .brandrow a{display:block;line-height:0}
 .brandrow a .logo,.brandrow a svg{height:20px;width:auto;display:block}
-.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%}
+.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:100%}
 .tabbtn{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:8px;align-items:center;text-align:left;background:transparent;border:1.5px solid var(--faint);border-radius:14px;padding:9px 11px;color:var(--white);font:inherit;min-height:52px}
 .tabbtn i{grid-row:1/3;font-style:normal;font-weight:800;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--faint);font-size:13px;color:var(--white)}
 .tabbtn b{font-size:15px;line-height:1.1}
@@ -309,7 +325,7 @@ header.top .nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:f
 .tabbtn.on i{background:#000;color:var(--yellow)}
 .tabbtn.on small{color:#000;opacity:.8}
 @media (max-width:520px){.tabbtn{grid-template-columns:1fr;padding:8px 8px;text-align:center;justify-items:center}.tabbtn i{grid-row:auto;width:20px;height:20px;font-size:11px;margin-bottom:2px}.tabbtn small{grid-column:1;font-size:10.5px}.brandrow .hg{width:80px}}
-@media (min-width:900px){header.top .nav{flex-wrap:nowrap}.tabs{width:auto;grid-template-columns:repeat(3,minmax(170px,1fr));margin-left:auto}}
+@media (min-width:900px){header.top .nav{flex-wrap:nowrap}.tabs{width:auto;grid-template-columns:repeat(4,minmax(150px,1fr));margin-left:auto}}
 @media (min-width:1500px){.covr{zoom:1.25}}@media (min-width:1900px){.covr{zoom:1.5}}@media (min-width:2500px){.covr{zoom:2}}@media (min-width:3400px){.covr{zoom:2.6}}
 #tab-brief .mood-in{max-width:none;margin:0}
 #tab-brief .why{background:var(--raise);border:1px solid var(--faint);border-radius:14px;padding:16px 18px;margin-top:14px;display:grid;gap:8px}
@@ -346,6 +362,105 @@ details.how[open] summary{background:transparent;color:var(--yellow);border-colo
 details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:2px}
 
 #tab-brief .shot{background:none;border:0;padding:0;border-radius:0}
+
+/* ===== Premios ===== */
+#tab-premios{padding-bottom:30px;overflow-x:clip}
+#tab-premios[hidden]{display:none!important}
+#tab-premios .phero{padding-block:30px 8px}
+#tab-premios .eyebrow2{text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;font-weight:800;color:var(--yellow);margin:0 0 12px}
+#tab-premios h1{font-size:clamp(2.5rem,8.5vw,5rem);font-weight:900;line-height:.98;text-wrap:balance;text-transform:uppercase;letter-spacing:-.035em}
+#tab-premios h1 span{color:var(--yellow)}
+#tab-premios .lead{max-width:60ch}
+#tab-premios .prow{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;align-items:stretch}
+#tab-premios .pstat{flex:0 0 auto;min-width:130px;background:var(--raise);border:1px solid var(--faint);border-radius:18px;padding:16px 20px;display:flex;flex-direction:column;justify-content:center}
+#tab-premios .pstat b{font-size:2.6rem;line-height:1;color:var(--yellow);font-weight:900}
+#tab-premios .pstat small{color:var(--dim);font-size:.8rem;margin-top:6px}
+#tab-premios .pcd{flex:1 1 340px;max-width:560px;background:var(--raise);border:1px solid var(--faint);border-radius:18px;padding:16px 20px;container-type:inline-size}
+#tab-premios .pcdh{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+#tab-premios .pcdh strong{font-size:1.15rem;color:var(--yellow);letter-spacing:0;text-transform:none;font-weight:800}
+#tab-premios .pcdg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}
+#tab-premios .pcdg div{text-align:center;padding:10px 2px 7px;border:1px solid var(--faint);border-radius:10px;background:var(--black)}
+#tab-premios .pcdg b{display:block;font-size:clamp(26px,10cqi,44px);font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+#tab-premios .pcdg small{display:block;font-size:.62rem;letter-spacing:.1em;color:var(--dim);font-weight:800;margin-top:6px}
+#tab-premios .pdate{display:inline-flex;align-items:baseline;gap:12px;margin-top:16px;background:var(--yellow);color:var(--black);border-radius:999px;padding:10px 20px}
+#tab-premios .pdate b{font-size:1.5rem;font-weight:900;line-height:1}
+#tab-premios .pdate span{font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+/* tickets */
+#tab-premios .tix{display:grid;grid-template-columns:1fr 1.12fr 1fr;gap:clamp(8px,2vw,28px);align-items:end;margin:46px auto 12px;max-width:1100px;perspective:1200px}
+#tab-premios .tk{position:relative;overflow:hidden;border-radius:22px;border:2px solid #ffffffd9;background:var(--black);color:var(--white);transition:transform .35s ease;transform-origin:50% 100%}
+#tab-premios .tk.t2{transform:rotate(-5deg) translateY(10px)}
+#tab-premios .tk.t3{transform:rotate(5deg) translateY(10px)}
+#tab-premios .tk.t1{background:var(--yellow);color:var(--black);border-color:var(--yellow);transform:translateY(-6px);z-index:2}
+#tab-premios .tk:hover{transform:rotate(0) translateY(-8px)}
+#tab-premios .tk .top{padding:20px 14px 18px;text-align:center}
+#tab-premios .tk .pl{font-size:.74rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow)}
+#tab-premios .tk.t1 .pl{color:var(--black)}
+#tab-premios .tk .amt{font-size:clamp(2.1rem,7.4vw,5.6rem);font-weight:900;line-height:1;letter-spacing:-.05em;margin-top:8px;font-variant-numeric:tabular-nums;white-space:nowrap}
+#tab-premios .tk.t1 .amt{font-size:clamp(2.4rem,8.4vw,6.6rem)}
+#tab-premios .tk .mxn{font-size:.7rem;font-weight:800;letter-spacing:.14em;opacity:.7;margin-top:4px}
+#tab-premios .tk .perf{position:relative;height:0;border-top:2px dashed rgba(255,255,255,.55);margin:0 22px}
+#tab-premios .tk .perf::before,#tab-premios .tk .perf::after{content:"";position:absolute;top:-14px;width:26px;height:26px;border-radius:50%;background:var(--black);border:2px solid #ffffffd9}
+#tab-premios .tk.t1 .perf{border-top-color:rgba(0,0,0,.5)}
+#tab-premios .tk.t1 .perf::before,#tab-premios .tk.t1 .perf::after{border-color:var(--yellow)}
+#tab-premios .tk .perf::before{left:-35px}
+#tab-premios .tk .perf::after{right:-35px}
+#tab-premios .tk .stub{padding:16px 14px 20px;text-align:center;font-size:.82rem;line-height:1.35;color:var(--dim)}
+#tab-premios .tk.t1 .stub{color:#000000b3;font-weight:600}
+#tab-premios .tk .stub b{display:block;color:var(--white);font-size:.95rem;margin-bottom:2px}
+#tab-premios .tk.t1 .stub b{color:var(--black)}
+@keyframes tkIn{from{opacity:0;translate:0 40px}to{opacity:1;translate:0 0}}
+#tab-premios.go .tk{animation:tkIn .7s cubic-bezier(.2,.8,.2,1) both}
+#tab-premios.go .tk.t1{animation-delay:.5s}#tab-premios.go .tk.t2{animation-delay:.25s}#tab-premios.go .tk.t3{animation-delay:0s}
+@keyframes tkGlow{0%,100%{box-shadow:0 0 0 rgba(245,212,0,0)}50%{box-shadow:0 0 36px rgba(245,212,0,.45)}}
+#tab-premios .tk.t1{animation:tkGlow 3s ease-in-out 1.4s infinite}
+#tab-premios.go .tk.t1{animation:tkIn .7s cubic-bezier(.2,.8,.2,1) .5s both,tkGlow 3s ease-in-out 1.4s infinite}
+#tab-premios .pinfo{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px;margin-top:34px;padding-top:22px;border-top:1px solid var(--faint)}
+#tab-premios .pinfo h3{font-size:1.1rem;font-weight:800;margin-bottom:6px;letter-spacing:-.01em}
+#tab-premios .pinfo p{margin:0;color:var(--dim);font-size:.95rem}
+#tab-premios .prules{margin-top:34px;background:var(--yellow);color:var(--black);border-radius:24px;padding:28px 22px}
+#tab-premios .prules .eyebrow2{color:var(--black)}
+#tab-premios .prules h2{font-size:clamp(1.9rem,6vw,3rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em}
+#tab-premios .prgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px 40px;margin-top:20px}
+#tab-premios .pr{display:flex;gap:10px;font-weight:600;line-height:1.45}
+#tab-premios .pr::before{content:"\2705";font-size:.9em;flex:none}
+#tab-premios .pcta{margin-top:24px;background:var(--black);color:var(--white);border-radius:18px;padding:22px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+#tab-premios .pcta h3{font-size:clamp(1.6rem,5vw,2.4rem);font-weight:900;text-transform:uppercase;letter-spacing:-.02em}
+#tab-premios .pcta p{margin:6px 0 0;color:var(--dim)}
+#tab-premios .pcta p b{color:var(--yellow)}
+#tab-premios .phash{background:var(--yellow);color:var(--black);border-radius:999px;padding:12px 24px;font-weight:900;font-size:1.3rem;white-space:nowrap}
+@media (max-width:640px){
+ #tab-premios .tix{grid-template-columns:1fr;gap:14px;margin-top:30px}
+ #tab-premios .tk.t1{order:1;transform:none}
+ #tab-premios .tk.t2{order:2;transform:rotate(-1.5deg)}
+ #tab-premios .tk.t3{order:3;transform:rotate(1.5deg)}
+ #tab-premios .tk .amt,#tab-premios .tk.t1 .amt{font-size:clamp(3rem,16vw,4.2rem)}
+ #tab-premios .prules{padding:22px 16px;border-radius:20px}
+ #tab-premios .pcta{padding:18px 16px}
+}
+@media (prefers-reduced-motion:reduce){#tab-premios .tk,#tab-premios.go .tk{animation:none!important;transition:none}}
+
+/* Premios: tarjetas como antes (sin boletos) */
+#tab-premios .tix{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch;max-width:none;margin-top:28px;perspective:none}
+#tab-premios .tk,#tab-premios .tk.t1,#tab-premios .tk.t2,#tab-premios .tk.t3{transform:none!important;background:var(--raise);color:var(--white);border:1px solid var(--faint);border-radius:24px;overflow:visible;z-index:auto;order:0}
+#tab-premios .tk.t1{order:-1;border-color:rgba(245,212,0,.5)}
+#tab-premios .tk:hover{transform:translateY(-4px)!important;border-color:rgba(245,212,0,.6)}
+#tab-premios .tk .top{padding:22px 24px 0;text-align:left}
+#tab-premios .tk .pl,#tab-premios .tk.t1 .pl{color:var(--yellow);font-size:.8rem}
+#tab-premios .tk .amt,#tab-premios .tk.t1 .amt{font-size:clamp(3rem,6.2vw,6rem);letter-spacing:-.04em;color:var(--white)}
+#tab-premios .tk .mxn{display:none}
+#tab-premios .tk .perf{display:none}
+#tab-premios .tk .stub,#tab-premios .tk.t1 .stub{padding:10px 24px 22px;text-align:left;color:var(--dim);font-weight:400;font-size:.92rem}
+#tab-premios .tk .stub b,#tab-premios .tk.t1 .stub b{display:inline;color:var(--dim);font-size:inherit;font-weight:400;margin:0}
+#tab-premios .tk .stub b::after{content:" "}
+#tab-premios .tk.t1{animation:tkGlow 3s ease-in-out 1.4s infinite}
+@media (max-width:640px){
+ #tab-premios .tix{grid-template-columns:1fr;gap:10px}
+ #tab-premios .tk{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:10px;padding:16px 18px;border-radius:20px}
+ #tab-premios .tk .top{display:contents}
+ #tab-premios .tk .pl{grid-column:1;align-self:end}
+ #tab-premios .tk .amt,#tab-premios .tk.t1 .amt{grid-column:2;grid-row:1/3;font-size:3.3rem;margin:0;text-align:right}
+ #tab-premios .tk .stub,#tab-premios .tk.t1 .stub{grid-column:1;padding:2px 0 0;font-size:.8rem}
+}
 </style>
 <header class="top">
   <div class="wrap nav">
@@ -372,6 +487,7 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
       <button class="tabbtn on" role="tab" type="button" data-tab="brief" aria-selected="true"><i>1</i><b>Brief</b><small>De qué va y qué haces</small></button>
       <button class="tabbtn" role="tab" type="button" data-tab="guiones" aria-selected="false"><i>2</i><b>Guiones</b><small>Tus 2 propuestas</small></button>
       <button class="tabbtn" role="tab" type="button" data-tab="moodboard" aria-selected="false"><i>3</i><b>Moodboard</b><small>Cómo se ve al grabar</small></button>
+      <button class="tabbtn" role="tab" type="button" data-tab="premios" aria-selected="false"><i>4</i><b>Premios</b><small>Cuánto te puedes llevar</small></button>
     </nav>
   </div>
 </header>
@@ -423,7 +539,7 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
 </section>
 
 <section class="last"><div class="panel"><h2>Recursos descargables</h2><p class="note">Si quieres poner el logo en tu video (por ejemplo, en la última toma), descárgalo aquí. Viene en PNG con fondo transparente.</p><div class="res"><a class="rescard dark" href="recursos/Logo_Hangar_blanco.png" download="Logo Hangar Gym (blanco).png"><span class="resimg"><img src="recursos/Logo_Hangar_blanco.png" alt="Logo Hangar Gym blanco" loading="lazy"></span><b>Logo Hangar Gym · blanco</b><span>PNG transparente. Para fondos oscuros.</span><em>Descargar PNG</em></a><a class="rescard light" href="recursos/Logo_Hangar_negro.png" download="Logo Hangar Gym (negro).png"><span class="resimg"><img src="recursos/Logo_Hangar_negro.png" alt="Logo Hangar Gym negro" loading="lazy"></span><b>Logo Hangar Gym · negro</b><span>PNG transparente. Para fondos claros.</span><em>Descargar PNG</em></a></div></div></section><section class="last"><div class="panel gonext"><h2>Siguiente paso</h2><p class="note">Ya sabes de qué va. Ahora ve a Guiones, descarga el tuyo y escoge la propuesta que más se parezca a ti.</p><button type="button" class="nextbtn" data-tab-go="guiones">Ir a mis guiones →</button></div></section>
-<section class="last"><div class="panel"><h2>Ya subieron su video</h2><p class="note">Estos RPs ya publicaron su video. Míralo aquí mismo; si quieres verlo completo, toca Abrir.</p><div class="vgrid"><div class="vcard"><div class="vbox"><iframe src="https://www.instagram.com/p/De0BDopiLVp/embed/" title="Video de Miranda Becerra" loading="lazy" scrolling="no" allowtransparency="true" allow="encrypted-media; autoplay"></iframe></div><p class="vname"><b>Miranda Becerra</b><a href="https://www.instagram.com/p/De0BDopiLVp/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><iframe src="https://www.instagram.com/p/De5LtksBuq9/embed/" title="Video de Alain" loading="lazy" scrolling="no" allowtransparency="true" allow="encrypted-media; autoplay"></iframe></div><p class="vname"><b>Alain</b><a href="https://www.instagram.com/reel/De5LtksBuq9/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><iframe src="https://www.instagram.com/p/De5eJWZN-wF/embed/" title="Video de Karla (Mira Charly)" loading="lazy" scrolling="no" allowtransparency="true" allow="encrypted-media; autoplay"></iframe></div><p class="vname"><b>Karla (Mira Charly)</b><a href="https://www.instagram.com/p/De5eJWZN-wF/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><iframe src="https://www.instagram.com/p/De5o_BNC4br/embed/" title="Video de Regino" loading="lazy" scrolling="no" allowtransparency="true" allow="encrypted-media; autoplay"></iframe></div><p class="vname"><b>Regino</b><a href="https://www.instagram.com/reel/De5o_BNC4br/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><iframe src="https://www.instagram.com/p/De7CSORuQKB/embed/" title="Video de Muñe (Henry)" loading="lazy" scrolling="no" allowtransparency="true" allow="encrypted-media; autoplay"></iframe></div><p class="vname"><b>Muñe (Henry)</b><a href="https://www.instagram.com/reel/De7CSORuQKB/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><iframe src="https://www.instagram.com/p/De7HiXJx3XT/embed/" title="Video de Lucii" loading="lazy" scrolling="no" allowtransparency="true" allow="encrypted-media; autoplay"></iframe></div><p class="vname"><b>Lucii</b><a href="https://www.instagram.com/p/De7HiXJx3XT/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><iframe src="https://www.instagram.com/p/De7HvX7RENP/embed/" title="Video de Nutrí o nutria" loading="lazy" scrolling="no" allowtransparency="true" allow="encrypted-media; autoplay"></iframe></div><p class="vname"><b>Nutrí o nutria</b><a href="https://www.instagram.com/p/De7HvX7RENP/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><iframe src="https://www.instagram.com/p/De7dOOEN4MG/embed/" title="Video de Ary" loading="lazy" scrolling="no" allowtransparency="true" allow="encrypted-media; autoplay"></iframe></div><p class="vname"><b>Ary</b><a href="https://www.instagram.com/p/De7dOOEN4MG/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><iframe src="https://www.instagram.com/p/De720DesL3H/embed/" title="Video de Rodrigo Morales" loading="lazy" scrolling="no" allowtransparency="true" allow="encrypted-media; autoplay"></iframe></div><p class="vname"><b>Rodrigo Morales</b><a href="https://www.instagram.com/reel/De720DesL3H/" target="_blank" rel="noopener">Abrir ↗</a></p></div></div></div></section>
+<section class="last"><div class="panel"><h2>Ya subieron su video</h2><p class="note">Estos RPs ya publicaron su video. Míralo aquí mismo; si quieres verlo completo, toca Abrir.</p><div class="vgrid"><div class="vcard"><div class="vbox"><button type="button" class="vplay" data-src="https://www.instagram.com/p/De0BDopiLVp/embed/" data-t="Video de Miranda Becerra" aria-label="Reproducir: Video de Miranda Becerra"><span class="vtri" aria-hidden="true"></span><b>Toca para ver</b></button></div><p class="vname"><b>Miranda Becerra</b><a href="https://www.instagram.com/p/De0BDopiLVp/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><button type="button" class="vplay" data-src="https://www.instagram.com/p/De5LtksBuq9/embed/" data-t="Video de Alain" aria-label="Reproducir: Video de Alain"><span class="vtri" aria-hidden="true"></span><b>Toca para ver</b></button></div><p class="vname"><b>Alain</b><a href="https://www.instagram.com/reel/De5LtksBuq9/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><button type="button" class="vplay" data-src="https://www.instagram.com/p/De5eJWZN-wF/embed/" data-t="Video de Karla (Mira Charly)" aria-label="Reproducir: Video de Karla (Mira Charly)"><span class="vtri" aria-hidden="true"></span><b>Toca para ver</b></button></div><p class="vname"><b>Karla (Mira Charly)</b><a href="https://www.instagram.com/p/De5eJWZN-wF/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><button type="button" class="vplay" data-src="https://www.instagram.com/p/De5o_BNC4br/embed/" data-t="Video de Regino" aria-label="Reproducir: Video de Regino"><span class="vtri" aria-hidden="true"></span><b>Toca para ver</b></button></div><p class="vname"><b>Regino</b><a href="https://www.instagram.com/reel/De5o_BNC4br/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><button type="button" class="vplay" data-src="https://www.instagram.com/p/De7CSORuQKB/embed/" data-t="Video de Muñe (Henry)" aria-label="Reproducir: Video de Muñe (Henry)"><span class="vtri" aria-hidden="true"></span><b>Toca para ver</b></button></div><p class="vname"><b>Muñe (Henry)</b><a href="https://www.instagram.com/reel/De7CSORuQKB/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><button type="button" class="vplay" data-src="https://www.instagram.com/p/De7HiXJx3XT/embed/" data-t="Video de Lucii" aria-label="Reproducir: Video de Lucii"><span class="vtri" aria-hidden="true"></span><b>Toca para ver</b></button></div><p class="vname"><b>Lucii</b><a href="https://www.instagram.com/p/De7HiXJx3XT/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><button type="button" class="vplay" data-src="https://www.instagram.com/p/De7HvX7RENP/embed/" data-t="Video de Nutrí o nutria" aria-label="Reproducir: Video de Nutrí o nutria"><span class="vtri" aria-hidden="true"></span><b>Toca para ver</b></button></div><p class="vname"><b>Nutrí o nutria</b><a href="https://www.instagram.com/p/De7HvX7RENP/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><button type="button" class="vplay" data-src="https://www.instagram.com/p/De7dOOEN4MG/embed/" data-t="Video de Ary" aria-label="Reproducir: Video de Ary"><span class="vtri" aria-hidden="true"></span><b>Toca para ver</b></button></div><p class="vname"><b>Ary</b><a href="https://www.instagram.com/p/De7dOOEN4MG/" target="_blank" rel="noopener">Abrir ↗</a></p></div><div class="vcard"><div class="vbox"><button type="button" class="vplay" data-src="https://www.instagram.com/p/De720DesL3H/embed/" data-t="Video de Rodrigo Morales" aria-label="Reproducir: Video de Rodrigo Morales"><span class="vtri" aria-hidden="true"></span><b>Toca para ver</b></button></div><p class="vname"><b>Rodrigo Morales</b><a href="https://www.instagram.com/reel/De720DesL3H/" target="_blank" rel="noopener">Abrir ↗</a></p></div></div></div></section>
 
 </div>
 <div class="mood-in" id="p-mood" hidden><section class="last">
@@ -439,7 +555,7 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
     <p class="sec-num">Guiones de los RPs</p>
     <h2>Tus <span class="accent">2 guiones</span></h2>
     <p class="lead">Estos son los RPs que ya respondieron el formulario (17). Cada quien tiene 2 propuestas hechas con sus respuestas. Descarga tu PDF, escoge la que más se parezca a ti y cámbiale lo que quieras.</p>
-    <div class="tseg" role="tablist" aria-label="Categoría de RPs"><span class="tind" aria-hidden="true"></span><button type="button" role="tab" class="on" aria-selected="true" data-tier="a">Tier A</button><button type="button" role="tab" aria-selected="false" data-tier="b">Tier B</button><button type="button" role="tab" aria-selected="false" data-tier="c">Tier C</button></div><div class="tier" id="tier-a" data-tier-pane="a"><div class="rpgrid"><article class="rp"><div class="rp-top"><h3>Karen</h3><span class="tag plain">Americas</span></div>
+    <div class="tseg" role="tablist" aria-label="Categoría de RPs"><span class="tind" aria-hidden="true"></span><button type="button" role="tab" class="on" aria-selected="true" data-tier="a">Tier A</button><button type="button" role="tab" aria-selected="false" data-tier="b">Tier B</button><button type="button" role="tab" aria-selected="false" data-tier="c">Tier C</button></div><div class="tier" id="tier-a" data-tier-pane="a"><div class="tprog" role="img" aria-label="53% publicado"><svg viewBox="0 0 100 100" width="96" height="96" aria-hidden="true"><circle cx="50" cy="50" r="44" class="tr"/><circle cx="50" cy="50" r="44" class="tv" stroke-dasharray="276.46" stroke-dashoffset="129.94" transform="rotate(-90 50 50)"/></svg><div class="tpt"><b>53%</b><small>PUBLICADO</small></div><p class="tpl"><b>9 de 17</b> ya subieron su video</p></div><div class="rpgrid"><article class="rp"><div class="rp-top"><h3>Karen</h3><span class="tag plain">Americas</span></div>
 <p class="rp-l">2 propuestas</p>
 <div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Karen.pdf?v=2f68530e" data-n="Guiones para Karen · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Karen.pdf?v=2f68530e" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Nutrí</h3><span class="tag plain">Terranova</span></div>
 <p class="rp-l">2 propuestas</p>
@@ -473,7 +589,7 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
 <p class="rp-l">2 propuestas</p>
 <div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Regino.pdf?v=659f459a" data-n="Guiones para Regino · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Regino.pdf?v=659f459a" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Nilka</h3><span class="tag plain">Petrolera</span></div>
 <p class="rp-l">2 propuestas</p>
-<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Nilka.pdf?v=68101e4d" data-n="Guiones para Nilka · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Nilka.pdf?v=68101e4d" target="_blank" rel="noopener">Ver</a></div></article></div></div><div class="tier" id="tier-b" data-tier-pane="b" hidden><div class="rpgrid"><article class="rp"><div class="rp-top"><h3>Nico</h3><span class="tag plain">Americas</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Nico.pdf?v=5a458c70" data-n="Guiones para Nico · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Nico.pdf?v=5a458c70" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Lilia</h3><span class="tag plain">Gemelos</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Lilia.pdf?v=06efab5f" data-n="Guiones para Lilia · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Lilia.pdf?v=06efab5f" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Chris</h3><span class="tag plain">Arenas</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Chris.pdf?v=c5a66fc2" data-n="Guiones para Chris · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Chris.pdf?v=c5a66fc2" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Karla Rosado</h3><span class="tag plain">Arenas</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Karla_Rosado.pdf?v=2548b583" data-n="Guiones para Karla Rosado · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Karla_Rosado.pdf?v=2548b583" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Mia</h3><span class="tag plain">Petrolera</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Mia.pdf?v=7a5067be" data-n="Guiones para Mia · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Mia.pdf?v=7a5067be" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Omar</h3><span class="tag plain">Arenas</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Omar.pdf?v=0fc9653f" data-n="Guiones para Omar · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Omar.pdf?v=0fc9653f" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Vianey</h3><span class="tag plain">Arenas</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Vianey.pdf?v=49706463" data-n="Guiones para Vianey · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Vianey.pdf?v=49706463" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Valeria</h3><span class="tag plain">Petrolera</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Valeria.pdf?v=d00c83fb" data-n="Guiones para Valeria · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Valeria.pdf?v=d00c83fb" target="_blank" rel="noopener">Ver</a></div></article></div></div><div class="tier" id="tier-c" data-tier-pane="c" hidden><div class="tempty"><b>Tier C</b><p>Aquí van a aparecer los guiones de este grupo. Estamos terminándolos.</p></div></div>
+<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Nilka.pdf?v=68101e4d" data-n="Guiones para Nilka · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Nilka.pdf?v=68101e4d" target="_blank" rel="noopener">Ver</a></div></article></div></div><div class="tier" id="tier-b" data-tier-pane="b" hidden><div class="tprog" role="img" aria-label="0% publicado"><svg viewBox="0 0 100 100" width="96" height="96" aria-hidden="true"><circle cx="50" cy="50" r="44" class="tr"/><circle cx="50" cy="50" r="44" class="tv" stroke-dasharray="276.46" stroke-dashoffset="276.46" transform="rotate(-90 50 50)"/></svg><div class="tpt"><b>0%</b><small>PUBLICADO</small></div><p class="tpl"><b>0 de 8</b> han subido su video</p></div><div class="rpgrid"><article class="rp"><div class="rp-top"><h3>Nico</h3><span class="tag plain">Americas</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Nico.pdf?v=5a458c70" data-n="Guiones para Nico · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Nico.pdf?v=5a458c70" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Lilia</h3><span class="tag plain">Gemelos</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Lilia.pdf?v=06efab5f" data-n="Guiones para Lilia · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Lilia.pdf?v=06efab5f" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Chris</h3><span class="tag plain">Arenas</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Chris.pdf?v=c5a66fc2" data-n="Guiones para Chris · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Chris.pdf?v=c5a66fc2" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Karla Rosado</h3><span class="tag plain">Arenas</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Karla_Rosado.pdf?v=2548b583" data-n="Guiones para Karla Rosado · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Karla_Rosado.pdf?v=2548b583" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Mia</h3><span class="tag plain">Petrolera</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Mia.pdf?v=7a5067be" data-n="Guiones para Mia · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Mia.pdf?v=7a5067be" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Omar</h3><span class="tag plain">Arenas</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Omar.pdf?v=0fc9653f" data-n="Guiones para Omar · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Omar.pdf?v=0fc9653f" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Vianey</h3><span class="tag plain">Arenas</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Vianey.pdf?v=49706463" data-n="Guiones para Vianey · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Vianey.pdf?v=49706463" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Valeria</h3><span class="tag plain">Petrolera</span></div><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Valeria.pdf?v=d00c83fb" data-n="Guiones para Valeria · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Valeria.pdf?v=d00c83fb" target="_blank" rel="noopener">Ver</a></div></article></div></div><div class="tier" id="tier-c" data-tier-pane="c" hidden><div class="tprog" role="img" aria-label="0% publicado"><svg viewBox="0 0 100 100" width="96" height="96" aria-hidden="true"><circle cx="50" cy="50" r="44" class="tr"/><circle cx="50" cy="50" r="44" class="tv" stroke-dasharray="276.46" stroke-dashoffset="276.46" transform="rotate(-90 50 50)"/></svg><div class="tpt"><b>0%</b><small>PUBLICADO</small></div><p class="tpl">En espera</p></div><div class="tempty"><b>Tier C</b><p>Aquí van a aparecer los guiones de este grupo. Estamos terminándolos.</p></div></div>
     <p class="msg" id="dlmsg" aria-live="polite"></p>
     <div class="sub" aria-label="Ir a ejemplos"><button class="chip" type="button" data-go="ugc">Ejemplos UGC</button><button class="chip" type="button" data-go="trends">Trends y frases</button></div>
   </section>
@@ -511,6 +627,13 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
   </div>
   <section class="gonext gn2"><p>Ya tienes tu guion. Falta ver cómo se ve al grabarlo.</p><button type="button" class="nextbtn" data-tab-go="moodboard">Ir al moodboard →</button></section>
 </main>
+<div class="wrap pane" id="tab-premios" role="tabpanel" hidden>
+<div class="phero"><p class="eyebrow2">El reto · Carrera Hangar 2026</p><h1>Premios para las caras de la <span>Carrera Hangar</span></h1><p class="lead">Publica tu video, junta vistas y llévate un <b>premio en efectivo</b>. Los 3 videos con más visualizaciones se premian.</p><div class="prow"><div class="pstat"><b>45</b><small>RPs en el reto</small></div><div class="pcd"><div class="pcdh"><span>Medición de vistas</span><strong>19 nov · 4:00 p. m.</strong></div><div class="pcdg" aria-label="Tiempo restante para la medición"><div><b id="pd">--</b><small>DÍAS</small></div><div><b id="ph">--</b><small>HRS</small></div><div><b id="pm">--</b><small>MIN</small></div><div><b id="ps">--</b><small>SEG</small></div></div></div></div><div class="pdate"><b>22 NOV</b><span>Domingo · Villahermosa</span></div></div>
+<div class="tix"><div class="tk t2"><div class="top"><div class="pl">2do lugar</div><div class="amt" data-v="1000">$1,000</div><div class="mxn">MXN</div></div><div class="perf" aria-hidden="true"></div><div class="stub"><b>El segundo video</b>con más vistas</div></div><div class="tk t1"><div class="top"><div class="pl">1er lugar</div><div class="amt" data-v="2000">$2,000</div><div class="mxn">MXN</div></div><div class="perf" aria-hidden="true"></div><div class="stub"><b>El video con más</b>visualizaciones</div></div><div class="tk t3"><div class="top"><div class="pl">3er lugar</div><div class="amt" data-v="600">$600</div><div class="mxn">MXN</div></div><div class="perf" aria-hidden="true"></div><div class="stub"><b>El tercer video</b>con más vistas</div></div></div>
+<div class="pinfo"><div><h3>Gana el que más vistas tenga</h3><p>Se premian los 3 videos UGC con más visualizaciones, uno por RP.</p></div><div><h3>Cuenta tu mejor video</h3><p>Puedes subir varios, pero solo cuenta el que tenga más vistas. No se suman.</p></div><div><h3>Premio en la carrera</h3><p>Medimos las vistas el 19 a las 4:00 p. m., anunciamos ganadores el 20 y el 22 recibes tu premio en la carrera.</p></div></div>
+<section class="prules"><p class="eyebrow2">Reglas del reto</p><h2>Claras para que sea justo</h2><div class="prgrid"><div class="pr">El video debe ser UGC sí o sí. No cuentan videos de frases ni trends: el premio es para un UGC.</div>
+<div class="pr">Solo cuentan videos publicados a más tardar el 14 de noviembre (sábado), para que alcancen a vender kits antes del cierre.</div><div class="pr">Deben nombrar a Hangar y la carrera, usar los hashtags y cerrar con CARRERA.</div><div class="pr">Solo vistas orgánicas de Instagram Reels. Vistas compradas: descalificado.</div><div class="pr">Se pueden subir varios videos, pero solo cuenta el que tenga más vistas. Las vistas no se suman.</div><div class="pr">Las vistas se miden el 19 de noviembre a las 4:00 p. m. Manda la captura de tus estadísticas entre 4:00 y 4:30 p. m.; sin captura no entras.</div><div class="pr">Si hay empate en vistas, gana quien haya publicado primero.</div><div class="pr">Los premios los paga Hangar Gym. Los ganadores se anuncian el 20 de noviembre y reciben su premio en efectivo el 22, en la carrera.</div></div><div class="pcta"><div><h3>¿Listo para participar?</h3><p>Publica tu video y mándanos el link antes del <b>14 de noviembre</b>.</p></div><div class="phash">#AgarraVuelo</div></div></section>
+</div>
 
 <footer class="wrap made">
   <p>Hecho por</p>
@@ -906,10 +1029,10 @@ if('IntersectionObserver' in window){
 // Pestañas
 const pbrief=document.getElementById('tab-brief'),pg=document.getElementById('tab-guiones'),pb=document.getElementById('p-brief'),pm=document.getElementById('p-mood');
 const tabs=[...document.querySelectorAll('.tabbtn')];
-const KEYS=['brief','guiones','moodboard'];
+const KEYS=['brief','guiones','moodboard','premios'];const pp=document.getElementById('tab-premios');
 function showTab(k,push){
   if(!KEYS.includes(k))k='brief';
-  pbrief.hidden=k==='guiones';pg.hidden=k!=='guiones';pb.hidden=k!=='brief';pm.hidden=k!=='moodboard';
+  pbrief.hidden=k==='guiones'||k==='premios';pg.hidden=k!=='guiones';pp.hidden=k!=='premios';pb.hidden=k!=='brief';pm.hidden=k!=='moodboard';
   tabs.forEach(t=>{const on=t.dataset.tab===k;t.classList.toggle('on',on);t.setAttribute('aria-selected',on)});
   document.querySelectorAll('video').forEach(v=>v.pause());
   if(push){try{history.replaceState(null,'','#'+k)}catch(e){}const h=document.querySelector('header.top');window.scrollTo(0,h?h.offsetTop:0)}
@@ -950,6 +1073,7 @@ document.querySelectorAll('[data-copy]').forEach(function(b){
 })();
 
 
+document.querySelectorAll('.vplay').forEach(function(b){b.addEventListener('click',function(){var f=document.createElement('iframe');f.src=b.dataset.src;f.title='Video de '+(b.dataset.t||'');f.setAttribute('scrolling','no');f.setAttribute('allowtransparency','true');f.allow='encrypted-media; autoplay';b.replaceWith(f)})});
 (function(){var seg=document.querySelector('.tseg');if(!seg)return;var ind=seg.querySelector('.tind'),bs=[].slice.call(seg.querySelectorAll('button'));
 function place(b){ind.style.left=b.offsetLeft+'px';ind.style.width=b.offsetWidth+'px'}
 function pick(b){var k=b.dataset.tier;bs.forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-selected',on)});place(b);seg.classList.remove('nudge');document.querySelectorAll('[data-tier-pane]').forEach(function(p){p.hidden=p.dataset.tierPane!==k})}
@@ -961,6 +1085,19 @@ if('IntersectionObserver' in window){new IntersectionObserver(function(es,io){if
 var used=false;bs.forEach(function(b){b.addEventListener('click',function(){used=true;bs.forEach(function(x){x.classList.remove('ghost-on','ghost-off')})})});
 var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
 if(!rm)setInterval(function(){if(used||document.hidden||document.getElementById('tab-guiones').hidden)return;var cur=seg.querySelector('button.on'),i=bs.indexOf(cur),nx=bs[(i+1)%bs.length];place(nx);cur.classList.add('ghost-off');nx.classList.add('ghost-on');setTimeout(function(){if(used)return;place(seg.querySelector('button.on'));cur.classList.remove('ghost-off');nx.classList.remove('ghost-on')},900)},4000);
+})();
+(function(){
+ var T=new Date('2026-11-19T16:00:00-06:00').getTime(),el={d:document.getElementById('pd'),h:document.getElementById('ph'),m:document.getElementById('pm'),s:document.getElementById('ps')};
+ function p(n){return (n<10?'0':'')+n}
+ function tick(){var x=T-Date.now();if(x<0)x=0;el.d.textContent=p(Math.floor(x/864e5));el.h.textContent=p(Math.floor(x%864e5/36e5));el.m.textContent=p(Math.floor(x%36e5/6e4));el.s.textContent=p(Math.floor(x%6e4/1e3))}
+ tick();setInterval(tick,1000);
+ var pane=document.getElementById('tab-premios'),done=false;
+ function fmt(n){return '$'+n.toLocaleString('en-US')}
+ function run(){if(done)return;done=true;pane.classList.add('go');
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  pane.querySelectorAll('.amt').forEach(function(a,i){var v=+a.dataset.v,t0=null;a.textContent='$0';
+   setTimeout(function(){function st(ts){if(t0===null)t0=ts;var q=Math.min((ts-t0)/1300,1);a.textContent=fmt(Math.round(v*(1-Math.pow(1-q,3))));if(q<1)requestAnimationFrame(st);else a.textContent=fmt(v)}requestAnimationFrame(st)},i*250)})}
+ if('IntersectionObserver' in window){new IntersectionObserver(function(es,io){if(es[0].isIntersecting){io.disconnect();run()}},{threshold:.2}).observe(pane.querySelector('.tix'))}else{run()}
 })();
 </script>
 </body></html>
