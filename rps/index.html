@@ -198,7 +198,11 @@ ol.steps p{margin:0;color:var(--dim);font-size:.93rem}
 .tseg.nudge button:not(.on){animation:tNudge 1.6s ease-in-out 2}
 .tseg.nudge button:not(.on):nth-of-type(3){animation-delay:.15s}
 @keyframes tNudge{0%,100%{transform:none}30%{transform:translateY(-4px)}55%{transform:translateY(0)}70%{transform:translateY(-2px)}}
-@media (prefers-reduced-motion:reduce){.tind,.tind::after,.tseg.nudge button{animation:none!important}.tind{transition:none}}
+.tseg.peek .tind{animation:tPeek .9s cubic-bezier(.34,1.56,.64,1),tGlow 2.4s ease-in-out infinite}
+.tseg.peek button.on+button{animation:tPeekB .9s ease-in-out}
+@keyframes tPeek{0%,100%{transform:translateX(0)}35%{transform:translateX(22px) scaleX(1.08)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+@keyframes tPeekB{0%,100%{transform:none}35%{transform:translateX(6px)}}
+@media (prefers-reduced-motion:reduce){.tind,.tind::after,.tseg.nudge button,.tseg.peek .tind,.tseg.peek button{animation:none!important}.tind{transition:none}}
 .tier{margin-top:8px}
 .tier .rp{padding:16px 18px}
 .tier .rp-l{margin:10px 0 14px}
@@ -943,6 +947,9 @@ function init(){place(seg.querySelector('button.on'))}
 init();window.addEventListener('resize',init);if(document.fonts)document.fonts.ready.then(init);
 new MutationObserver(init).observe(document.getElementById('tab-guiones'),{attributes:true,attributeFilter:['hidden']});
 if('IntersectionObserver' in window){new IntersectionObserver(function(es,io){if(es[0].isIntersecting){io.disconnect();setTimeout(function(){seg.classList.add('nudge')},600)}},{threshold:1}).observe(seg)}
+var used=false;bs.forEach(function(b){b.addEventListener('click',function(){used=true;seg.classList.remove('peek')})});
+var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(!rm)setInterval(function(){if(used||document.hidden||document.getElementById('tab-guiones').hidden)return;seg.classList.remove('peek');void seg.offsetWidth;seg.classList.add('peek');setTimeout(function(){seg.classList.remove('peek')},950)},4000);
 })();
 </script>
 </body></html>
