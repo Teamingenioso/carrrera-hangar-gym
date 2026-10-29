@@ -279,6 +279,7 @@ ol.steps p{margin:0;color:var(--dim);font-size:.93rem}
   #tab-brief .bhero h1{grid-row:2/4}
   #tab-brief .bhero .lead{grid-row:2;align-self:end}
   #tab-brief .bhero .date{grid-row:3;margin-top:22px}
+#tab-brief .bhero .bside{grid-column:2;grid-row:1/4;align-self:end;min-width:0}@media (min-width:1px){#tab-brief .bhero:has(.bside){grid-template-rows:1fr auto auto}#tab-brief .bhero:has(.bside) .eyebrow{grid-row:2;align-self:end}#tab-brief .bhero:has(.bside) h1{grid-row:3;align-self:end}}#tab-brief .bside .lead,#tab-brief .bside .date{grid-row:auto}#tab-brief .bside .lastcall{max-width:none;margin:26px 0 0!important}#tab-brief .lc-n b{color:#fff}
   #tab-brief ul.rules{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 40px}
   #tab-brief p{max-width:none}
 }
@@ -436,12 +437,11 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
 
 <div class="wrap pane" id="tab-brief" role="tabpanel">
 <div class="brief-in" id="p-brief">
-<section class="lastcall" aria-label="Cierre de inscripciones"><div class="lc-top"><p class="lc-ph"><i aria-hidden="true"></i>Fase final · Últimos lugares</p><p class="lc-pr">$350 <small>MXN</small></p></div><div class="lc-cd" role="timer" aria-label="Tiempo para el cierre"><div><b id="lcd">--</b><small>DÍAS</small></div><div><b id="lch">--</b><small>HRS</small></div><div><b id="lcm">--</b><small>MIN</small></div><div><b id="lcs">--</b><small>SEG</small></div></div><h2 class="lc-h">Se acaban los lugares</h2><p class="lc-n">Cierra el 15 de noviembre o antes si se agotan. Ya no hay vuelta atrás al precio de preventa.</p></section>
 <header class="bhero">
 <p class="eyebrow">Hangar × Ingenioso · Brief para RPs</p>
 <h1>Carrera <span>Hangar</span> 2026</h1>
-<p class="lead">Una carrera para todos los que entrenan en Hangar, sepan correr o no. <b>Tú eres la cara</b> que invita a los demás a inscribirse, con un video contado a tu manera.</p>
-<div class="date">22 nov <small>DOMINGO · VILLAHERMOSA</small></div>
+<div class="bside"><p class="lead">Una carrera para todos los que entrenan en Hangar, sepan correr o no. <b>Tú eres la cara</b> que invita a los demás a inscribirse, con un video contado a tu manera.</p>
+<div class="date">22 nov <small>DOMINGO · VILLAHERMOSA</small></div><section class="lastcall" aria-label="Cierre de inscripciones"><div class="lc-top"><p class="lc-ph"><i aria-hidden="true"></i>Cierre de ventas · Últimos días</p><p class="lc-pr">$350 <small>MXN</small></p></div><div class="lc-cd" role="timer" aria-label="Tiempo para el cierre"><div><b id="lcd">--</b><small>DÍAS</small></div><div><b id="lch">--</b><small>HRS</small></div><div><b id="lcm">--</b><small>MIN</small></div><div><b id="lcs">--</b><small>SEG</small></div></div><h2 class="lc-h" id="lch2">Quedan pocos días</h2><p class="lc-n"><b>Desde el 17 de nov a las 00:00: inscripciones cerradas.</b> Invita a tu gente hoy; después ya no hay lugar.</p></section></div>
 </header>
 
 <section>
@@ -1037,7 +1037,7 @@ b.appendChild(e);setTimeout(function(){e.remove()},1700)}
 (function loop(){pop();setTimeout(loop,500+Math.random()*900)})();})();
 </script>
 <script>
-(function(){var T=new Date('2026-11-16T00:00:00-06:00').getTime(),e={d:document.getElementById('lcd'),h:document.getElementById('lch'),m:document.getElementById('lcm'),s:document.getElementById('lcs')};if(!e.d)return;
-function p(n){return (n<10?'0':'')+n}function t(){var x=Math.max(0,T-Date.now());e.d.textContent=p(Math.floor(x/864e5));e.h.textContent=p(Math.floor(x%864e5/36e5));e.m.textContent=p(Math.floor(x%36e5/6e4));e.s.textContent=p(Math.floor(x%6e4/1e3))}t();setInterval(t,1000)})();
+(function(){var T=new Date('2026-11-17T00:00:00-06:00').getTime(),e={d:document.getElementById('lcd'),h:document.getElementById('lch'),m:document.getElementById('lcm'),s:document.getElementById('lcs')};if(!e.d)return;
+function p(n){return (n<10?'0':'')+n}function t(){var x=Math.max(0,T-Date.now());e.d.textContent=p(Math.floor(x/864e5));e.h.textContent=p(Math.floor(x%864e5/36e5));e.m.textContent=p(Math.floor(x%36e5/6e4));e.s.textContent=p(Math.floor(x%6e4/1e3));if(x===0){var h=document.getElementById('lch2');if(h)h.textContent='Inscripciones cerradas'}}t();setInterval(t,1000)})();
 </script>
 </body></html>
