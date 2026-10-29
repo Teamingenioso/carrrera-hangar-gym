@@ -185,6 +185,11 @@ ol.steps p{margin:0;color:var(--dim);font-size:.93rem}
 .tabbtn:focus-visible,.dl:focus-visible,.view:focus-visible,.sub button:focus-visible{outline:3px solid var(--white);outline-offset:2px}
 .pane[hidden]{display:none}
 /* Guiones de RPs */
+.tier{margin-top:30px}
+.tier-h{display:flex;align-items:center;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--faint)}
+.tier-h h3{font-size:1.5rem;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;color:var(--yellow)}
+.tier-h span{font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);border:1px solid var(--faint);border-radius:999px;padding:4px 10px}
+.tier .rpgrid{margin-top:18px}
 .rps{padding-block:40px 24px}
 .rps h2{font-size:clamp(1.9rem,7vw,2.6rem);font-weight:800}
 .rpgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:26px}
@@ -397,7 +402,7 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
     <p class="sec-num">Guiones de los RPs</p>
     <h2>Tus <span class="accent">2 guiones</span></h2>
     <p class="lead">Estos son los RPs que ya respondieron el formulario (17). Cada quien tiene 2 propuestas hechas con sus respuestas. Descarga tu PDF, escoge la que más se parezca a ti y cámbiale lo que quieras.</p>
-    <div class="rpgrid"><article class="rp"><div class="rp-top"><h3>Karen</h3><span class="tag plain">Americas</span></div>
+    <div class="tier" id="tier-a"><div class="tier-h"><h3>Tier A</h3><span>17 RPs</span></div><div class="rpgrid"><article class="rp"><div class="rp-top"><h3>Karen</h3><span class="tag plain">Americas</span></div>
 <p class="rp-l">2 propuestas</p><ol><li>El outfit</li><li>Nunca he corrido</li></ol>
 <div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Karen.pdf?v=2f68530e" data-n="Guiones para Karen · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Karen.pdf?v=2f68530e" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Nutrí</h3><span class="tag plain">Terranova</span></div>
 <p class="rp-l">2 propuestas</p><ol><li>Nunca seré runner</li><li>¿Y si te está funcionando?</li></ol>
@@ -431,7 +436,7 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
 <p class="rp-l">2 propuestas</p><ol><li>Fui un día, me inscribí al otro</li><li>Ponte en la mente</li></ol>
 <div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Regino.pdf?v=659f459a" data-n="Guiones para Regino · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Regino.pdf?v=659f459a" target="_blank" rel="noopener">Ver</a></div></article><article class="rp"><div class="rp-top"><h3>Nilka</h3><span class="tag plain">Petrolera</span></div>
 <p class="rp-l">2 propuestas</p><ol><li>Yo no corro, pero me inscribí</li><li>Mi primer día en el gym</li></ol>
-<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Nilka.pdf?v=68101e4d" data-n="Guiones para Nilka · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Nilka.pdf?v=68101e4d" target="_blank" rel="noopener">Ver</a></div></article></div>
+<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Nilka.pdf?v=68101e4d" data-n="Guiones para Nilka · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Nilka.pdf?v=68101e4d" target="_blank" rel="noopener">Ver</a></div></article></div></div>
     <p class="msg" id="dlmsg" aria-live="polite"></p>
     <div class="sub" aria-label="Ir a ejemplos"><button class="chip" type="button" data-go="ugc">Ejemplos UGC</button><button class="chip" type="button" data-go="trends">Trends y frases</button></div>
   </section>
