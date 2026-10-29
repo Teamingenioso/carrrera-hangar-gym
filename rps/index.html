@@ -1091,14 +1091,17 @@ var M=[['up','Hay $3,600 en premios para los 3 videos con más vistas.','Toca pa
 ['cal','Publica antes del 14 de noviembre.','Para entrar a premios · Carrera Hangar'],
 ['cam','¿Necesitas quien te grabe? Avísanos en el grupo.','Carrera Hangar'],
 ['flag','Las inscripciones cierran el 17 de noviembre.','Invita a tu gente hoy']];
-var i=0;try{if(sessionStorage.getItem('rmdx')==='1')return}catch(e){}
+var i=0,ua=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),and=/Android/.test(ua),phone=ios||and,sx=0,sy=0,dr=false,mv=false,closed=false,iv=null;
+/* Web (escritorio): se cierra con × y no vuelve en la sesión. Celular: aparece a los 3 s y cada 10 s, aunque lo deslicen. */
+if(!phone){try{if(sessionStorage.getItem('rmdx')==='1')return}catch(e){}}
 function put(){var m=M[i];I.innerHTML=IC[m[0]];T.textContent=m[1];S.textContent=m[2];box.classList.toggle('link',!!m[3]);box.dataset.go=m[3]||''}
-put();setTimeout(function(){box.classList.remove('off')},2500);
-var iv=setInterval(function(){if(document.hidden)return;box.classList.add('swap');setTimeout(function(){i=(i+1)%M.length;put();box.classList.remove('swap')},350)},4000);
-function hide(t){box.classList.add('off');if(t)box.style.transform=t;clearInterval(iv);try{sessionStorage.setItem('rmdx','1')}catch(e){}}
-X.addEventListener('click',function(e){e.stopPropagation();hide()});
-/* Celular: iPhone se cierra deslizando hacia arriba; Android deslizando a un lado. Web no cambia. */
-var ua=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),and=/Android/.test(ua),phone=ios||and,sx=0,sy=0,dr=false,mv=false;
+put();
+function show(){box.classList.remove('off');box.style.transform=''}
+function tick(){if(document.hidden)return;box.classList.add('swap');setTimeout(function(){i=(i+1)%M.length;put();box.classList.remove('swap');if(!closed)show()},350)}
+setTimeout(function(){if(!closed){show();iv=setInterval(tick,phone?10000:4000)}},phone?3000:2500);
+function hide(t){box.classList.add('off');if(t)box.style.transform=t}
+X.addEventListener('click',function(e){e.stopPropagation();hide();if(!phone){closed=true;clearInterval(iv);try{sessionStorage.setItem('rmdx','1')}catch(e){}}});
+/* Celular: iPhone se oculta deslizando hacia arriba; Android deslizando a un lado. Web no cambia. */
 if(phone){
 box.style.touchAction='none';
 box.addEventListener('pointerdown',function(e){if(e.target===X)return;sx=e.clientX;sy=e.clientY;dr=true;mv=false;box.style.transition='none'});
