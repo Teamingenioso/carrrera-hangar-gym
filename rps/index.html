@@ -352,9 +352,10 @@ details.how summary{border-radius:14px;background:var(--yellow);border-color:var
 details.how summary::before{content:"▶";font-size:.7em;margin-right:2px}
 details.how summary .arr{margin-left:auto}
 #tab-brief .vgrid{display:flex;flex-wrap:nowrap;gap:12px;margin:14px 0 0;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:6px}
-#tab-brief .vcard{flex:0 0 190px;min-width:0;scroll-snap-align:start}
-#tab-brief .vbox{position:relative;width:190px;height:420px;overflow:hidden;border-radius:12px;border:1px solid var(--faint);background:var(--raise)}
-#tab-brief .vbox iframe{position:absolute;top:0;left:0;width:326px;height:720px;border:0;transform:scale(.5828);transform-origin:0 0}
+#tab-brief .vgrid{--vw:280px;--vs:.8589}@media (max-width:520px){#tab-brief .vgrid{--vw:260px;--vs:.7975}}
+#tab-brief .vcard{flex:0 0 var(--vw);min-width:0;scroll-snap-align:start}
+#tab-brief .vbox{position:relative;width:var(--vw);height:calc(408px * var(--vs));overflow:hidden;border-radius:12px;border:1px solid var(--faint);background:var(--raise)}
+#tab-brief .vbox iframe{position:absolute;top:0;left:0;width:326px;height:720px;border:0;transform:scale(var(--vs)) translateY(-56px);transform-origin:0 0;background:#000}
 #tab-brief .vname{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:7px 2px 0;font-size:13px;color:var(--white)}
 #tab-brief .vname a{font-size:12px;font-weight:700;color:var(--yellow);text-decoration:none;white-space:nowrap}
 #tab-brief .vname a:hover{text-decoration:underline}
