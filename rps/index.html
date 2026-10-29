@@ -190,6 +190,8 @@ ol.steps p{margin:0;color:var(--dim);font-size:.93rem}
 .tseg button:hover:not(.on){transform:translateY(-2px);color:var(--white)}
 .tseg button:active{transform:scale(.94)}
 .tseg button.on{color:var(--black)}
+.tseg button.ghost-on{color:var(--black)}
+.tseg button.on.ghost-off{color:var(--yellow)}
 .tseg button:focus-visible{outline:3px solid var(--white);outline-offset:2px}
 .tind{position:absolute;z-index:0;top:5px;bottom:5px;left:5px;width:0;border-radius:999px;background:var(--yellow);overflow:hidden;transition:left .5s cubic-bezier(.34,1.56,.64,1),width .5s cubic-bezier(.34,1.56,.64,1);animation:tGlow 2.4s ease-in-out infinite}
 .tind::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.65) 50%,transparent 70%);transform:translateX(-120%);animation:tShine 3.2s ease-in-out 1s infinite}
@@ -947,9 +949,9 @@ function init(){place(seg.querySelector('button.on'))}
 init();window.addEventListener('resize',init);if(document.fonts)document.fonts.ready.then(init);
 new MutationObserver(init).observe(document.getElementById('tab-guiones'),{attributes:true,attributeFilter:['hidden']});
 if('IntersectionObserver' in window){new IntersectionObserver(function(es,io){if(es[0].isIntersecting){io.disconnect();setTimeout(function(){seg.classList.add('nudge')},600)}},{threshold:1}).observe(seg)}
-var used=false;bs.forEach(function(b){b.addEventListener('click',function(){used=true;seg.classList.remove('peek')})});
+var used=false;bs.forEach(function(b){b.addEventListener('click',function(){used=true;bs.forEach(function(x){x.classList.remove('ghost-on','ghost-off')})})});
 var rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
-if(!rm)setInterval(function(){if(used||document.hidden||document.getElementById('tab-guiones').hidden)return;seg.classList.remove('peek');void seg.offsetWidth;seg.classList.add('peek');setTimeout(function(){seg.classList.remove('peek')},950)},4000);
+if(!rm)setInterval(function(){if(used||document.hidden||document.getElementById('tab-guiones').hidden)return;var cur=seg.querySelector('button.on'),i=bs.indexOf(cur),nx=bs[(i+1)%bs.length];place(nx);cur.classList.add('ghost-off');nx.classList.add('ghost-on');setTimeout(function(){if(used)return;place(seg.querySelector('button.on'));cur.classList.remove('ghost-off');nx.classList.remove('ghost-on')},900)},4000);
 })();
 </script>
 </body></html>
