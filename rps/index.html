@@ -1095,8 +1095,22 @@ var i=0;try{if(sessionStorage.getItem('rmdx')==='1')return}catch(e){}
 function put(){var m=M[i];I.innerHTML=IC[m[0]];T.textContent=m[1];S.textContent=m[2];box.classList.toggle('link',!!m[3]);box.dataset.go=m[3]||''}
 put();setTimeout(function(){box.classList.remove('off')},2500);
 var iv=setInterval(function(){if(document.hidden)return;box.classList.add('swap');setTimeout(function(){i=(i+1)%M.length;put();box.classList.remove('swap')},350)},4000);
-X.addEventListener('click',function(e){e.stopPropagation();box.classList.add('off');clearInterval(iv);try{sessionStorage.setItem('rmdx','1')}catch(e){}});
-box.addEventListener('click',function(){if(box.dataset.go){var b=document.querySelector('.tabbtn[data-tab="'+box.dataset.go+'"]');if(b)b.click()}});
+function hide(t){box.classList.add('off');if(t)box.style.transform=t;clearInterval(iv);try{sessionStorage.setItem('rmdx','1')}catch(e){}}
+X.addEventListener('click',function(e){e.stopPropagation();hide()});
+/* Celular: iPhone se cierra deslizando hacia arriba; Android deslizando a un lado. Web no cambia. */
+var ua=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),and=/Android/.test(ua),phone=ios||and,sx=0,sy=0,dr=false,mv=false;
+if(phone){
+box.style.touchAction='none';
+box.addEventListener('pointerdown',function(e){if(e.target===X)return;sx=e.clientX;sy=e.clientY;dr=true;mv=false;box.style.transition='none'});
+document.addEventListener('pointermove',function(e){if(!dr)return;var dx=e.clientX-sx,dy=e.clientY-sy;if(Math.abs(dx)>6||Math.abs(dy)>6)mv=true;if(ios){if(dy<0)box.style.transform='translateY('+dy+'px)'}else{box.style.transform='translateX('+dx+'px)'}});
+function end(e){if(!dr)return;dr=false;box.style.transition='';var dx=e.clientX-sx,dy=e.clientY-sy;
+if(ios&&dy<-40){hide('translateY(-160%)');return}
+if(!ios&&Math.abs(dx)>60){hide('translateX('+(dx<0?'-130%':'130%')+')');return}
+box.style.transform=''}
+document.addEventListener('pointerup',end);
+document.addEventListener('pointercancel',function(){dr=false;box.style.transition='';box.style.transform=''});
+}
+box.addEventListener('click',function(){if(mv){mv=false;return}if(box.dataset.go){var b=document.querySelector('.tabbtn[data-tab="'+box.dataset.go+'"]');if(b)b.click()}});
 })();
 </script>
 </body></html>
