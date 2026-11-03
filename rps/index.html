@@ -320,7 +320,7 @@ header.top .nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:f
 .brandrow .x{color:var(--yellow);font-weight:700;font-size:15px}
 .brandrow a{display:block;line-height:0}
 .brandrow a .logo,.brandrow a svg{height:20px;width:auto;display:block}
-.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;width:100%}
+.tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;width:100%}
 .tabbtn{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:8px;align-items:center;text-align:left;background:transparent;border:1.5px solid var(--faint);border-radius:14px;padding:9px 11px;color:var(--white);font:inherit;min-height:52px}
 .tabbtn i{grid-row:1/3;font-style:normal;font-weight:800;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--faint);font-size:13px;color:var(--white)}
 .tabbtn b{font-size:15px;line-height:1.1}
@@ -329,7 +329,7 @@ header.top .nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:f
 .tabbtn.on i{background:#000;color:var(--yellow)}
 .tabbtn.on small{color:#000;opacity:.8}
 @media (max-width:520px){.tabbtn{grid-template-columns:1fr;padding:8px 8px;text-align:center;justify-items:center}.tabbtn i{grid-row:auto;width:20px;height:20px;font-size:11px;margin-bottom:2px}.tabbtn small{grid-column:1;font-size:10.5px}.brandrow .hg{width:80px}}
-@media (min-width:900px){header.top .nav{flex-wrap:nowrap}.tabs{width:auto;grid-template-columns:repeat(4,minmax(150px,1fr));margin-left:auto}}
+@media (min-width:900px){header.top .nav{flex-wrap:nowrap}.tabs{width:auto;grid-template-columns:repeat(5,minmax(150px,1fr));margin-left:auto}}
 @media (min-width:1500px){.covr{zoom:1.25}}@media (min-width:1900px){.covr{zoom:1.5}}@media (min-width:2500px){.covr{zoom:2}}@media (min-width:3400px){.covr{zoom:2.6}}
 #tab-brief .mood-in{max-width:none;margin:0}
 #tab-brief .why{background:var(--raise);border:1px solid var(--faint);border-radius:14px;padding:16px 18px;margin-top:14px;display:grid;gap:8px}
@@ -433,6 +433,220 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
 .rmd button:hover{color:#fff}
 @media (max-width:520px){.rmd{top:calc(10px + env(safe-area-inset-top,0px));bottom:auto;right:10px;left:10px;width:auto;transform:none;border-radius:18px}.rmd.off{transform:translateY(-160%)}.rmd.swap{transform:translateY(-8px)}}
 @media (prefers-reduced-motion:reduce){.rmd,.rmd.swap{transition:none}}
+/* Pestaña Calendario: seguimiento de compromisos de RPs (estilo parrilla, branding del brief) */
+#tab-calendario{--st-pub:#3ddc84;--st-venc:#ff5a5a;--st-pend:#f5d400;--st-sin:#7a7a7a;--cal-bg:#121212;font-family:var(--bodyf,'Hanken Grotesk',Arial,sans-serif);padding:8px 16px 40px;display:flex;flex-direction:column;gap:20px}
+#tab-calendario[hidden]{display:none!important}
+#tab-calendario .cs-pub{--c:var(--st-pub);--t:rgba(61,220,132,.14)}
+#tab-calendario .cs-venc{--c:var(--st-venc);--t:rgba(255,90,90,.16)}
+#tab-calendario .cs-pend{--c:var(--st-pend);--t:rgba(245,212,0,.12)}
+#tab-calendario .cs-sin{--c:var(--st-sin);--t:rgba(122,122,122,.12)}
+#tab-calendario .cs-disp{--c:#8a8a8a;--t:rgba(138,138,138,.13)}
+#tab-calendario .ck-corte{--c:#ffffff}
+#tab-calendario .ck-venta{--c:#ff9a3c}
+#tab-calendario .ck-bf{--c:#ff9a3c}
+#tab-calendario .ck-med{--c:#4aa3ff}
+#tab-calendario .ck-carrera{--c:#f5d400}
+#tab-calendario .ck-hoy{--c:#f5d400}
+#tab-calendario .cal-eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);font-weight:700;margin:0 0 12px}
+#tab-calendario h2{font-family:'Anton','Impact','Arial Narrow',sans-serif;font-weight:400;font-size:clamp(40px,7vw,72px);line-height:.95;text-transform:uppercase;margin:0 0 22px}
+#tab-calendario h2 span{color:var(--yellow)}
+
+/* Hero: anillo + resumen */
+.cal-top{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.cal-ring{position:relative;width:176px;height:176px;flex:none}
+.cal-ring svg{width:100%;height:100%;transform:rotate(-90deg);overflow:visible;display:block}
+.cal-arc{fill:none;stroke:var(--c);stroke-width:12}
+.cal-arc.cs-pub{filter:drop-shadow(0 0 6px rgba(61,220,132,.55))}
+.cal-arc.cs-venc{filter:drop-shadow(0 0 6px rgba(255,90,90,.5))}
+.cal-arc.cs-pend{filter:drop-shadow(0 0 6px rgba(245,212,0,.5))}
+.cal-ring-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.cal-ring-c b{font-family:'Anton','Impact',sans-serif;font-weight:400;font-size:54px;line-height:1;color:var(--st-pub)}
+.cal-ring-c span{font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.cal-sum{flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.cal-sum p{margin:0;color:var(--dim);font-size:17px;line-height:1.5}
+.cal-sum p b{color:var(--white)}
+.cal-legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--dim);margin-top:4px}
+.cal-legend span,.cal-chipkey span{display:inline-flex;align-items:center;gap:7px}
+.cal-legend i,.cal-chipkey i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+
+/* Panel del calendario */
+.cal-panel{background:var(--cal-bg);border:1.5px solid var(--faint);border-radius:22px;padding:18px;position:relative;overflow:hidden}
+.cal-panel::before{content:"";position:absolute;top:-30%;right:-10%;width:60%;height:70%;background:radial-gradient(closest-side,rgba(245,212,0,.09),transparent);pointer-events:none}
+.cal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative}
+.cal-title{text-align:center;flex:1;min-width:0}
+.cal-title h3{font-family:'Anton','Impact',sans-serif;font-weight:400;font-size:clamp(30px,5vw,44px);margin:0;text-transform:uppercase;line-height:1;letter-spacing:.01em}
+.cal-title p{margin:6px 0 0;font-size:14px;color:var(--dim)}
+.cal-nav{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--faint);background:#000;color:var(--white);display:grid;place-items:center;cursor:pointer;flex:none;padding:0}
+.cal-nav:disabled{opacity:.25;cursor:default}
+.cal-nav:focus-visible,.cal-f:focus-visible,.cal-x:focus-visible,.cal-rc:focus-visible,.cal-nm:focus-visible,.cal-btn:focus-visible{outline:3px solid var(--white);outline-offset:2px}
+.cal-nav svg{width:18px;height:18px}
+.cal-filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;position:relative}
+.cal-f{font:inherit;font-size:14px;font-weight:700;padding:8px 14px;border-radius:999px;border:1.5px solid var(--faint);background:transparent;color:var(--dim);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.cal-f b{font-size:12px;background:rgba(255,255,255,.14);color:var(--white);border-radius:999px;padding:1px 8px}
+.cal-f[aria-pressed="true"]{background:var(--white);border-color:var(--white);color:#000}
+.cal-f[aria-pressed="true"] b{background:#000;color:#fff}
+.cal-keys{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;position:relative}
+.cal-keys[hidden]{display:none}
+.cal-chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:6px 11px;border-radius:999px;border:1.5px solid var(--c);color:var(--c);background:rgba(0,0,0,.35);white-space:nowrap}
+.cal-chip.solid{background:var(--c);color:#000}
+.cal-chipkey{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px;font-size:12px;color:var(--dim);position:relative}
+.cal-dow,.cal-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;position:relative}
+.cal-dow{margin-top:14px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-align:center;font-weight:700}
+.cal-day{min-height:118px;background:#0d0d0d;border:1px solid var(--faint);border-radius:14px;padding:8px;display:flex;flex-direction:column;gap:6px;min-width:0;overflow:hidden}
+.cal-day.out{opacity:.3}
+.cal-day.bf{background:rgba(255,154,60,.07);border-color:rgba(255,154,60,.35)}
+.cal-day.today{border:2px solid var(--yellow)}
+.cal-dn{display:flex;align-items:center;justify-content:space-between;gap:4px;min-width:0}
+.cal-dn>span{font-size:16px;font-weight:800;color:var(--white)}
+.cal-hoy{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--yellow);color:#000;border-radius:999px;padding:2px 7px}
+.cal-kp{font-style:normal;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;background:var(--c);color:#000;border-radius:999px;padding:2px 7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;max-width:100%}
+
+/* Chips de día: un RP por cada día de grabación */
+.cal-rcs{display:flex;flex-direction:column;gap:4px;min-width:0}
+.cal-rc{font:inherit;font-size:11.5px;font-weight:700;text-align:left;border-radius:7px;border:1px solid var(--c);background:var(--t);color:var(--white);padding:3px 6px;cursor:pointer;width:100%;min-width:0;line-height:1.3;display:block}
+.cal-rc span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cal-rc:hover{filter:brightness(1.25)}
+.cal-rc.cs-disp{color:var(--dim)}
+
+/* Fechas clave y listas */
+.cal-card-s{background:var(--cal-bg);border:1.5px solid var(--faint);border-radius:22px;padding:18px}
+.cal-card-s h3{font-family:'Anton','Impact',sans-serif;font-weight:400;font-size:26px;text-transform:uppercase;margin:0 0 6px}
+.cal-keyd ul{list-style:none;margin:0;padding:0}
+.cal-keyd li{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;padding:11px 0;border-top:1px solid var(--faint);align-items:baseline}
+.cal-keyd li:first-of-type{border-top:0}
+.cal-keyd b{color:var(--yellow);font-size:14px;white-space:nowrap}
+.cal-keyd span{color:var(--white);font-size:15px}
+.cal-lists{display:flex;flex-direction:column;gap:12px}
+.cal-lists details summary{cursor:pointer;font-family:'Anton','Impact',sans-serif;text-transform:uppercase;font-size:22px;list-style:none;position:relative;padding-right:30px}
+.cal-lists details summary::-webkit-details-marker{display:none}
+.cal-lists details summary::after{content:"+";position:absolute;right:0;top:-2px;color:var(--yellow);font-size:26px;line-height:1}
+.cal-lists details[open] summary::after{content:"−"}
+.cal-tgs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:14px}
+.cal-tg h4{margin:0 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--yellow)}
+.cal-tg ul,.cal-pubs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.cal-pubs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 18px;margin-top:14px}
+.cal-nm{font:inherit;font-size:15px;color:var(--white);background:none;border:0;padding:4px 0;cursor:pointer;text-align:left}
+.cal-nm:hover{color:var(--yellow)}
+.cal-pubs .cal-nm{color:var(--st-pub)}
+.cal-note{font-size:12px;color:var(--dim);margin:0;line-height:1.5}
+
+/* Modal de detalle */
+.cal-modal{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.66);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:grid;place-items:center;padding:16px}
+.cal-modal[hidden]{display:none}
+.cal-sheet{width:min(560px,100%);max-height:calc(100vh - 32px);overflow:auto;background:linear-gradient(180deg,#1c1c1c,#111);border:1px solid rgba(255,255,255,.16);border-radius:22px;padding:22px;box-shadow:0 30px 80px rgba(0,0,0,.6);color:var(--white)}
+.cal-mtop{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.cal-x{margin-left:auto;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--faint);background:transparent;color:var(--white);font-size:24px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0}
+.cal-pill{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:6px 11px;border-radius:999px;border:1.5px solid var(--c);color:var(--c);background:var(--t)}
+.cal-pill.ghost{--c:var(--dim);--t:transparent;border-color:var(--faint)}
+.cal-sheet h3{font-family:'Anton','Impact',sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(30px,6vw,40px);line-height:1.02;margin:18px 0 6px}
+.cal-msub{margin:0;color:var(--dim);font-size:15px}
+.cal-sec{border-top:1px solid var(--faint);margin-top:18px;padding-top:16px}
+.cal-sec h4{margin:0 0 8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:700}
+.cal-sec p{margin:0;font-size:16px;line-height:1.5}
+.cal-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.cal-btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 20px;border-radius:999px;border:1.5px solid var(--white);color:var(--white);background:transparent;font:inherit;font-weight:800;font-size:14px;letter-spacing:.02em;text-decoration:none;cursor:pointer}
+.cal-btn:hover{border-color:var(--yellow);color:var(--yellow)}
+.cal-btn.solid{background:var(--yellow);border-color:var(--yellow);color:#000}
+.cal-btn.solid:hover{color:#000;filter:brightness(1.08)}
+.cal-btn[aria-disabled="true"]{opacity:.35;pointer-events:none}
+.cal-tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.cal-tl li{display:grid;grid-template-columns:12px 1fr;gap:12px;align-items:start;font-size:15px;line-height:1.4}
+.cal-tl li i{width:10px;height:10px;border-radius:50%;background:var(--c);margin-top:5px}
+.cal-tl b{display:block;color:var(--yellow);font-size:13px;letter-spacing:.02em}
+.cal-mfoot{margin:20px 0 0;font-size:12px;color:var(--dim)}
+
+@media (max-width:900px){
+ .cal-tgs{grid-template-columns:1fr 1fr}
+ .cal-pubs{grid-template-columns:1fr 1fr}
+ .cal-day{min-height:96px}
+}
+@media (max-width:520px){
+ .cal-ring{width:138px;height:138px}
+ .cal-ring-c b{font-size:42px}
+ .cal-ring-c span{font-size:11px}
+ .cal-sum p{font-size:15px}
+ .cal-panel{padding:12px;border-radius:18px}
+ .cal-title h3{font-size:30px}
+ .cal-nav{width:38px;height:38px}
+ .cal-filters{flex-wrap:nowrap;overflow-x:auto;margin-inline:-4px;padding:2px 4px 4px;scrollbar-width:none}
+ .cal-f{flex:none;font-size:13px;padding:7px 11px}
+ .cal-keys{flex-wrap:nowrap;overflow-x:auto;margin-inline:-4px;padding:2px 4px 4px;scrollbar-width:none}
+ .cal-chip{font-size:10.5px;padding:5px 9px}
+ .cal-chipkey{font-size:11px;gap:4px 12px}
+ .cal-dow,.cal-days{gap:3px}
+ .cal-dow{margin-top:14px;font-size:10px;letter-spacing:.02em}
+ .cal-day{min-height:58px;padding:4px 3px;gap:4px;border-radius:10px}
+ .cal-dn>span{font-size:12px}
+ .cal-kp{display:none}
+ .cal-hoy{font-size:8px;padding:1px 4px}
+ .cal-rcs{flex-direction:row;flex-wrap:wrap;gap:3px}
+ .cal-rc{width:11px;height:11px;padding:0;border-radius:50%;background:var(--c);border-color:var(--c);font-size:0;flex:none}
+ .cal-rc span{display:none}
+ .cal-keyd li{grid-template-columns:1fr;gap:2px}
+ .cal-tgs,.cal-pubs{grid-template-columns:1fr}
+ .cal-card-s{padding:14px}
+ .cal-sheet{padding:18px}
+ .cal-btn{padding:10px 16px;font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){#tab-calendario *{transition:none!important;animation:none!important}}
+
+/* Pestañas en celular: que el nombre quepa completo */
+@media (max-width:520px){.tabs{gap:4px!important}.tabs .tabbtn{padding:6px 1px!important}.tabs .tabbtn b{font-size:clamp(9.5px,2.75vw,13px)!important;letter-spacing:-.03em;overflow:hidden;text-overflow:ellipsis}}
+
+/* Sin día elegido (respondió el formulario) y botón Ver más por día */
+#tab-calendario .cal-rc.cs-sin{background:transparent;border-style:dashed;color:var(--dim)}
+#tab-calendario .cal-more{font:inherit;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--yellow,#f5d400);background:none;border:0;padding:2px 2px 0;cursor:pointer;text-align:left;width:100%}
+#tab-calendario .cal-more:hover{text-decoration:underline}
+#tab-calendario .cal-more:focus-visible{outline:3px solid var(--white);outline-offset:2px}
+@media (max-width:520px){#tab-calendario .cal-rc.cs-sin{border-width:1.5px}#tab-calendario .cal-more{width:auto;font-size:9.5px;padding:0 2px}}
+
+/* Vista general: conteo por día + lista del día seleccionado */
+#tab-calendario .cal-cnts{display:flex;flex-wrap:wrap;gap:4px;margin-top:auto;min-width:0}
+#tab-calendario .cal-cnt{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:800;color:var(--c);background:var(--t);border:1px solid var(--c);border-radius:999px;padding:2px 8px 2px 6px;line-height:1.4}
+#tab-calendario .cal-cnt i{width:7px;height:7px;border-radius:50%;background:var(--c);flex:none}
+#tab-calendario .cal-cnt.cs-sin{background:transparent;border-style:dashed}
+#tab-calendario .cal-day[data-day]{cursor:pointer}
+#tab-calendario .cal-day[data-day]:hover{border-color:rgba(255,255,255,.28)}
+#tab-calendario .cal-day.sel{box-shadow:inset 0 0 0 2px var(--white)}
+#tab-calendario .cal-day:focus-visible{outline:3px solid var(--white);outline-offset:2px}
+#tab-calendario .cal-dayp{margin-top:16px}
+#tab-calendario .cal-dayp h3{margin:0 0 4px}
+#tab-calendario .cal-dp-c{margin:0 0 6px;color:var(--dim);font-size:14px}
+#tab-calendario .cal-dp-row{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;background:none;border:0;border-bottom:1px solid rgba(255,255,255,.08);padding:11px 2px;color:var(--white);font:inherit;font-size:14px;text-align:left;cursor:pointer}
+#tab-calendario .cal-dp-row:last-of-type{border-bottom:0}
+#tab-calendario .cal-dp-row:hover .cal-dp-n{text-decoration:underline}
+#tab-calendario .cal-dp-n{font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#tab-calendario .cal-dp-st{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--c);white-space:nowrap;flex:none}
+#tab-calendario .cal-dp-list .cal-more{margin-top:10px}
+@media (max-width:520px){#tab-calendario .cal-cnt{font-size:10.5px;padding:1px 5px 1px 4px;gap:3px}#tab-calendario .cal-cnt i{width:5px;height:5px}#tab-calendario .cal-dp-row{font-size:13px}#tab-calendario .cal-dp-st{font-size:10px}}
+
+/* Márgenes: barra de pestañas en tabletas (900–1199 px) sin desbordar */
+@media (min-width:900px) and (max-width:1199px){.tabs{grid-template-columns:repeat(5,minmax(0,1fr))!important}}
+
+/* Hero: resumen en timeline + cuenta regresiva en días (estilo flip) */
+#tab-calendario .cal-tl2{list-style:none;margin:0;padding:0 0 0 22px;position:relative;display:flex;flex-direction:column;gap:14px}
+#tab-calendario .cal-tl2::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:rgba(255,255,255,.14)}
+#tab-calendario .cal-tl2 li{position:relative;display:flex;flex-direction:column;gap:2px}
+#tab-calendario .cal-tl2 li::before{content:"";position:absolute;left:-22px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--white);box-shadow:0 0 0 3px #0d0d0d}
+#tab-calendario .cal-tl2 li:nth-child(2)::before,#tab-calendario .cal-tl2 li:nth-child(3)::before{background:var(--yellow,#f5d400)}
+#tab-calendario .cal-tl2 b{color:var(--yellow,#f5d400);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+#tab-calendario .cal-tl2 li:first-child b{color:var(--white)}
+#tab-calendario .cal-tl2 span{color:var(--dim);font-size:15px;line-height:1.5}
+#tab-calendario .cal-tl2 span b{color:var(--white);font-size:inherit;letter-spacing:0;text-transform:none}
+#tab-calendario .cal-count{display:flex;flex-direction:column;align-items:center;gap:12px;flex:none}
+#tab-calendario .cal-flips{display:flex;gap:10px}
+#tab-calendario .cal-flip{position:relative;width:clamp(72px,8vw,92px);height:clamp(100px,11vw,124px);border-radius:14px;background:#111;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+#tab-calendario .cal-flip span{font-family:var(--bodyf,'Hanken Grotesk',Arial,sans-serif);font-weight:700;font-size:clamp(64px,7.5vw,88px);line-height:1;color:#b8b8b8;font-variant-numeric:tabular-nums}
+#tab-calendario .cal-flip::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:#050505;transform:translateY(-1px)}
+#tab-calendario .cal-count p{margin:0;font-size:13px;color:var(--dim);text-align:center;max-width:200px;line-height:1.4}
+@media (max-width:520px){#tab-calendario .cal-count{width:100%}#tab-calendario .cal-flip{width:72px;height:100px}#tab-calendario .cal-flip span{font-size:64px}}
+
+/* Hero: título a la izquierda y cuenta regresiva a la derecha; ring + resumen debajo */
+#tab-calendario .cal-hero-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px 40px;flex-wrap:wrap}
+#tab-calendario .cal-top{gap:36px}
+#tab-calendario .cal-sum{max-width:560px}
+#tab-calendario .cal-count{align-items:center;gap:14px}
+#tab-calendario .cal-count p{max-width:210px}
 </style>
 <script>var PREMIOS_B64="PCFkb2N0eXBlIGh0bWw+CjxodG1sIGxhbmc9ImVzIj48aGVhZD48bWV0YSBjaGFyc2V0PSJ1dGYtOCI+Cjx0aXRsZT5QcmVtaW9zIENhcnJlcmEgSGFuZ2FyPC90aXRsZT4KPG1ldGEgbmFtZT0iY2xhdWRlOnZpZXdwb3J0LWZpdC1zaWRlcyIgY29udGVudD0iY292ZXIiPgo8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLGluaXRpYWwtc2NhbGU9MSx2aWV3cG9ydC1maXQ9Y292ZXIiPgo8c3R5bGU+Cjpyb290ey0taW5rOiMwMDA7LS1wYW5lbDojMTExOy0tY2FyZDpyZ2JhKDIzLDIzLDIzLC42KTstLWxpbmU6I2ZmZmZmZjIyOy0teTojRjRBRjAwOy0tdzojZmZmOy0tbXV0OiNiOWI5Yjk7LS1kOiJCZWJhcyBOZXVlIiwiQmViYXMgTmV1ZSBQcm8iLEltcGFjdCxzYW5zLXNlcmlmOy0tczotYXBwbGUtc3lzdGVtLEJsaW5rTWFjU3lzdGVtRm9udCwiU0YgUHJvIERpc3BsYXkiLCJTRiBQcm8gVGV4dCIsIkhlbHZldGljYSBOZXVlIixBcmlhbCxzYW5zLXNlcmlmO2NvbG9yLXNjaGVtZTpkYXJrfQoqe2JveC1zaXppbmc6Ym9yZGVyLWJveH0KYm9keXttYXJnaW46MDtiYWNrZ3JvdW5kOnZhcigtLWluayk7Y29sb3I6dmFyKC0tdyk7Zm9udC1mYW1pbHk6dmFyKC0tcyk7cGFkZGluZy10b3A6MjBweDtwYWRkaW5nLWJvdHRvbToyMHB4Oy13ZWJraXQtZm9udC1zbW9vdGhpbmc6YW50aWFsaWFzZWR9Ci55ZWx7YmFja2dyb3VuZDp2YXIoLS15KTtjb2xvcjojMDAwO3BhZGRpbmctbGVmdDptYXgoMTZweCxlbnYoc2FmZS1hcmVhLWluc2V0LWxlZnQsMHB4KSk7cGFkZGluZy1yaWdodDptYXgoMTZweCxlbnYoc2FmZS1hcmVhLWluc2V0LXJpZ2h0LDBweCkpfQoueWVsPi53cmFwe3BhZGRpbmctbGVmdDowO3BhZGRpbmctcmlnaHQ6MH0KLndyYXB7cGFkZGluZy1sZWZ0Om1heCgxNnB4LGVudihzYWZlLWFyZWEtaW5zZXQtbGVmdCwwcHgpKTtwYWRkaW5nLXJpZ2h0Om1heCgxNnB4LGVudihzYWZlLWFyZWEtaW5zZXQtcmlnaHQsMHB4KSl9Ci53cmFwe21heC13aWR0aDoxMTgwcHg7bWFyZ2luOjAgYXV0b30KLnNlY3twYWRkaW5nOjM2cHggMDtib3JkZXItdG9wOjFweCBzb2xpZCAjZmZmZmZmMTR9Ci55ZWwgLnNlY3tib3JkZXItdG9wOjB9Ci5zZWM6Zmlyc3Qtb2YtdHlwZXtib3JkZXItdG9wOjB9Ci50b3B7ZGlzcGxheTpmbGV4O2p1c3RpZnktY29udGVudDpzcGFjZS1iZXR3ZWVuO2FsaWduLWl0ZW1zOmNlbnRlcjtnYXA6MTZweDtmbGV4LXdyYXA6d3JhcH0KLmJyYW5kIHN2Z3toZWlnaHQ6NTJweDt3aWR0aDphdXRvO2Rpc3BsYXk6YmxvY2t9Ci5kYXRle2ZvbnQtZmFtaWx5OnZhcigtLXMpO2ZvbnQtd2VpZ2h0OjcwMDtmb250LXNpemU6MTNweDtsZXR0ZXItc3BhY2luZzouMDhlbTtjb2xvcjp2YXIoLS15KTt0ZXh0LXRyYW5zZm9ybTp1cHBlcmNhc2V9Ci5leWVicm93e2ZvbnQtc2l6ZToxMnB4O2xldHRlci1zcGFjaW5nOi4xNGVtO2ZvbnQtd2VpZ2h0OjcwMDtjb2xvcjp2YXIoLS15KTt0ZXh0LXRyYW5zZm9ybTp1cHBlcmNhc2U7bWFyZ2luOjAgMCAxMnB4fQpoMSxoMixoM3tmb250LWZhbWlseTp2YXIoLS1kKTtmb250LXdlaWdodDo0MDA7bGV0dGVyLXNwYWNpbmc6LjAxZW07bGluZS1oZWlnaHQ6Ljk1O21hcmdpbjowO3RleHQtd3JhcDpiYWxhbmNlfQpoMXtmb250LXNpemU6Y2xhbXAoNDhweCw4dncsOTZweCk7bWFyZ2luLXRvcDowfQpoMSBzcGFue2NvbG9yOnZhcigtLXkpfQpoMntmb250LXNpemU6Y2xhbXAoNDBweCw2dncsNzZweCl9CmgyIHNwYW57Y29sb3I6dmFyKC0teSl9Ci5sZWFke2ZvbnQtc2l6ZTpjbGFtcCgxNnB4LDEuN3Z3LDE5cHgpO2xpbmUtaGVpZ2h0OjEuNTtjb2xvcjp2YXIoLS1tdXQpO21heC13aWR0aDo1NjBweDttYXJnaW46MTRweCAwIDB9Ci5sZWFkIGJ7Y29sb3I6dmFyKC0tdyk7Zm9udC13ZWlnaHQ6NzAwfQouc3RhdHN7ZGlzcGxheTpncmlkO2dyaWQtdGVtcGxhdGUtY29sdW1uczpyZXBlYXQoYXV0by1maXQsbWlubWF4KG1pbigxMDAlLDI0MHB4KSwxZnIpKTtnYXA6MTJweDttYXJnaW4tdG9wOjM0cHg7bWF4LXdpZHRoOjcyMHB4fQoucGFuZWx7YmFja2dyb3VuZDp2YXIoLS1jYXJkKTtib3JkZXI6MXB4IHNvbGlkIHZhcigtLWxpbmUpO2JvcmRlci1yYWRpdXM6MjRweDtwYWRkaW5nOjIycHggMjRweH0KLnN0YXQgLm57Zm9udC1mYW1pbHk6dmFyKC0tZCk7Zm9udC1zaXplOmNsYW1wKDQ0cHgsNnZ3LDcycHgpO2xpbmUtaGVpZ2h0OjE7Y29sb3I6dmFyKC0teSk7b3ZlcmZsb3ctd3JhcDphbnl3aGVyZX0KI2Nke2ZvbnQtc2l6ZTpjbGFtcCgyNnB4LDMuNHZ3LDQwcHgpfQouc3RhdCAubHtmb250LXNpemU6MTNweDtjb2xvcjp2YXIoLS1tdXQpO21hcmdpbi10b3A6OHB4fQouYmFkZ2V7ZGlzcGxheTppbmxpbmUtZmxleDthbGlnbi1pdGVtczpjZW50ZXI7Z2FwOjE0cHg7bWFyZ2luLXRvcDoxNnB4O2JhY2tncm91bmQ6dmFyKC0teSk7Y29sb3I6IzAwMDtib3JkZXItcmFkaXVzOjk5OXB4O3BhZGRpbmc6MTJweCAyMnB4fQouYmFkZ2UgYntmb250LWZhbWlseTp2YXIoLS1kKTtmb250LXdlaWdodDo0MDA7Zm9udC1zaXplOjMycHg7bGluZS1oZWlnaHQ6MTt3aGl0ZS1zcGFjZTpub3dyYXB9Ci5iYWRnZSBzcGFue2ZvbnQtc2l6ZToxM3B4O2ZvbnQtd2VpZ2h0OjcwMDtsZXR0ZXItc3BhY2luZzouMDZlbTt0ZXh0LXRyYW5zZm9ybTp1cHBlcmNhc2U7d2hpdGUtc3BhY2U6bm93cmFwfQouY2FyZHN7ZGlzcGxheTpncmlkO2dyaWQtdGVtcGxhdGUtY29sdW1uczpyZXBlYXQoYXV0by1maXQsbWlubWF4KDI0MHB4LDFmcikpO2dhcDoxNHB4O21hcmdpbi10b3A6MjRweH0KLmNhcmQgLnBse2ZvbnQtc2l6ZToxM3B4O2ZvbnQtd2VpZ2h0OjcwMDtsZXR0ZXItc3BhY2luZzouMTJlbTt0ZXh0LXRyYW5zZm9ybTp1cHBlcmNhc2U7Y29sb3I6dmFyKC0teSl9Ci5jYXJkIC5hbXR7Zm9udC1mYW1pbHk6dmFyKC0tZCk7Zm9udC1zaXplOmNsYW1wKDcycHgsOXZ3LDEwNHB4KTtsaW5lLWhlaWdodDouOTU7bWFyZ2luLXRvcDoxMHB4fQouY2FyZCAuY2Fwe2ZvbnQtc2l6ZToxNXB4O2NvbG9yOnZhcigtLW11dCk7bWFyZ2luLXRvcDoxMnB4O2xpbmUtaGVpZ2h0OjEuNDV9Ci50b3R7ZGlzcGxheTpncmlkO2dyaWQtdGVtcGxhdGUtY29sdW1uczpyZXBlYXQoYXV0by1maXQsbWlubWF4KDIyMHB4LDFmcikpO2dhcDoyNHB4O21hcmdpbi10b3A6MjRweDtib3JkZXItdG9wOjFweCBzb2xpZCB2YXIoLS1saW5lKTtwYWRkaW5nLXRvcDoyMHB4fQoudG90IGgze2ZvbnQtZmFtaWx5OnZhcigtLXMpO2ZvbnQtd2VpZ2h0OjcwMDtmb250LXNpemU6MjBweDtsaW5lLWhlaWdodDoxLjI7bGV0dGVyLXNwYWNpbmc6MDttYXJnaW4tYm90dG9tOjhweH0KLnRvdCBwe2ZvbnQtc2l6ZToxNXB4O2xpbmUtaGVpZ2h0OjEuNTU7Y29sb3I6dmFyKC0tbXV0KTttYXJnaW46MH0KLnllbCAuZXllYnJvd3tjb2xvcjojMDAwfQoueWVsIGgyIHNwYW57Y29sb3I6IzAwMH0KLnJ1bGVze2Rpc3BsYXk6Z3JpZDtncmlkLXRlbXBsYXRlLWNvbHVtbnM6cmVwZWF0KGF1dG8tZml0LG1pbm1heCgyODBweCwxZnIpKTtnYXA6MTZweCA0OHB4O21hcmdpbi10b3A6MjRweH0KLnJ1bGV7Zm9udC1zaXplOjE4cHg7bGluZS1oZWlnaHQ6MS41O2Rpc3BsYXk6ZmxleDtnYXA6MTJweDtmb250LXdlaWdodDo1MDB9Ci5ydWxlOmJlZm9yZXtjb250ZW50OiJcMjcwNSI7Zm9udC1zaXplOi45ZW07ZmxleDpub25lfQoucnVsZSBie2ZvbnQtd2VpZ2h0OjgwMH0KLmN0YXttYXJnaW4tdG9wOjI4cHg7YmFja2dyb3VuZDojMDAwO2NvbG9yOiNmZmY7Ym9yZGVyLXJhZGl1czoyNHB4O3BhZGRpbmc6MzBweCAzMnB4O2Rpc3BsYXk6ZmxleDtqdXN0aWZ5LWNvbnRlbnQ6c3BhY2UtYmV0d2VlbjthbGlnbi1pdGVtczpjZW50ZXI7Z2FwOjIwcHg7ZmxleC13cmFwOndyYXB9Ci5jdGEgaDN7Zm9udC1mYW1pbHk6dmFyKC0tZCk7Zm9udC13ZWlnaHQ6NDAwO2ZvbnQtc2l6ZTpjbGFtcCg0MHB4LDV2dyw2MHB4KTtsaW5lLWhlaWdodDoxfQouY3RhIHB7Zm9udC1zaXplOjE2cHg7Y29sb3I6dmFyKC0tbXV0KTttYXJnaW46MTBweCAwIDB9Ci5jdGEgcCBie2NvbG9yOnZhcigtLXkpfQouaGFzaHtiYWNrZ3JvdW5kOnZhcigtLXkpO2NvbG9yOiMwMDA7Ym9yZGVyLXJhZGl1czo5OTlweDtwYWRkaW5nOjE0cHggMjhweDtmb250LWZhbWlseTp2YXIoLS1kKTtmb250LXNpemU6MjhweDtsaW5lLWhlaWdodDoxO3doaXRlLXNwYWNlOm5vd3JhcH0KLmhyb3d7ZGlzcGxheTpmbGV4O2ZsZXgtd3JhcDp3cmFwO2dhcDoxMnB4O21hcmdpbi10b3A6MjBweDthbGlnbi1pdGVtczpzdHJldGNofQouaHJvdz4uc3RhdHtmbGV4OjAgMCBhdXRvO21pbi13aWR0aDoxNTBweDtkaXNwbGF5OmZsZXg7ZmxleC1kaXJlY3Rpb246Y29sdW1uO2p1c3RpZnktY29udGVudDpjZW50ZXJ9Ci5ocm93Pi5jZHB7ZmxleDoxIDEgMzgwcHg7bWF4LXdpZHRoOjU2MHB4fQouY2Roe2Rpc3BsYXk6ZmxleDtqdXN0aWZ5LWNvbnRlbnQ6c3BhY2UtYmV0d2VlbjthbGlnbi1pdGVtczpjZW50ZXI7Z2FwOjEycHg7ZmxleC13cmFwOndyYXA7Zm9udC1zaXplOjEycHg7bGV0dGVyLXNwYWNpbmc6LjA4ZW07Y29sb3I6I2JiYjt0ZXh0LXRyYW5zZm9ybTp1cHBlcmNhc2V9Ci5jZGggc3Ryb25ne2ZvbnQtZmFtaWx5OnZhcigtLWQpO2ZvbnQtd2VpZ2h0OjQwMDtmb250LXNpemU6MzBweDtjb2xvcjp2YXIoLS15KTtsZXR0ZXItc3BhY2luZzouMDFlbTt0ZXh0LXRyYW5zZm9ybTpub25lfQouY2R7ZGlzcGxheTpncmlkO2dyaWQtdGVtcGxhdGUtY29sdW1uczpyZXBlYXQoNCxtaW5tYXgoMCwxZnIpKTtnYXA6OHB4O21hcmdpbi10b3A6MTRweH0KLmNkIC51e21pbi13aWR0aDowO3RleHQtYWxpZ246Y2VudGVyO3BhZGRpbmc6MTJweCAzcHggOHB4O2JvcmRlcjoxcHggc29saWQgI2ZmZmZmZjA5O2JvcmRlci1yYWRpdXM6MTBweDtiYWNrZ3JvdW5kOmxpbmVhci1ncmFkaWVudCgjMTcxNzE3IDQ5LjMlLCMwMzAzMDMgNDkuNSUsIzAzMDMwMyA1MSUsIzEwMTAxMCA1MS4yJSl9Ci5jZCAudSBie2Rpc3BsYXk6YmxvY2s7Zm9udC1mYW1pbHk6dmFyKC0tZCk7Zm9udC13ZWlnaHQ6NDAwO2ZvbnQtc2l6ZTpjbGFtcCgzNHB4LDExY3FpLDU2cHgpO2xpbmUtaGVpZ2h0OjE7Zm9udC12YXJpYW50LW51bWVyaWM6dGFidWxhci1udW1zO2NvbG9yOiNlNGU0ZTQ7bGV0dGVyLXNwYWNpbmc6LS4wNGVtfQouY2QgLnUgc21hbGx7ZGlzcGxheTpibG9jaztmb250LXNpemU6MTBweDtsZXR0ZXItc3BhY2luZzouMDhlbTtjb2xvcjp2YXIoLS1tdXQpO2ZvbnQtd2VpZ2h0OjcwMDttYXJnaW4tdG9wOjhweH0KLmNkbntmb250LXNpemU6MTNweDtjb2xvcjojYWFhO21hcmdpbjoxNHB4IDAgMH0KLmNkcHtjb250YWluZXItdHlwZTppbmxpbmUtc2l6ZX0KLmNhcmR7dHJhbnNpdGlvbjp0cmFuc2Zvcm0gLjI1cyBlYXNlLGJvcmRlci1jb2xvciAuMjVzIGVhc2V9Ci5jYXJkOmhvdmVye3RyYW5zZm9ybTp0cmFuc2xhdGVZKC00cHgpO2JvcmRlci1jb2xvcjojRjRBRjAwOTl9Ci5jYXJkLmZpcnN0e2JvcmRlci1jb2xvcjojRjRBRjAwNjY7YW5pbWF0aW9uOmdsb3cgMi44cyBlYXNlLWluLW91dCBpbmZpbml0ZX0KQGtleWZyYW1lcyBnbG93ezAlLDEwMCV7Ym94LXNoYWRvdzowIDAgMCAwICNGNEFGMDAwMH01MCV7Ym94LXNoYWRvdzowIDAgMzhweCAwICNGNEFGMDAzM319Ci5jYXJkLnBvcHthbmltYXRpb246cG9wIC43cyBjdWJpYy1iZXppZXIoLjIsLjksLjMsMS4yKSBib3RofQouY2FyZC5maXJzdC5wb3B7YW5pbWF0aW9uOnBvcCAuN3MgY3ViaWMtYmV6aWVyKC4yLC45LC4zLDEuMikgYm90aCxnbG93IDIuOHMgZWFzZS1pbi1vdXQgLjhzIGluZmluaXRlfQpAa2V5ZnJhbWVzIHBvcHswJXt0cmFuc2Zvcm06dHJhbnNsYXRlWSgyNnB4KSBzY2FsZSguOTYpfTEwMCV7dHJhbnNmb3JtOm5vbmV9fQpAbWVkaWEgKHByZWZlcnMtcmVkdWNlZC1tb3Rpb246cmVkdWNlKXsuY2FyZCwuY2FyZC5maXJzdCwuY2FyZC5wb3B7YW5pbWF0aW9uOm5vbmUhaW1wb3J0YW50O3RyYW5zaXRpb246bm9uZX19Ci5wcmVte3Bvc2l0aW9uOnJlbGF0aXZlO292ZXJmbG93OmhpZGRlbn0KLnByZW0+Kjpub3QoLnZpZXdzKXtwb3NpdGlvbjpyZWxhdGl2ZTt6LWluZGV4OjF9Ci52aWV3c3twb3NpdGlvbjphYnNvbHV0ZTtpbnNldDowO3BvaW50ZXItZXZlbnRzOm5vbmU7ei1pbmRleDowO292ZXJmbG93OmhpZGRlbn0KLnZ3e3Bvc2l0aW9uOmFic29sdXRlO2Rpc3BsYXk6aW5saW5lLWZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2dhcDo2cHg7cGFkZGluZzo2cHggMTJweDtib3JkZXItcmFkaXVzOjk5OXB4O2ZvbnQtc2l6ZToxM3B4O2ZvbnQtd2VpZ2h0OjcwMDtsZXR0ZXItc3BhY2luZzouMDJlbTtiYWNrZ3JvdW5kOiNGNEFGMDAyMjtib3JkZXI6MXB4IHNvbGlkICNGNEFGMDA2Njtjb2xvcjojRjRBRjAwO3doaXRlLXNwYWNlOm5vd3JhcDtvcGFjaXR5OjA7d2lsbC1jaGFuZ2U6dHJhbnNmb3JtLG9wYWNpdHl9Ci52dy53e2JhY2tncm91bmQ6I2ZmZmZmZjE0O2JvcmRlci1jb2xvcjojZmZmZmZmMzM7Y29sb3I6I2ZmZn0KLnZ3IHN2Z3t3aWR0aDoxNHB4O2hlaWdodDoxNHB4fQpAbWVkaWEgKHByZWZlcnMtcmVkdWNlZC1tb3Rpb246cmVkdWNlKXsudmlld3N7ZGlzcGxheTpub25lfX0KQG1lZGlhIChtYXgtd2lkdGg6NjAwcHgpewouc2Vje3BhZGRpbmc6MjZweCAwfQpoMXtmb250LXNpemU6Y2xhbXAoNDRweCwxM3Z3LDYwcHgpfQpoMntmb250LXNpemU6Y2xhbXAoMzZweCwxMXZ3LDQ4cHgpfQouaHJvd3ttYXJnaW4tdG9wOjE2cHh9Ci5ocm93Pi5zdGF0e2ZsZXg6MSAxIDEwMCU7ZmxleC1kaXJlY3Rpb246cm93O2FsaWduLWl0ZW1zOmJhc2VsaW5lO2p1c3RpZnktY29udGVudDpmbGV4LXN0YXJ0O2dhcDoxMnB4O3BhZGRpbmc6MTJweCAxOHB4O2JvcmRlci1yYWRpdXM6MThweDttaW4td2lkdGg6MDtvcmRlcjoyfQouaHJvdz4uc3RhdCAubntmb250LXNpemU6MzRweH0KLmhyb3c+LnN0YXQgLmx7bWFyZ2luLXRvcDowfQouaHJvdz4uY2Rwe29yZGVyOjE7ZmxleDoxIDEgMTAwJTtwYWRkaW5nOjE4cHh9Ci5jZGggc3Ryb25ne2ZvbnQtc2l6ZToyNnB4fQouY2FyZHN7Z2FwOjEwcHh9Ci5jYXJke2Rpc3BsYXk6Z3JpZDtncmlkLXRlbXBsYXRlLWNvbHVtbnM6MWZyIGF1dG87Z3JpZC10ZW1wbGF0ZS1hcmVhczoicGwgYW10IiAiY2FwIGFtdCI7YWxpZ24taXRlbXM6Y2VudGVyO2NvbHVtbi1nYXA6MTBweDtwYWRkaW5nOjE2cHggMThweDtib3JkZXItcmFkaXVzOjIwcHh9Ci5jYXJkIC5wbHtncmlkLWFyZWE6cGw7YWxpZ24tc2VsZjplbmR9Ci5jYXJkIC5jYXB7Z3JpZC1hcmVhOmNhcDttYXJnaW46NHB4IDAgMDtmb250LXNpemU6MTNweDthbGlnbi1zZWxmOnN0YXJ0fQouY2FyZCAuYW10e2dyaWQtYXJlYTphbXQ7Zm9udC1zaXplOjU0cHg7bWFyZ2luOjA7dGV4dC1hbGlnbjpyaWdodH0KLnRvdHtnYXA6MTZweH0KLnJ1bGV7Zm9udC1zaXplOjE2cHh9Ci5jdGF7cGFkZGluZzoyMnB4IDIwcHg7Ym9yZGVyLXJhZGl1czoyMHB4fQouaGFzaHtwYWRkaW5nOjEycHggMjJweDtmb250LXNpemU6MjRweH0KLmJhZGdlIGJ7Zm9udC1zaXplOjI2cHh9LmJhZGdlIHNwYW57Zm9udC1zaXplOjExcHh9CmJvZHl7cGFkZGluZy1ib3R0b206NjRweH0KLm1pbml7ZGlzcGxheTpmbGV4fQp9Ci5taW5pe2Rpc3BsYXk6bm9uZTtwb3NpdGlvbjpmaXhlZDtsZWZ0OjA7cmlnaHQ6MDtib3R0b206MDt6LWluZGV4OjUwO2p1c3RpZnktY29udGVudDpjZW50ZXI7YWxpZ24taXRlbXM6Y2VudGVyO2dhcDoxMHB4O3BhZGRpbmc6MTBweCAxNnB4IGNhbGMoMTBweCArIGVudihzYWZlLWFyZWEtaW5zZXQtYm90dG9tLDBweCkpO2JhY2tncm91bmQ6IzExMTtib3JkZXItdG9wOjFweCBzb2xpZCAjRjRBRjAwNjY7Zm9udC1zaXplOjEzcHg7Y29sb3I6I2JiYjt0cmFuc2Zvcm06dHJhbnNsYXRlWSgxMTAlKTt0cmFuc2l0aW9uOnRyYW5zZm9ybSAuM3MgZWFzZX0KLm1pbmkub257dHJhbnNmb3JtOm5vbmV9Ci5taW5pIGJ7Zm9udC1mYW1pbHk6dmFyKC0tZCk7Zm9udC13ZWlnaHQ6NDAwO2ZvbnQtc2l6ZToyNHB4O2NvbG9yOnZhcigtLXkpO2xldHRlci1zcGFjaW5nOi4wMmVtfQpAbWVkaWEgKG1heC13aWR0aDo2MDBweCl7Lm1pbml7ZGlzcGxheTpmbGV4fX0KLmNvdmVye3dpZHRoOjEwMCU7aGVpZ2h0OmF1dG87ZGlzcGxheTpibG9jaztib3JkZXItcmFkaXVzOjE4cHg7YXNwZWN0LXJhdGlvOjgwMC8zMTc7b2JqZWN0LWZpdDpjb3Zlcn0KLmZvb3R7ZGlzcGxheTpmbGV4O2p1c3RpZnktY29udGVudDpzcGFjZS1iZXR3ZWVuO2FsaWduLWl0ZW1zOmNlbnRlcjtnYXA6MTJweDtmbGV4LXdyYXA6d3JhcDtjb2xvcjp2YXIoLS1tdXQpO2ZvbnQtc2l6ZToxM3B4O3BhZGRpbmctdG9wOjE4cHg7bWFyZ2luLXRvcDo4cHg7Ym9yZGVyLXRvcDoxcHggc29saWQgI2ZmZmZmZjE0fQouZm9vdCBhe2NvbG9yOnZhcigtLXcpO3RleHQtZGVjb3JhdGlvbjpub25lO2Rpc3BsYXk6aW5saW5lLWZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2dhcDoxMHB4O2ZvbnQtd2VpZ2h0OjYwMH0KLmZvb3QgYTpob3Zlcntjb2xvcjp2YXIoLS15KX0KYTpmb2N1cy12aXNpYmxle291dGxpbmU6MnB4IHNvbGlkIHZhcigtLXkpO291dGxpbmUtb2Zmc2V0OjNweH0KCi8qIC0tLS0gcmVzcG9uc2l2ZTogY3VhbHF1aWVyIHBhbnRhbGxhIC0tLS0gKi8KaHRtbHstd2Via2l0LXRleHQtc2l6ZS1hZGp1c3Q6MTAwJX0KaW1nLHN2Z3ttYXgtd2lkdGg6MTAwJX0KLnllbHtwYWRkaW5nLWxlZnQ6MDtwYWRkaW5nLXJpZ2h0OjB9Ci55ZWw+LndyYXB7cGFkZGluZy1sZWZ0Om1heCgxNnB4LGVudihzYWZlLWFyZWEtaW5zZXQtbGVmdCwwcHgpKTtwYWRkaW5nLXJpZ2h0Om1heCgxNnB4LGVudihzYWZlLWFyZWEtaW5zZXQtcmlnaHQsMHB4KSl9CkBtZWRpYSAobWluLXdpZHRoOjEwMDBweCl7CiAud3JhcHtwYWRkaW5nLWxlZnQ6MzJweDtwYWRkaW5nLXJpZ2h0OjMycHh9CiAueWVsPi53cmFwe3BhZGRpbmctbGVmdDozMnB4O3BhZGRpbmctcmlnaHQ6MzJweH0KIGgxe21heC13aWR0aDpub25lfQogLmxlYWR7bWF4LXdpZHRoOjc2MHB4fQogLmhyb3d7bWF4LXdpZHRoOm5vbmU7ZmxleC13cmFwOm5vd3JhcH0KIC5ocm93Pi5jZHB7ZmxleDoxIDEgYXV0bzttYXgtd2lkdGg6NjQwcHh9CiAuY292ZXJ7Ym9yZGVyLXJhZGl1czoyNHB4fQogLmNhcmRze2dhcDoyMHB4fQogLnBhbmVse3BhZGRpbmc6MjZweCAzMHB4fQogLnJ1bGVze2dyaWQtdGVtcGxhdGUtY29sdW1uczpyZXBlYXQoMywxZnIpO2dhcDoyMnB4IDQ4cHh9CiAudG90e2dhcDozNnB4fQp9CkBtZWRpYSAobWluLXdpZHRoOjE1MDBweCl7Ym9keXt6b29tOjEuMn19CkBtZWRpYSAobWluLXdpZHRoOjE4MDBweCl7Ym9keXt6b29tOjEuNH19CkBtZWRpYSAobWluLXdpZHRoOjIzMDBweCl7Ym9keXt6b29tOjEuODV9fQpAbWVkaWEgKG1pbi13aWR0aDozMDAwcHgpe2JvZHl7em9vbToyLjR9fQpAbWVkaWEgKG1pbi13aWR0aDozODAwcHgpe2JvZHl7em9vbTozLjJ9fQpAbWVkaWEgKG1heC13aWR0aDozODBweCl7CiAuYmFkZ2V7cGFkZGluZzoxMHB4IDE2cHg7Z2FwOjEwcHh9LmJhZGdlIGJ7Zm9udC1zaXplOjI0cHh9LmJhZGdlIHNwYW57Zm9udC1zaXplOjEwcHg7d2hpdGUtc3BhY2U6bm9ybWFsfQogLmNke2dhcDo1cHh9LmNkIC51IGJ7Zm9udC1zaXplOjMwcHh9CiAuY3Rhe3BhZGRpbmc6MThweCAxNnB4fS5oYXNoe2ZvbnQtc2l6ZToyMnB4O3BhZGRpbmc6MTBweCAxOHB4fQogLmNkaCBzdHJvbmd7Zm9udC1zaXplOjIycHh9Cn0KQG1lZGlhIChtaW4td2lkdGg6NjAxcHgpIGFuZCAobWF4LXdpZHRoOjk5OXB4KXsKIC5ocm93Pi5jZHB7bWF4LXdpZHRoOm5vbmV9CiAuY2FyZHN7Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOnJlcGVhdCgzLDFmcil9CiAuY2FyZCAuYW10e2ZvbnQtc2l6ZTpjbGFtcCg1MnB4LDl2dyw4NHB4KX0KfQpAbWVkaWEgKG9yaWVudGF0aW9uOmxhbmRzY2FwZSkgYW5kIChtYXgtaGVpZ2h0OjUwMHB4KXsubWluaXtkaXNwbGF5Om5vbmV9Ym9keXtwYWRkaW5nLWJvdHRvbToyMHB4fX0KQG1lZGlhIChtaW4td2lkdGg6NjAxcHgpey5jYXJke2NvbnRhaW5lci10eXBlOmlubGluZS1zaXplfS5jYXJkIC5hbXR7Zm9udC1zaXplOmNsYW1wKDQ4cHgsMjRjcWksMTA0cHgpIWltcG9ydGFudDt3aGl0ZS1zcGFjZTpub3dyYXB9fQpAbWVkaWEgKG1heC13aWR0aDozODBweCl7LmNhcmQgLmFtdHtmb250LXNpemU6NDJweCFpbXBvcnRhbnR9LmNhcmQgLmNhcHtmb250LXNpemU6MTJweH0ubWluaXtmb250LXNpemU6MTJweH0ubWluaSBie2ZvbnQtc2l6ZToyMHB4fX0KCi8qIC0tLS0gcHJvcG9yY2nDs24gZGUgbsO6bWVyb3MgeSBtZWRpZGFzIC0tLS0gKi8KOnJvb3R7LS1udW06Y2xhbXAoNDBweCw0LjZ2dyw2NHB4KTstLXBhZDpjbGFtcCgxNnB4LDEuNnZ3LDI2cHgpfQouaHJvd3tkaXNwbGF5OmdyaWQ7Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOmF1dG8gbWlubWF4KDAsMWZyKTtnYXA6MTJweDthbGlnbi1pdGVtczpzdHJldGNoO21heC13aWR0aDo3NjBweDtmbGV4LXdyYXA6bm93cmFwfQouaHJvdz4uc3RhdHttaW4td2lkdGg6Y2xhbXAoMTIwcHgsMTV2dywxOTBweCk7cGFkZGluZzp2YXIoLS1wYWQpO2Rpc3BsYXk6ZmxleDtmbGV4LWRpcmVjdGlvbjpjb2x1bW47anVzdGlmeS1jb250ZW50OmNlbnRlcjthbGlnbi1pdGVtczpmbGV4LXN0YXJ0fQouaHJvdz4uc3RhdCAubntmb250LXNpemU6Y2FsYyh2YXIoLS1udW0pKjEuMzUpO2xpbmUtaGVpZ2h0Oi45fQouaHJvdz4uc3RhdCAubHtmb250LXNpemU6Y2xhbXAoMTJweCwxLjF2dywxNHB4KTttYXJnaW4tdG9wOjEwcHg7bGluZS1oZWlnaHQ6MS4zfQouaHJvdz4uY2Rwe21heC13aWR0aDpub25lO2ZsZXg6bm9uZTtwYWRkaW5nOnZhcigtLXBhZCl9Ci5jZCAudSBie2ZvbnQtc2l6ZTp2YXIoLS1udW0pIWltcG9ydGFudH0KLmNkaCBzdHJvbmd7Zm9udC1zaXplOmNsYW1wKDI0cHgsMi40dncsMzJweCl9Ci5jZG57Zm9udC1zaXplOmNsYW1wKDEycHgsMS4wNXZ3LDE0cHgpfQouYmFkZ2V7cGFkZGluZzpjbGFtcCgxMHB4LDF2dywxNHB4KSBjbGFtcCgxOHB4LDEuOHZ3LDI2cHgpfQouYmFkZ2UgYntmb250LXNpemU6Y2xhbXAoMjZweCwyLjR2dywzNnB4KX0KQG1lZGlhIChtYXgtd2lkdGg6NjAwcHgpewogLmhyb3d7Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOjFmcjttYXgtd2lkdGg6bm9uZX0KIC5ocm93Pi5zdGF0e2ZsZXgtZGlyZWN0aW9uOnJvdzthbGlnbi1pdGVtczpiYXNlbGluZTtqdXN0aWZ5LWNvbnRlbnQ6ZmxleC1zdGFydDtnYXA6MTRweDtwYWRkaW5nOjE0cHggMjBweDttaW4td2lkdGg6MDtvcmRlcjoyfQogLmhyb3c+LnN0YXQgLm57Zm9udC1zaXplOjQ0cHh9CiAuaHJvdz4uc3RhdCAubHttYXJnaW46MH0KIC5ocm93Pi5jZHB7b3JkZXI6MX0KIDpyb290ey0tbnVtOmNsYW1wKDM0cHgsMTAuNXZ3LDUycHgpfQp9CkBtZWRpYSAobWluLXdpZHRoOjEwMDBweCl7Lmhyb3d7bWF4LXdpZHRoOjgyMHB4fX0KCi8qIC0tLS0gZXN0aWxvIGRlIGxhIHDDoWdpbmEgZGUgUlBzOiBIZWx2ZXRpY2EsICNmNWQ0MDAsICMwYTBhMGEgLS0tLSAqLwo6cm9vdHstLWluazojMGEwYTBhOy0tcGFuZWw6IzEzMTMxMzstLWNhcmQ6IzEzMTMxMzstLWxpbmU6cmdiYSgyNTUsMjU1LDI1NSwuMTQpOy0teTojZjVkNDAwOy0tbXV0OnJnYmEoMjU1LDI1NSwyNTUsLjY0KTstLWQ6J0hlbHZldGljYSBOZXVlJyxIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZjstLXM6J0hlbHZldGljYSBOZXVlJyxIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZn0KYm9keXtiYWNrZ3JvdW5kOnZhcigtLWluayl9CmgxLGgyLGgze2ZvbnQtZmFtaWx5OnZhcigtLXMpO2ZvbnQtd2VpZ2h0OjgwMDtsZXR0ZXItc3BhY2luZzotLjAzZW07bGluZS1oZWlnaHQ6MS4wNX0KaDF7dGV4dC10cmFuc2Zvcm06bm9uZTtmb250LXNpemU6Y2xhbXAoMi42cmVtLDYuMnZ3LDVyZW0pfQpoMntmb250LXNpemU6Y2xhbXAoMS45cmVtLDQuNnZ3LDMuNHJlbSl9Ci5leWVicm93e2xldHRlci1zcGFjaW5nOi4wNmVtfQoucGFuZWwsLmN0YSwuY2QgLnV7Ym9yZGVyLXJhZGl1czoxNnB4fQoucGFuZWx7YmFja2dyb3VuZDp2YXIoLS1wYW5lbCk7Ym9yZGVyLWNvbG9yOnZhcigtLWxpbmUpfQouY2QgLnV7YmFja2dyb3VuZDp2YXIoLS1pbmspO2JvcmRlci1jb2xvcjp2YXIoLS1saW5lKX0KLmNkIC51IGIsLnN0YXQgLm4sLmNhcmQgLmFtdCwuY2RoIHN0cm9uZywuYmFkZ2UgYiwuaGFzaCwuY3RhIGgzLC5taW5pIGJ7Zm9udC1mYW1pbHk6dmFyKC0tcyk7Zm9udC13ZWlnaHQ6ODAwO2xldHRlci1zcGFjaW5nOi0uMDRlbX0KLmNkaCBzdHJvbmd7bGV0dGVyLXNwYWNpbmc6LS4wMmVtfQouY2FyZCAuYW10e2ZvbnQtc2l6ZTpjbGFtcCgzcmVtLDYuNHZ3LDZyZW0pfQouY2FyZC5maXJzdHtib3JkZXItY29sb3I6cmdiYSgyNDUsMjEyLDAsLjUpfQouYmFkZ2UsLmhhc2h7YmFja2dyb3VuZDp2YXIoLS15KX0KLnllbHtiYWNrZ3JvdW5kOnZhcigtLXkpfQouYmFkZ2UgYntsZXR0ZXItc3BhY2luZzotLjAzZW19Ci5ydWxle2ZvbnQtd2VpZ2h0OjYwMH0KLmhhc2h7bGV0dGVyLXNwYWNpbmc6LS4wMmVtfQoubGVhZHtjb2xvcjp2YXIoLS1tdXQpfQoudnd7YmFja2dyb3VuZDpyZ2JhKDI0NSwyMTIsMCwuMTIpO2JvcmRlci1jb2xvcjpyZ2JhKDI0NSwyMTIsMCwuNCk7Y29sb3I6dmFyKC0teSl9CgovKiBjdWVudGEgcmVncmVzaXZhIGNvbXBhY3RhLCBzaW4gZXN0aXJhciAqLwouaHJvd3tncmlkLXRlbXBsYXRlLWNvbHVtbnM6YXV0byBhdXRvIWltcG9ydGFudDtqdXN0aWZ5LWNvbnRlbnQ6c3RhcnQ7bWF4LXdpZHRoOm5vbmUhaW1wb3J0YW50fQouaHJvdz4uY2Rwe3dpZHRoOm1heC1jb250ZW50O21heC13aWR0aDoxMDAlfQouY2R7Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOnJlcGVhdCg0LGNsYW1wKDY0cHgsN3Z3LDkycHgpKSFpbXBvcnRhbnQ7Z2FwOjEwcHg7anVzdGlmeS1jb250ZW50OnN0YXJ0fQouY2QgLnV7YXNwZWN0LXJhdGlvOjEvMS4wODtkaXNwbGF5OmZsZXg7ZmxleC1kaXJlY3Rpb246Y29sdW1uO2FsaWduLWl0ZW1zOmNlbnRlcjtqdXN0aWZ5LWNvbnRlbnQ6Y2VudGVyO3BhZGRpbmc6NnB4IDJweH0KLmNkIC51IGJ7Zm9udC1zaXplOmNsYW1wKDMwcHgsMy40dncsNDZweCkhaW1wb3J0YW50fQouY2QgLnUgc21hbGx7bWFyZ2luLXRvcDo2cHh9Ci5jZGh7Z2FwOjhweCAyOHB4fQpAbWVkaWEgKG1heC13aWR0aDo2MDBweCl7CiAuaHJvd3tncmlkLXRlbXBsYXRlLWNvbHVtbnM6MWZyIWltcG9ydGFudH0KIC5ocm93Pi5jZHB7d2lkdGg6YXV0b30KIC5jZHtncmlkLXRlbXBsYXRlLWNvbHVtbnM6cmVwZWF0KDQsbWlubWF4KDAsMWZyKSkhaW1wb3J0YW50O2p1c3RpZnktY29udGVudDpzdHJldGNoO2dhcDo4cHh9CiAuY2QgLnUgYntmb250LXNpemU6Y2xhbXAoMjhweCw5dncsNDBweCkhaW1wb3J0YW50fQp9Cgo6cm9vdHstLXRpbGU6Y2xhbXAoNjRweCw3dncsOTJweCl9Ci5ocm93Pi5jZHB7d2lkdGg6Y2FsYyg0KnZhcigtLXRpbGUpICsgMzBweCArIDIqdmFyKC0tcGFkKSkhaW1wb3J0YW50O21heC13aWR0aDoxMDAlfQouY2R7Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOnJlcGVhdCg0LHZhcigtLXRpbGUpKSFpbXBvcnRhbnR9Ci5jZGh7ZmxleC1kaXJlY3Rpb246Y29sdW1uO2FsaWduLWl0ZW1zOmZsZXgtc3RhcnQ7Z2FwOjZweH0KLmNkbnttYXgtd2lkdGg6bm9uZX0KQG1lZGlhIChtYXgtd2lkdGg6NjAwcHgpey5ocm93Pi5jZHB7d2lkdGg6YXV0byFpbXBvcnRhbnR9LmNke2dyaWQtdGVtcGxhdGUtY29sdW1uczpyZXBlYXQoNCxtaW5tYXgoMCwxZnIpKSFpbXBvcnRhbnR9LmNkaHtmbGV4LWRpcmVjdGlvbjpyb3c7ZmxleC13cmFwOndyYXA7YWxpZ24taXRlbXM6Y2VudGVyfX0KCi5maWVsZHttYXJnaW4tdG9wOjZweH0KLmZwe3BhZGRpbmc6dmFyKC0tcGFkKTttYXgtd2lkdGg6NzYwcHh9Ci5maHtkaXNwbGF5OmZsZXg7anVzdGlmeS1jb250ZW50OnNwYWNlLWJldHdlZW47YWxpZ24taXRlbXM6Y2VudGVyO2dhcDoxMHB4O2ZsZXgtd3JhcDp3cmFwfQouZmx7Zm9udC1zaXplOjEycHg7bGV0dGVyLXNwYWNpbmc6LjE0ZW07Zm9udC13ZWlnaHQ6ODAwO2NvbG9yOnZhcigtLXkpfQouZmN7Zm9udC1zaXplOmNsYW1wKDE0cHgsMS4zdncsMThweCk7Y29sb3I6dmFyKC0tbXV0KX0KLmZjIGJ7Y29sb3I6I2ZmZjtmb250LXNpemU6MS41ZW07Zm9udC13ZWlnaHQ6ODAwO2xldHRlci1zcGFjaW5nOi0uMDNlbX0KLmRvdHN7ZGlzcGxheTpncmlkO2dyaWQtdGVtcGxhdGUtY29sdW1uczpyZXBlYXQoOSwxZnIpO2dhcDpjbGFtcCg4cHgsMS40dncsMTZweCk7bWFyZ2luLXRvcDoxOHB4O21heC13aWR0aDo2NDBweH0KLmRvdHthc3BlY3QtcmF0aW86MTtib3JkZXItcmFkaXVzOjUwJTtiYWNrZ3JvdW5kOiMyNjI2MjY7Ym9yZGVyOjFweCBzb2xpZCB2YXIoLS1saW5lKTtkaXNwbGF5OmdyaWQ7cGxhY2UtaXRlbXM6Y2VudGVyO2ZvbnQtc2l6ZTpjbGFtcCgxMHB4LDEuMXZ3LDE1cHgpO2ZvbnQtd2VpZ2h0OjgwMDtjb2xvcjp0cmFuc3BhcmVudDt0cmFuc2l0aW9uOmJhY2tncm91bmQgLjVzLHRyYW5zZm9ybSAuNXMsYm94LXNoYWRvdyAuNXMsY29sb3IgLjNzO3Bvc2l0aW9uOnJlbGF0aXZlfQouZG90LmhvdHtiYWNrZ3JvdW5kOnZhcigtLXkpO2JvcmRlci1jb2xvcjp2YXIoLS15KTtjb2xvcjojMGEwYTBhO3RyYW5zZm9ybTpzY2FsZSgxLjE4KTtib3gtc2hhZG93OjAgMCAyMnB4IHJnYmEoMjQ1LDIxMiwwLC40NSk7ei1pbmRleDoxfQouZG90Lm1le2JvcmRlcjoycHggc29saWQgI2ZmZjtjb2xvcjojZmZmO2JhY2tncm91bmQ6IzBhMGEwYTtmb250LXNpemU6Y2xhbXAoOXB4LC45NXZ3LDEzcHgpO2xldHRlci1zcGFjaW5nOi4wNGVtfQouZG90Lm1lLmhvdHtiYWNrZ3JvdW5kOnZhcigtLXkpO2NvbG9yOiMwYTBhMGE7Ym9yZGVyLWNvbG9yOiNmZmZ9Ci5kb3QucHVsc2V7YmFja2dyb3VuZDojM2EzYTNhfQouZm57ZGlzcGxheTpmbGV4O2ZsZXgtd3JhcDp3cmFwO2FsaWduLWl0ZW1zOmNlbnRlcjtnYXA6NnB4IDEwcHg7bWFyZ2luOjE4cHggMCAwO2ZvbnQtc2l6ZToxMnB4O2NvbG9yOnZhcigtLW11dCl9Ci5sZ3t3aWR0aDoxMHB4O2hlaWdodDoxMHB4O2JvcmRlci1yYWRpdXM6NTAlO2JhY2tncm91bmQ6IzI2MjYyNjtib3JkZXI6MXB4IHNvbGlkIHZhcigtLWxpbmUpO2Rpc3BsYXk6aW5saW5lLWJsb2NrfQoubGcueXtiYWNrZ3JvdW5kOnZhcigtLXkpO2JvcmRlci1jb2xvcjp2YXIoLS15KX0KLmxnLnR7YmFja2dyb3VuZDojMGEwYTBhO2JvcmRlcjoycHggc29saWQgI2ZmZn0KQG1lZGlhIChwcmVmZXJzLXJlZHVjZWQtbW90aW9uOnJlZHVjZSl7LmRvdHt0cmFuc2l0aW9uOm5vbmV9fQoKLyogLS0tLSBxdWUgYnJpbGxlIC0tLS0gKi8KYm9keXtwb3NpdGlvbjpyZWxhdGl2ZTtvdmVyZmxvdy14OmNsaXB9CmJvZHk6OmJlZm9yZXtjb250ZW50OiIiO3Bvc2l0aW9uOmFic29sdXRlO3RvcDotMTIwcHg7bGVmdDphdXRvO3JpZ2h0Oi0zMjBweDt3aWR0aDo5MDBweDtoZWlnaHQ6OTAwcHg7YmFja2dyb3VuZDpyYWRpYWwtZ3JhZGllbnQoY2xvc2VzdC1zaWRlLHJnYmEoMjQ1LDIxMiwwLC4yMCkscmdiYSgyNDUsMjEyLDAsLjA2KSA1NSUsdHJhbnNwYXJlbnQgNzUlKTtwb2ludGVyLWV2ZW50czpub25lO3otaW5kZXg6MH0KLndyYXAsLnllbHtwb3NpdGlvbjpyZWxhdGl2ZTt6LWluZGV4OjF9CmgxIHNwYW57dGV4dC1zaGFkb3c6MCAwIDM4cHggcmdiYSgyNDUsMjEyLDAsLjQ1KX0KLnNlY3tib3JkZXItdG9wOjA7cG9zaXRpb246cmVsYXRpdmV9Ci5zZWM6OmJlZm9yZXtjb250ZW50OiIiO3Bvc2l0aW9uOmFic29sdXRlO3RvcDowO2xlZnQ6MDtyaWdodDowO2hlaWdodDoxcHg7YmFja2dyb3VuZDpsaW5lYXItZ3JhZGllbnQoOTBkZWcsdHJhbnNwYXJlbnQscmdiYSgyNDUsMjEyLDAsLjU1KSx0cmFuc3BhcmVudCl9Ci5zZWM6Zmlyc3Qtb2YtdHlwZTo6YmVmb3Jle2Rpc3BsYXk6bm9uZX0KLnBvdHtkaXNwbGF5OmZsZXg7ZmxleC1kaXJlY3Rpb246Y29sdW1uO2FsaWduLWl0ZW1zOmZsZXgtc3RhcnQ7Z2FwOjJweDttYXJnaW46NnB4IDAgNHB4fQoucG90LWx7Zm9udC1zaXplOjEycHg7bGV0dGVyLXNwYWNpbmc6LjE0ZW07Zm9udC13ZWlnaHQ6ODAwO2NvbG9yOnZhcigtLW11dCl9Ci5wb3Qtbntmb250LXNpemU6Y2xhbXAoMy40cmVtLDl2dyw3LjVyZW0pO2xpbmUtaGVpZ2h0Oi45NTtmb250LXdlaWdodDo4MDA7bGV0dGVyLXNwYWNpbmc6LS4wNWVtO2NvbG9yOnZhcigtLXkpO3RleHQtc2hhZG93OjAgMCA1MHB4IHJnYmEoMjQ1LDIxMiwwLC41NSksMCAwIDhweCByZ2JhKDI0NSwyMTIsMCwuMzUpfQoucG90LXN7Zm9udC1zaXplOmNsYW1wKDE0cHgsMS4zdncsMThweCk7Y29sb3I6dmFyKC0tbXV0KX0KLyogcG9kaW8gKi8KLmNhcmRze2FsaWduLWl0ZW1zOmVuZDtnYXA6Y2xhbXAoMTBweCwxLjZ2dywyMnB4KX0KQG1lZGlhIChtaW4td2lkdGg6NzAwcHgpewogLmNhcmRze2dyaWQtdGVtcGxhdGUtY29sdW1uczoxZnIgMS4xOGZyIDFmciFpbXBvcnRhbnR9CiAuY2FyZDpudGgtY2hpbGQoMSl7b3JkZXI6Mn0uY2FyZDpudGgtY2hpbGQoMil7b3JkZXI6MX0uY2FyZDpudGgtY2hpbGQoMyl7b3JkZXI6M30KIC5jYXJkLmZpcnN0e3BhZGRpbmctYmxvY2s6Y2xhbXAoMzRweCwzLjR2dyw1NHB4KX0KIC5jYXJkOm50aC1jaGlsZCgyKXtwYWRkaW5nLWJsb2NrOmNsYW1wKDIycHgsMi4ydncsMzRweCl9Cn0KLmNhcmR7cG9zaXRpb246cmVsYXRpdmU7b3ZlcmZsb3c6aGlkZGVuO2lzb2xhdGlvbjppc29sYXRlfQouY2FyZDo6YWZ0ZXJ7Y29udGVudDoiIjtwb3NpdGlvbjphYnNvbHV0ZTtpbnNldDowO2JhY2tncm91bmQ6bGluZWFyLWdyYWRpZW50KDEwNWRlZyx0cmFuc3BhcmVudCA0MCUscmdiYSgyNTUsMjU1LDI1NSwuMDcpIDUwJSx0cmFuc3BhcmVudCA2MCUpO3RyYW5zZm9ybTp0cmFuc2xhdGVYKC0xMjAlKTthbmltYXRpb246c3dlZXAgNS41cyBlYXNlLWluLW91dCBpbmZpbml0ZTtwb2ludGVyLWV2ZW50czpub25lO3otaW5kZXg6LTF9Ci5jYXJkOm50aC1jaGlsZCgyKTo6YWZ0ZXJ7YW5pbWF0aW9uLWRlbGF5OjEuMnN9LmNhcmQ6bnRoLWNoaWxkKDMpOjphZnRlcnthbmltYXRpb24tZGVsYXk6Mi40c30KQGtleWZyYW1lcyBzd2VlcHswJSw1NSV7dHJhbnNmb3JtOnRyYW5zbGF0ZVgoLTEyMCUpfTEwMCV7dHJhbnNmb3JtOnRyYW5zbGF0ZVgoMTIwJSl9fQouY2FyZCAuYW10e2NvbG9yOnZhcigtLXkpO3RleHQtc2hhZG93OjAgMCAyOHB4IHJnYmEoMjQ1LDIxMiwwLC4zNSl9Ci5jYXJkLmZpcnN0e2JhY2tncm91bmQ6dmFyKC0teSk7Ym9yZGVyLWNvbG9yOnZhcigtLXkpO2NvbG9yOiMwYTBhMGE7YW5pbWF0aW9uOmhhbG8gM3MgZWFzZS1pbi1vdXQgaW5maW5pdGV9Ci5jYXJkLmZpcnN0OjphZnRlcntkaXNwbGF5Om5vbmV9Ci5jYXJkLmZpcnN0IC5wbCwuY2FyZC5maXJzdCAuY2Fwe2NvbG9yOiMwYTBhMGF9Ci5jYXJkLmZpcnN0IC5jYXB7b3BhY2l0eTouOH0KLmNhcmQuZmlyc3QgLmFtdHtjb2xvcjojMGEwYTBhO3RleHQtc2hhZG93Om5vbmU7Zm9udC1zaXplOmNsYW1wKDMuNHJlbSw4dncsNy40cmVtKX0KQGtleWZyYW1lcyBoYWxvezAlLDEwMCV7Ym94LXNoYWRvdzowIDAgMzBweCByZ2JhKDI0NSwyMTIsMCwuMzUpLDAgMCA5MHB4IHJnYmEoMjQ1LDIxMiwwLC4xOCl9NTAle2JveC1zaGFkb3c6MCAwIDYwcHggcmdiYSgyNDUsMjEyLDAsLjYpLDAgMCAxNDBweCByZ2JhKDI0NSwyMTIsMCwuMzIpfX0KLmNhcmQ6bm90KC5maXJzdCl7Ym94LXNoYWRvdzowIDAgNDBweCByZ2JhKDI0NSwyMTIsMCwuMDgpfQovKiBkZXN0ZWxsb3MgKi8KLnNwa3twb3NpdGlvbjphYnNvbHV0ZTtwb2ludGVyLWV2ZW50czpub25lO2NvbG9yOnZhcigtLXkpO29wYWNpdHk6MDt6LWluZGV4OjI7ZmlsdGVyOmRyb3Atc2hhZG93KDAgMCA2cHggcmdiYSgyNDUsMjEyLDAsLjkpKX0KLnNwayBzdmd7ZGlzcGxheTpibG9jazt3aWR0aDoxMDAlO2hlaWdodDoxMDAlfQpAa2V5ZnJhbWVzIHR3ezAlLDEwMCV7b3BhY2l0eTowO3RyYW5zZm9ybTpzY2FsZSguMykgcm90YXRlKDApfTUwJXtvcGFjaXR5OjE7dHJhbnNmb3JtOnNjYWxlKDEpIHJvdGF0ZSg0NWRlZyl9fQouY3Rhe2JveC1zaGFkb3c6MCAwIDAgMXB4IHJnYmEoMjU1LDI1NSwyNTUsLjA4KSwwIDAgNjBweCByZ2JhKDAsMCwwLC40KX0KLmhhc2h7Ym94LXNoYWRvdzowIDAgMzRweCByZ2JhKDI0NSwyMTIsMCwuNSl9CkBtZWRpYSAocHJlZmVycy1yZWR1Y2VkLW1vdGlvbjpyZWR1Y2Upey5jYXJkOjphZnRlcntkaXNwbGF5Om5vbmV9LmNhcmQuZmlyc3R7YW5pbWF0aW9uOm5vbmV9LnNwa3tkaXNwbGF5Om5vbmV9fQpodG1sLGJvZHl7b3ZlcmZsb3cteDpjbGlwfS5zcGt7bWF4LXdpZHRoOjEwMCV9LmNhcmQuZmlyc3QgLnNwa3ttYXgtd2lkdGg6bm9uZX0KLnBvdHttYXJnaW4tdG9wOjIycHghaW1wb3J0YW50O3BhZGRpbmc6NnB4IDB9Ci5wb3Qtbnt0ZXh0LXNoYWRvdzowIDAgMzBweCByZ2JhKDI0NSwyMTIsMCwuNSkhaW1wb3J0YW50fQoucHJlbXtvdmVyZmxvdzp2aXNpYmxlIWltcG9ydGFudH0KPC9zdHlsZT48L2hlYWQ+Cjxib2R5Pgo8ZGl2IGNsYXNzPSJ3cmFwIj4KCjxzZWN0aW9uIGNsYXNzPSJzZWMiIHN0eWxlPSJib3JkZXItdG9wOjA7cGFkZGluZy10b3A6MTJweCI+CiAgPHAgY2xhc3M9ImV5ZWJyb3ciIHN0eWxlPSJtYXJnaW4tdG9wOjAiPkVsIHJldG8gwrcgQ2FycmVyYSBIYW5nYXIgMjAyNiDCtyAzIHByZW1pb3M8L3A+CiAgPGgxPlTDuiBjb250cmEgPHNwYW4+NDUgUlBzPC9zcGFuPjwvaDE+CiAgPHAgY2xhc3M9ImxlYWQiPlRvZG9zIHB1YmxpY2FuLCB0b2RvcyBqdW50YW4gdmlzdGFzIHkgPGI+c29sbyAzIHNlIGxsZXZhbiBlbCBwcmVtaW8gZW4gZWZlY3Rpdm88L2I+LiDCv0N1w6FudGFzIHZpc3RhcyBuZWNlc2l0YXMgcGFyYSBzZXIgdW5vIGRlIGVsbG9zPzwvcD4KICA8ZGl2IGNsYXNzPSJocm93Ij4KICA8ZGl2IGNsYXNzPSJwYW5lbCBzdGF0Ij48ZGl2IGNsYXNzPSJuIj40NTwvZGl2PjxkaXYgY2xhc3M9ImwiPlJQcyBlbiBlbCByZXRvPC9kaXY+PC9kaXY+CiAgPGRpdiBjbGFzcz0icGFuZWwgY2RwIj4KICAgIDxkaXYgY2xhc3M9ImNkaCI+PHNwYW4+TWVkaWNpw7NuIGRlIHZpc3Rhczwvc3Bhbj48c3Ryb25nPjE5IG5vdiDCtyA0OjAwIHAuIG0uPC9zdHJvbmc+PC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJjZCIgYXJpYS1sYWJlbD0iVGllbXBvIHJlc3RhbnRlIHBhcmEgbGEgbWVkaWNpw7NuIj4KICAgICAgPGRpdiBjbGFzcz0idSI+PGIgaWQ9ImQiPi0tPC9iPjxzbWFsbD5Ew41BUzwvc21hbGw+PC9kaXY+CiAgICAgIDxkaXYgY2xhc3M9InUiPjxiIGlkPSJoIj4tLTwvYj48c21hbGw+SFJTPC9zbWFsbD48L2Rpdj4KICAgICAgPGRpdiBjbGFzcz0idSI+PGIgaWQ9Im0iPi0tPC9iPjxzbWFsbD5NSU48L3NtYWxsPjwvZGl2PgogICAgICA8ZGl2IGNsYXNzPSJ1Ij48YiBpZD0icyI+LS08L2I+PHNtYWxsPlNFRzwvc21hbGw+PC9kaXY+CiAgICA8L2Rpdj4KICAgIDxwIGNsYXNzPSJjZG4iPkhhc3RhIGVsIDE5IGRlIG5vdmllbWJyZSBhIGxhcyA0OjAwIHAuIG0uIFF1ZSBubyBzZSB0ZSBwYXNlLjwvcD4KICA8L2Rpdj4KICA8L2Rpdj4KICA8ZGl2IGNsYXNzPSJiYWRnZSI+PGI+MjIgTk9WPC9iPjxzcGFuPkRvbWluZ28gwrcgVmlsbGFoZXJtb3NhPC9zcGFuPjwvZGl2Pgo8L3NlY3Rpb24+Cgo8c2VjdGlvbiBjbGFzcz0ic2VjIHByZW0iIGlkPSJwcmVtaW9zIj4KICAKICA8cCBjbGFzcz0iZXllYnJvdyI+TG9zIHByZW1pb3M8L3A+CiAgPGgyPkVzdG8gdGUgcHVlZGVzIDxzcGFuPmxsZXZhcjwvc3Bhbj48L2gyPgogIDxkaXYgY2xhc3M9InBvdCI+PHNwYW4gY2xhc3M9InBvdC1sIj5FTiBKVUVHTywgRU4gRUZFQ1RJVk88L3NwYW4+PGIgY2xhc3M9InBvdC1uIiBkYXRhLXY9IjM2MDAiPiQzLDYwMDwvYj48c3BhbiBjbGFzcz0icG90LXMiPnJlcGFydGlkb3MgZW50cmUgMyBSUHM8L3NwYW4+PC9kaXY+CiAgPGRpdiBjbGFzcz0iY2FyZHMiPgogICAgPGRpdiBjbGFzcz0icGFuZWwgY2FyZCBmaXJzdCI+PGRpdiBjbGFzcz0icGwiPjFlciBsdWdhcjwvZGl2PjxkaXYgY2xhc3M9ImFtdCIgZGF0YS12PSIyMDAwIj4kMiwwMDA8L2Rpdj48ZGl2IGNsYXNzPSJjYXAiPkVsIHZpZGVvIGNvbiBtw6FzIHZpc3VhbGl6YWNpb25lczwvZGl2PjwvZGl2PgogICAgPGRpdiBjbGFzcz0icGFuZWwgY2FyZCI+PGRpdiBjbGFzcz0icGwiPjJkbyBsdWdhcjwvZGl2PjxkaXYgY2xhc3M9ImFtdCIgZGF0YS12PSIxMDAwIj4kMSwwMDA8L2Rpdj48ZGl2IGNsYXNzPSJjYXAiPkVsIHNlZ3VuZG8gdmlkZW8gY29uIG3DoXMgdmlzdGFzPC9kaXY+PC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJwYW5lbCBjYXJkIj48ZGl2IGNsYXNzPSJwbCI+M2VyIGx1Z2FyPC9kaXY+PGRpdiBjbGFzcz0iYW10IiBkYXRhLXY9IjYwMCI+JDYwMDwvZGl2PjxkaXYgY2xhc3M9ImNhcCI+RWwgdGVyY2VyIHZpZGVvIGNvbiBtw6FzIHZpc3RhczwvZGl2PjwvZGl2PgogIDwvZGl2PgogIDxkaXYgY2xhc3M9InRvdCI+CiAgICA8ZGl2PjxoMz5HYW5hIGVsIHF1ZSBtw6FzIHZpc3RhcyB0ZW5nYTwvaDM+PHA+U2UgcHJlbWlhbiBsb3MgMyB2aWRlb3MgVUdDIGNvbiBtw6FzIHZpc3VhbGl6YWNpb25lcywgdW5vIHBvciBSUC48L3A+PC9kaXY+CiAgICA8ZGl2PjxoMz5DdWVudGEgdHUgbWVqb3IgdmlkZW88L2gzPjxwPlB1ZWRlcyBzdWJpciB2YXJpb3MsIHBlcm8gc29sbyBjdWVudGEgZWwgcXVlIHRlbmdhIG3DoXMgdmlzdGFzLiBObyBzZSBzdW1hbi48L3A+PC9kaXY+CiAgICA8ZGl2PjxoMz5QcmVtaW8gZW4gbGEgY2FycmVyYTwvaDM+PHA+TWVkaW1vcyBsYXMgdmlzdGFzIGVsIDE5IGEgbGFzIDQ6MDAgcC4gbS4sIGFudW5jaWFtb3MgZ2FuYWRvcmVzIGVsIDIwIHkgZWwgMjIgcmVjaWJlcyB0dSBwcmVtaW8gZW4gbGEgY2FycmVyYS48L3A+PC9kaXY+CiAgPC9kaXY+Cjwvc2VjdGlvbj4KCjwvZGl2Pgo8c2VjdGlvbiBjbGFzcz0ieWVsIj48ZGl2IGNsYXNzPSJ3cmFwIHNlYyI+CiAgPHAgY2xhc3M9ImV5ZWJyb3ciPlJlZ2xhcyBkZWwgcmV0bzwvcD4KICA8aDI+Q2xhcmFzIHBhcmEgcXVlIDxzcGFuPnNlYSBqdXN0bzwvc3Bhbj48L2gyPgogIDxkaXYgY2xhc3M9InJ1bGVzIj4KICAgIDxkaXYgY2xhc3M9InJ1bGUiPkVsIHZpZGVvIGRlYmUgc2VyIFVHQyBzw60gbyBzw60uIE5vIGN1ZW50YW4gdmlkZW9zIGRlIGZyYXNlcyBuaSB0cmVuZHM6IGVsIHByZW1pbyBlcyBwYXJhIHVuIFVHQy48L2Rpdj4KPGRpdiBjbGFzcz0icnVsZSI+U29sbyBjdWVudGFuIHZpZGVvcyBwdWJsaWNhZG9zIGEgbcOhcyB0YXJkYXIgZWwgMTQgZGUgbm92aWVtYnJlIChzw6FiYWRvKSwgcGFyYSBxdWUgYWxjYW5jZW4gYSB2ZW5kZXIga2l0cyBhbnRlcyBkZWwgY2llcnJlLjwvZGl2PgogICAgPGRpdiBjbGFzcz0icnVsZSI+RGViZW4gbm9tYnJhciBhIEhhbmdhciB5IGxhIGNhcnJlcmEsIHVzYXIgbG9zIGhhc2h0YWdzIHkgY2VycmFyIGNvbiBDQVJSRVJBLjwvZGl2PgogICAgPGRpdiBjbGFzcz0icnVsZSI+U29sbyB2aXN0YXMgb3Jnw6FuaWNhcyBkZSBJbnN0YWdyYW0gUmVlbHMuIFZpc3RhcyBjb21wcmFkYXM6IGRlc2NhbGlmaWNhZG8uPC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJydWxlIj5TZSBwdWVkZW4gc3ViaXIgdmFyaW9zIHZpZGVvcywgcGVybyBzb2xvIGN1ZW50YSBlbCBxdWUgdGVuZ2EgbcOhcyB2aXN0YXMuIExhcyB2aXN0YXMgbm8gc2Ugc3VtYW4uPC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJydWxlIj5MYXMgdmlzdGFzIHNlIG1pZGVuIGVsIDE5IGRlIG5vdmllbWJyZSBhIGxhcyA0OjAwIHAuIG0uIE1hbmRhIGxhIGNhcHR1cmEgZGUgdHVzIGVzdGFkw61zdGljYXMgZW50cmUgNDowMCB5IDQ6MzAgcC4gbS47IHNpbiBjYXB0dXJhIG5vIGVudHJhcy48L2Rpdj4KICAgIDxkaXYgY2xhc3M9InJ1bGUiPlNpIGhheSBlbXBhdGUgZW4gdmlzdGFzLCBnYW5hIHF1aWVuIGhheWEgcHVibGljYWRvIHByaW1lcm8uPC9kaXY+PGRpdiBjbGFzcz0icnVsZSI+TG9zIHByZW1pb3MgbG9zIHBhZ2EgSGFuZ2FyIEd5bS4gTG9zIGdhbmFkb3JlcyBzZSBhbnVuY2lhbiBlbCAyMCBkZSBub3ZpZW1icmUgeSByZWNpYmVuIHN1IHByZW1pbyBlbiBlZmVjdGl2byBlbCAyMiwgZW4gbGEgY2FycmVyYS48L2Rpdj4KICA8L2Rpdj4KICA8ZGl2IGNsYXNzPSJjdGEiPgogICAgPGRpdj4KICAgICAgPGgzPsK/TGlzdG8gcGFyYSBwYXJ0aWNpcGFyPzwvaDM+CiAgICAgIDxwPlB1YmxpY2EgdHUgdmlkZW8geSBtw6FuZGFub3MgZWwgbGluayBhbnRlcyBkZWwgPGI+MTQgZGUgbm92aWVtYnJlPC9iPi48L3A+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9Imhhc2giPiNBZ2FycmFWdWVsbzwvZGl2PgogIDwvZGl2Pgo8L2Rpdj48L3NlY3Rpb24+CjxkaXYgY2xhc3M9IndyYXAiPgoKCjwvZGl2Pgo8c2NyaXB0PgooZnVuY3Rpb24oKXsKICB2YXIgdGFyZ2V0PW5ldyBEYXRlKCcyMDI2LTExLTE5VDE2OjAwOjAwLTA2OjAwJykuZ2V0VGltZSgpOwogIHZhciBpZHM9e2Q6ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2QnKSxoOmRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdoJyksbTpkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbScpLHM6ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3MnKX07CiAgZnVuY3Rpb24gcGFkKG4pe3JldHVybiAobjwxMD8nMCc6JycpK247fQogIGZ1bmN0aW9uIHRpY2soKXsKICAgIHZhciBkaWZmPXRhcmdldC1EYXRlLm5vdygpOwogICAgaWYoZGlmZjw9MCl7aWRzLmQudGV4dENvbnRlbnQ9JzAwJztpZHMuaC50ZXh0Q29udGVudD0nMDAnO2lkcy5tLnRleHRDb250ZW50PScwMCc7aWRzLnMudGV4dENvbnRlbnQ9JzAwJztyZXR1cm47fQogICAgaWRzLmQudGV4dENvbnRlbnQ9cGFkKE1hdGguZmxvb3IoZGlmZi84NjQwMDAwMCkpOwogICAgaWRzLmgudGV4dENvbnRlbnQ9cGFkKE1hdGguZmxvb3IoZGlmZiU4NjQwMDAwMC8zNjAwMDAwKSk7CiAgICBpZHMubS50ZXh0Q29udGVudD1wYWQoTWF0aC5mbG9vcihkaWZmJTM2MDAwMDAvNjAwMDApKTsKICAgIGlkcy5zLnRleHRDb250ZW50PXBhZChNYXRoLmZsb29yKGRpZmYlNjAwMDAvMTAwMCkpOwogICAgdmFyIG10PWRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdtdCcpOyBpZihtdCkgbXQudGV4dENvbnRlbnQ9TWF0aC5mbG9vcihkaWZmLzg2NDAwMDAwKSsnZCAnK3BhZChNYXRoLmZsb29yKGRpZmYlODY0MDAwMDAvMzYwMDAwMCkpKydoICcrcGFkKE1hdGguZmxvb3IoZGlmZiUzNjAwMDAwLzYwMDAwKSkrJ20nOwogIH0KICB0aWNrKCk7IHNldEludGVydmFsKHRpY2ssMTAwMCk7Cn0pKCk7Cjwvc2NyaXB0Pgo8c2NyaXB0PgooZnVuY3Rpb24oKXsKICBpZih3aW5kb3cubWF0Y2hNZWRpYSgnKHByZWZlcnMtcmVkdWNlZC1tb3Rpb246IHJlZHVjZSknKS5tYXRjaGVzfHwhKCdJbnRlcnNlY3Rpb25PYnNlcnZlcicgaW4gd2luZG93KSkgcmV0dXJuOwogIHZhciBjYXJkcz1bXS5zbGljZS5jYWxsKGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJy5jYXJkcyAuY2FyZCcpKTsKICB2YXIgb3JkZXI9WzIsMSwwXTsKICBmdW5jdGlvbiBmbXQobil7cmV0dXJuICckJytuLnRvTG9jYWxlU3RyaW5nKCdlbi1VUycpO30KICBmdW5jdGlvbiBydW4oKXsKICAgIG9yZGVyLmZvckVhY2goZnVuY3Rpb24oaWR4LGspewogICAgICB2YXIgYz1jYXJkc1tpZHhdOyBpZighYykgcmV0dXJuOwogICAgICB2YXIgYW10PWMucXVlcnlTZWxlY3RvcignLmFtdCcpLCB2PSthbXQuZ2V0QXR0cmlidXRlKCdkYXRhLXYnKTsKICAgICAgYW10LnRleHRDb250ZW50PSckMCc7CiAgICAgIHNldFRpbWVvdXQoZnVuY3Rpb24oKXsKICAgICAgICBjLmNsYXNzTGlzdC5hZGQoJ3BvcCcpOwogICAgICAgIHZhciB0MD1udWxsLGR1cj0xMzAwOwogICAgICAgIGZ1bmN0aW9uIHN0ZXAodHMpewogICAgICAgICAgaWYodDA9PT1udWxsKSB0MD10czsKICAgICAgICAgIHZhciBwPU1hdGgubWluKCh0cy10MCkvZHVyLDEpLCBlPTEtTWF0aC5wb3coMS1wLDMpOwogICAgICAgICAgYW10LnRleHRDb250ZW50PWZtdChNYXRoLnJvdW5kKHYqZSkpOwogICAgICAgICAgaWYocDwxKSByZXF1ZXN0QW5pbWF0aW9uRnJhbWUoc3RlcCk7IGVsc2UgYW10LnRleHRDb250ZW50PWZtdCh2KTsKICAgICAgICB9CiAgICAgICAgcmVxdWVzdEFuaW1hdGlvbkZyYW1lKHN0ZXApOwogICAgICB9LGsqNDUwKTsKICAgIH0pOwogIH0KICB2YXIgaW89bmV3IEludGVyc2VjdGlvbk9ic2VydmVyKGZ1bmN0aW9uKGVzKXsKICAgIGlmKGVzWzBdLmlzSW50ZXJzZWN0aW5nKXtpby5kaXNjb25uZWN0KCk7cnVuKCk7fQogIH0se3RocmVzaG9sZDouMzV9KTsKICB2YXIgYm94PWRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJy5jYXJkcycpOyBpZihib3gpIGlvLm9ic2VydmUoYm94KTsKfSkoKTsKPC9zY3JpcHQ+CjxzY3JpcHQ+CihmdW5jdGlvbigpewogIHZhciBib3g9ZG9jdW1lbnQucXVlcnlTZWxlY3RvcignI3ByZW1pb3MgLnZpZXdzJyksIHNlYz1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncHJlbWlvcycpOwogIGlmKCFib3h8fCFzZWN8fG1hdGNoTWVkaWEoJyhwcmVmZXJzLXJlZHVjZWQtbW90aW9uOiByZWR1Y2UpJykubWF0Y2hlc3x8ISgnSW50ZXJzZWN0aW9uT2JzZXJ2ZXInIGluIHdpbmRvdykpIHJldHVybjsKICB2YXIgZXllPSc8c3ZnIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMiAxMnMzLjUtNyAxMC03IDEwIDcgMTAgNy0zLjUgNy0xMCA3UzIgMTIgMiAxMnoiLz48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIzIi8+PC9zdmc+JzsKICB2YXIgcGxheT0nPHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9ImN1cnJlbnRDb2xvciI+PHBhdGggZD0iTTcgNHYxNmwxMy04eiIvPjwvc3ZnPic7CiAgdmFyIHZhbHM9WycrMTIwJywnKzg1MCcsJysxLjJLJywnKzMuNEsnLCcrMTBLJywnKzI1SycsJys0ODAnLCcrNi43SyddOwogIHZhciB0aW1lcj1udWxsLCBsaXZlPTA7CiAgZnVuY3Rpb24gc3Bhd24oKXsKICAgIGlmKGxpdmU+PShzZWMuY2xpZW50V2lkdGg8NjAwPzU6MTIpKSByZXR1cm47CiAgICB2YXIgbGVmdD1NYXRoLnJhbmRvbSgpPC41LCBlbD1kb2N1bWVudC5jcmVhdGVFbGVtZW50KCdzcGFuJyk7CiAgICBlbC5jbGFzc05hbWU9J3Z3JysoTWF0aC5yYW5kb20oKTwuMzU/JyB3JzonJyk7CiAgICBlbC5pbm5lckhUTUw9KE1hdGgucmFuZG9tKCk8LjM/cGxheTpleWUpKyc8c3Bhbj4nK3ZhbHNbTWF0aC5mbG9vcihNYXRoLnJhbmRvbSgpKnZhbHMubGVuZ3RoKV0rJzwvc3Bhbj4nOwogICAgdmFyIHc9c2VjLmNsaWVudFdpZHRoLCBoPXNlYy5jbGllbnRIZWlnaHQ7CiAgICBlbC5zdHlsZS50b3A9KDgrTWF0aC5yYW5kb20oKSo4MCkrJyUnOwogICAgaWYobGVmdCkgZWwuc3R5bGUubGVmdD0nMCc7IGVsc2UgZWwuc3R5bGUucmlnaHQ9JzAnOwogICAgYm94LmFwcGVuZENoaWxkKGVsKTsgbGl2ZSsrOwogICAgdmFyIGRpcj1sZWZ0PzE6LTEsIHRyYXZlbD1NYXRoLm1pbih3KiguMTIrTWF0aC5yYW5kb20oKSouMTYpLDI2MCksIHN0YXJ0PS05MCpkaXI7CiAgICB2YXIgYT1lbC5hbmltYXRlKFsKICAgICAge3RyYW5zZm9ybTondHJhbnNsYXRlWCgnK3N0YXJ0KydweCkgc2NhbGUoLjgpJyxvcGFjaXR5OjB9LAogICAgICB7dHJhbnNmb3JtOid0cmFuc2xhdGVYKCcrKHN0YXJ0K2Rpcio3MCkrJ3B4KSBzY2FsZSgxKScsb3BhY2l0eToxLG9mZnNldDouMn0sCiAgICAgIHt0cmFuc2Zvcm06J3RyYW5zbGF0ZVgoJysoZGlyKnRyYXZlbCkrJ3B4KSBzY2FsZSgxKScsb3BhY2l0eToxLG9mZnNldDouNzV9LAogICAgICB7dHJhbnNmb3JtOid0cmFuc2xhdGVYKCcrKGRpcioodHJhdmVsKzQwKSkrJ3B4KSBzY2FsZSguOSknLG9wYWNpdHk6MH0KICAgIF0se2R1cmF0aW9uOjMyMDArTWF0aC5yYW5kb20oKSoxNDAwLGVhc2luZzonY3ViaWMtYmV6aWVyKC4yLC43LC4zLDEpJ30pOwogICAgYS5vbmZpbmlzaD1mdW5jdGlvbigpe2VsLnJlbW92ZSgpO2xpdmUtLTt9OwogIH0KICBuZXcgSW50ZXJzZWN0aW9uT2JzZXJ2ZXIoZnVuY3Rpb24oZXMpewogICAgaWYoZXNbMF0uaXNJbnRlcnNlY3RpbmcpeyBpZighdGltZXIpe3NwYXduKCk7dGltZXI9c2V0SW50ZXJ2YWwoc3Bhd24sNDIwKTt9IH0KICAgIGVsc2UgaWYodGltZXIpe2NsZWFySW50ZXJ2YWwodGltZXIpO3RpbWVyPW51bGw7fQogIH0se3RocmVzaG9sZDouMX0pLm9ic2VydmUoc2VjKTsKfSkoKTsKPC9zY3JpcHQ+CjxzY3JpcHQ+CihmdW5jdGlvbigpewogaWYobWF0Y2hNZWRpYSgnKHByZWZlcnMtcmVkdWNlZC1tb3Rpb246cmVkdWNlKScpLm1hdGNoZXMpcmV0dXJuOwogdmFyIHN0YXI9Jzxzdmcgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJjdXJyZW50Q29sb3IiPjxwYXRoIGQ9Ik0xMiAwbDIuNiA5LjRMMjQgMTJsLTkuNCAyLjZMMTIgMjRsLTIuNi05LjRMMCAxMmw5LjQtMi42eiIvPjwvc3ZnPic7CiBmdW5jdGlvbiBhZGQoaG9zdCxuKXtob3N0LnN0eWxlLnBvc2l0aW9uPSdyZWxhdGl2ZSc7CiAgZm9yKHZhciBpPTA7aTxuO2krKyl7dmFyIGU9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnc3BhbicpO2UuY2xhc3NOYW1lPSdzcGsnO3ZhciBzej04K01hdGgucmFuZG9tKCkqMTY7CiAgIGUuc3R5bGUuY3NzVGV4dCs9J3dpZHRoOicrc3orJ3B4O2hlaWdodDonK3N6KydweDtsZWZ0OicrKE1hdGgucmFuZG9tKCkqMTAwKSsnJTt0b3A6JysoTWF0aC5yYW5kb20oKSoxMDApKyclO2FuaW1hdGlvbjp0dyAnKygyK01hdGgucmFuZG9tKCkqMi41KSsncyBlYXNlLWluLW91dCAnKyhNYXRoLnJhbmRvbSgpKjQpKydzIGluZmluaXRlJzsKICAgZS5pbm5lckhUTUw9c3Rhcjtob3N0LmFwcGVuZENoaWxkKGUpfX0KIHZhciBoZXJvPWRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJy5ocm93JykscG90PWRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJy5wb3QnKSxmaXJzdD1kb2N1bWVudC5xdWVyeVNlbGVjdG9yKCcuY2FyZC5maXJzdCcpOwogaWYocG90KWFkZChwb3QsNyk7CiBpZihmaXJzdCl7Zmlyc3Quc3R5bGUub3ZlcmZsb3c9J3Zpc2libGUnO2Zvcih2YXIgcT0wO3E8OTtxKyspe3ZhciBlPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ3NwYW4nKTtlLmNsYXNzTmFtZT0nc3BrJzt2YXIgc3o9MTArTWF0aC5yYW5kb20oKSoxNixzaWRlPXElNCx0PU1hdGgucmFuZG9tKCkqMTAwLHBvcz1bWydsZWZ0OicrdCsnJScsJ3RvcDotJysoOCtNYXRoLnJhbmRvbSgpKjEwKSsnJSddLFsnbGVmdDonK3QrJyUnLCd0b3A6JysoOTgrTWF0aC5yYW5kb20oKSoxMCkrJyUnXSxbJ2xlZnQ6LScrKDMrTWF0aC5yYW5kb20oKSo1KSsnJScsJ3RvcDonK3QrJyUnXSxbJ2xlZnQ6JysoOTgrTWF0aC5yYW5kb20oKSo1KSsnJScsJ3RvcDonK3QrJyUnXV1bc2lkZV07ZS5zdHlsZS5jc3NUZXh0Kz0nd2lkdGg6JytzeisncHg7aGVpZ2h0Oicrc3orJ3B4OycrcG9zLmpvaW4oJzsnKSsnO2FuaW1hdGlvbjp0dyAnKygyK01hdGgucmFuZG9tKCkqMi41KSsncyBlYXNlLWluLW91dCAnKyhNYXRoLnJhbmRvbSgpKjQpKydzIGluZmluaXRlJztlLmlubmVySFRNTD1zdGFyO2ZpcnN0LmFwcGVuZENoaWxkKGUpfX0KIHZhciBoMT1kb2N1bWVudC5xdWVyeVNlbGVjdG9yKCdoMScpO2lmKGgxKWFkZChoMSw2KTsKfSkoKTsKPC9zY3JpcHQ+CjxzY3JpcHQ+CihmdW5jdGlvbigpe2Z1bmN0aW9uIHMoKXt0cnl7cGFyZW50LnBvc3RNZXNzYWdlKHtwcmVtaW9zSDpNYXRoLmNlaWwoZG9jdW1lbnQuZG9jdW1lbnRFbGVtZW50LnNjcm9sbEhlaWdodCl9LCcqJyl9Y2F0Y2goZSl7fX0KYWRkRXZlbnRMaXN0ZW5lcignbG9hZCcscyk7YWRkRXZlbnRMaXN0ZW5lcigncmVzaXplJyxzKTtpZignUmVzaXplT2JzZXJ2ZXInIGluIHdpbmRvdyluZXcgUmVzaXplT2JzZXJ2ZXIocykub2JzZXJ2ZShkb2N1bWVudC5ib2R5KTtzZXRUaW1lb3V0KHMsNDAwKTt9KSgpOwo8L3NjcmlwdD4KPC9ib2R5PjwvaHRtbD4=";</script>
 <header class="top">
@@ -460,7 +674,7 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
       <button class="tabbtn on" role="tab" type="button" data-tab="brief" aria-selected="true"><i>1</i><b>Brief</b><small>De qué va y qué haces</small></button>
       <button class="tabbtn" role="tab" type="button" data-tab="guiones" aria-selected="false"><i>2</i><b>Guiones</b><small>Tus 2 propuestas</small></button>
       <button class="tabbtn" role="tab" type="button" data-tab="moodboard" aria-selected="false"><i>3</i><b>Moodboard</b><small>Cómo se ve al grabar</small></button>
-      <button class="tabbtn" role="tab" type="button" data-tab="premios" aria-selected="false"><i>4</i><b>Premios</b><small>Cuánto te puedes llevar</small></button>
+      <button class="tabbtn" role="tab" type="button" data-tab="premios" aria-selected="false"><i>4</i><b>Premios</b><small>Cuánto te puedes llevar</small></button><button class="tabbtn" role="tab" type="button" data-tab="calendario" aria-selected="false"><i>5</i><b>Calendario</b><small>Quién ya cumplió</small></button>
     </nav>
   </div>
 </header>
@@ -528,7 +742,7 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
     <p class="sec-num">Guiones de los RPs</p>
     <h2>Tus <span class="accent">2 guiones</span></h2>
     <p class="lead">Aquí están los RPs de Tier A y Tier B. Cada quien tiene sus propuestas hechas con sus respuestas. Descarga tu PDF, escoge la que más se parezca a ti y cámbiale lo que quieras.</p>
-    <div class="tseg" role="tablist" aria-label="Categoría de RPs"><span class="tind" aria-hidden="true"></span><button type="button" role="tab" class="on" aria-selected="true" data-tier="a">Tier A</button><button type="button" role="tab" aria-selected="false" data-tier="b">Tier B</button><button type="button" role="tab" aria-selected="false" data-tier="c">Tier C</button></div><div class="tier" id="tier-a" data-tier-pane="a"><div class="tprog" role="img" aria-label="45% publicado"><svg viewBox="0 0 100 100" width="96" height="96" aria-hidden="true"><circle cx="50" cy="50" r="44" class="tr"/><circle cx="50" cy="50" r="44" class="tv" stroke-dasharray="276.46" stroke-dashoffset="152.05" transform="rotate(-90 50 50)"/></svg><div class="tpt"><b>45%</b><small>PUBLICADO</small></div><p class="tpl"><b>9 de 20</b> ya subieron su video</p></div><div class="rpgrid"><article class="rp is-ok"><div class="rp-top"><h3>Nutrí</h3><span class="tag plain">Terranova</span></div><span class="st ok">Grabado</span>
+    <div class="tseg" role="tablist" aria-label="Categoría de RPs"><span class="tind" aria-hidden="true"></span><button type="button" role="tab" class="on" aria-selected="true" data-tier="a">Tier A</button><button type="button" role="tab" aria-selected="false" data-tier="b">Tier B</button><button type="button" role="tab" aria-selected="false" data-tier="c">Tier C</button></div><div class="tier" id="tier-a" data-tier-pane="a"><div class="tprog" role="img" aria-label="55% publicado"><svg viewBox="0 0 100 100" width="96" height="96" aria-hidden="true"><circle cx="50" cy="50" r="44" class="tr"/><circle cx="50" cy="50" r="44" class="tv" stroke-dasharray="276.46" stroke-dashoffset="124.41" transform="rotate(-90 50 50)"/></svg><div class="tpt"><b>55%</b><small>PUBLICADO</small></div><p class="tpl"><b>11 de 20</b> ya subieron su video</p></div><div class="rpgrid"><article class="rp is-ok"><div class="rp-top"><h3>Nutrí</h3><span class="tag plain">Terranova</span></div><span class="st ok">Grabado</span>
 <p class="rp-l">2 propuestas</p>
 <div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Nutri.pdf?v=a12c532b" data-n="Guiones para Nutrí · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Nutri.pdf?v=a12c532b" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-ok"><div class="rp-top"><h3>Lucii</h3><span class="tag plain">Arenas</span></div><span class="st ok">Grabado</span>
 <p class="rp-l">2 propuestas</p>
@@ -546,7 +760,7 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
 <p class="rp-l">2 propuestas</p>
 <div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Karla.pdf?v=fec2944e" data-n="Guiones para Karla · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Karla.pdf?v=fec2944e" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-ok"><div class="rp-top"><h3>Regino</h3><span class="tag plain">Américas</span></div><span class="st ok">Grabado</span>
 <p class="rp-l">2 propuestas</p>
-<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Regino.pdf?v=659f459a" data-n="Guiones para Regino · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Regino.pdf?v=659f459a" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Karen</h3><span class="tag plain">Américas</span></div><span class="st no">Sin grabar</span><p class="cmt dly" data-since="2026-10-18"></p>
+<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Regino.pdf?v=659f459a" data-n="Guiones para Regino · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Regino.pdf?v=659f459a" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-ok"><div class="rp-top"><h3>Karen</h3><span class="tag plain">Américas</span></div><span class="st ok">Grabado</span>
 <p class="rp-l">2 propuestas</p>
 <div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Karen.pdf?v=2f68530e" data-n="Guiones para Karen · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Karen.pdf?v=2f68530e" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Guiochin</h3><span class="tag plain">Gemelos</span></div><span class="st no">Sin grabar</span><p class="cmt dly" data-since="2026-10-18"></p>
 <p class="rp-l">2 propuestas</p>
@@ -560,13 +774,13 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
 <p class="rp-l">2 propuestas</p>
 <div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Xime.pdf?v=9550bacd" data-n="Guiones para Xime · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Xime.pdf?v=9550bacd" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Sandy</h3><span class="tag plain">Arenas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-09">Se comprometió a publicar el <b>lun 9 nov</b><span class="dd"></span></p>
 <p class="rp-l">2 propuestas</p>
-<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Sandy.pdf?v=2eeafdb9" data-n="Guiones para Sandy · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Sandy.pdf?v=2eeafdb9" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Nilka</h3><span class="tag plain">Petrolera</span></div><span class="st no">Sin grabar</span><p class="cmt dly" data-since="2026-10-22"></p>
+<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Sandy.pdf?v=2eeafdb9" data-n="Guiones para Sandy · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Sandy.pdf?v=2eeafdb9" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-ok"><div class="rp-top"><h3>Nilka</h3><span class="tag plain">Petrolera</span></div><span class="st ok">Grabado</span>
 <p class="rp-l">2 propuestas</p>
 <div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Nilka.pdf?v=68101e4d" data-n="Guiones para Nilka · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Nilka.pdf?v=68101e4d" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Waynee</h3><span class="tag plain">Terranova</span></div><span class="st no">Sin grabar</span>
 <p class="rp-l">2 propuestas</p>
 <div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Waynee.pdf?v=0b4c0db6" data-n="Guiones para Waynee · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Waynee.pdf?v=0b4c0db6" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Yoana</h3><span class="tag plain">Terranova</span></div><span class="st no">Sin grabar</span>
 <p class="rp-l">2 propuestas</p>
-<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Yoana.pdf?v=3cec8e19" data-n="Guiones para Yoana · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Yoana.pdf?v=3cec8e19" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-none"><div class="rp-top"><h3>Ingrid</h3><span class="tag plain">Gemelos</span></div><span class="st na">Sin guion</span><p class="cmt">Le falta un formulario. Cuando lo mande, le hacemos su guion.</p></article></div></div><div class="tier" id="tier-b" data-tier-pane="b" hidden><div class="tprog" role="img" aria-label="0% publicado"><svg viewBox="0 0 100 100" width="96" height="96" aria-hidden="true"><circle cx="50" cy="50" r="44" class="tr"/><circle cx="50" cy="50" r="44" class="tv" stroke-dasharray="276.46" stroke-dashoffset="276.46" transform="rotate(-90 50 50)"/></svg><div class="tpt"><b>0%</b><small>PUBLICADO</small></div><p class="tpl"><b>0 de 15</b> han subido su video</p></div><div class="rpgrid"><article class="rp is-no"><div class="rp-top"><h3>Diego</h3><span class="tag plain">Gemelos</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-10-29">Se comprometió a publicar el <b>jue 29 oct</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Diego.pdf?v=dg1" data-n="Guiones para Diego · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Diego.pdf?v=dg1" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Nico</h3><span class="tag plain">Américas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-01">Se comprometió a publicar el <b>dom 1 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Nico.pdf?v=5a458c70" data-n="Guiones para Nico · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Nico.pdf?v=5a458c70" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Lilia</h3><span class="tag plain">Gemelos</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-10-29">Se comprometió a publicar el <b>jue 29 oct</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Lilia.pdf?v=06efab5f" data-n="Guiones para Lilia · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Lilia.pdf?v=06efab5f" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Chris</h3><span class="tag plain">Arenas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-10-31">Se comprometió a publicar el <b>sáb 31 oct</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Chris.pdf?v=c5a66fc2" data-n="Guiones para Chris · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Chris.pdf?v=c5a66fc2" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Karla Rosado</h3><span class="tag plain">Arenas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-10-31">Se comprometió a publicar el <b>sáb 31 oct</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Karla_Rosado.pdf?v=2548b583" data-n="Guiones para Karla Rosado · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Karla_Rosado.pdf?v=2548b583" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Mia</h3><span class="tag plain">Petrolera</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-01">Se comprometió a publicar el <b>dom 1 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Mia.pdf?v=7a5067be" data-n="Guiones para Mia · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Mia.pdf?v=7a5067be" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Omar</h3><span class="tag plain">Arenas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-10-31">Se comprometió a publicar el <b>sáb 31 oct</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Omar.pdf?v=0fc9653f" data-n="Guiones para Omar · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Omar.pdf?v=0fc9653f" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Vianey</h3><span class="tag plain">Arenas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-01">Se comprometió a publicar el <b>dom 1 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Vianey.pdf?v=49706463" data-n="Guiones para Vianey · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Vianey.pdf?v=49706463" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Valeria</h3><span class="tag plain">Petrolera</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-01">Se comprometió a publicar el <b>dom 1 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Valeria.pdf?v=d00c83fb" data-n="Guiones para Valeria · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Valeria.pdf?v=d00c83fb" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Ali</h3><span class="tag plain">Americas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-09">Se comprometió a publicar el <b>lun 9 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Ali.pdf?v=90c9666e" data-n="Guiones para Ali · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Ali.pdf?v=90c9666e" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Brandon</h3><span class="tag plain">Terranova</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-09">Se comprometió a publicar el <b>lun 9 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Brandon.pdf?v=265277db" data-n="Guiones para Brandon · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Brandon.pdf?v=265277db" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-none"><div class="rp-top"><h3>Citlalli</h3><span class="tag plain">Arenas</span></div><span class="st na">Sin guion</span><p class="cmt">Le falta un formulario. Cuando lo mande, le hacemos su guion.</p></article><article class="rp is-no"><div class="rp-top"><h3>Eddy</h3><span class="tag plain">Gemelos</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-08">Se comprometió a publicar el <b>dom 8 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Eddy.pdf?v=e08eab3c" data-n="Guiones para Eddy · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Eddy.pdf?v=e08eab3c" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Juan Andrés</h3><span class="tag plain">Arenas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-05">Se comprometió a publicar el <b>jue 5 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Juan_Andres.pdf?v=4f69d709" data-n="Guiones para Juan Andrés · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Juan_Andres.pdf?v=4f69d709" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Ofelia</h3><span class="tag plain">Gemelos</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-09">Se comprometió a publicar el <b>lun 9 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Ofelia.pdf?v=edf35b27" data-n="Guiones para Ofelia · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Ofelia.pdf?v=edf35b27" target="_blank" rel="noopener">Ver</a></div></article></div></div><div class="tier" id="tier-c" data-tier-pane="c" hidden><div class="tprog" role="img" aria-label="0% publicado"><svg viewBox="0 0 100 100" width="96" height="96" aria-hidden="true"><circle cx="50" cy="50" r="44" class="tr"/><circle cx="50" cy="50" r="44" class="tv" stroke-dasharray="276.46" stroke-dashoffset="276.46" transform="rotate(-90 50 50)"/></svg><div class="tpt"><b>0%</b><small>PUBLICADO</small></div><p class="tpl"><b>0 de 6</b> han subido su video</p></div><div class="rpgrid"><article class="rp is-no"><div class="rp-top"><h3>Vanessa</h3><span class="tag plain">Gemelos</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-10-31">Se comprometió a publicar el <b>sáb 31 oct</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Vanessa.pdf?v=vn1" data-n="Guiones para Vanessa · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Vanessa.pdf?v=vn1" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Claudia</h3><span class="tag plain">Arenas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-09">Se comprometió a publicar el <b>lun 9 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Claudia.pdf?v=1d10b3eb" data-n="Guiones para Claudia · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Claudia.pdf?v=1d10b3eb" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Camila</h3><span class="tag plain">Petrolera</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-06">Se comprometió a publicar el <b>vie 6 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Camila.pdf?v=3c498941" data-n="Guiones para Camila · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Camila.pdf?v=3c498941" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Daniela</h3><span class="tag plain">Americas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-07">Se comprometió a publicar el <b>sáb 7 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Daniela.pdf?v=7976a5e8" data-n="Guiones para Daniela · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Daniela.pdf?v=7976a5e8" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Esperanza</h3><span class="tag plain">Petrolera</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-06">Se comprometió a publicar el <b>vie 6 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Esperanza.pdf?v=bc025b94" data-n="Guiones para Esperanza · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Esperanza.pdf?v=bc025b94" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Cristian</h3><span class="tag plain">Gemelos</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-07">Se comprometió a publicar el <b>sáb 7 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Cristian.pdf?v=792d90b4" data-n="Guiones para Cristian · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Cristian.pdf?v=792d90b4" target="_blank" rel="noopener">Ver</a></div></article></div></div>
+<div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Yoana.pdf?v=3cec8e19" data-n="Guiones para Yoana · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Yoana.pdf?v=3cec8e19" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-none"><div class="rp-top"><h3>Ingrid</h3><span class="tag plain">Gemelos</span></div><span class="st na">Sin guion</span><p class="cmt">Le falta un formulario. Cuando lo mande, le hacemos su guion.</p></article></div></div><div class="tier" id="tier-b" data-tier-pane="b" hidden><div class="tprog" role="img" aria-label="14% publicado"><svg viewBox="0 0 100 100" width="96" height="96" aria-hidden="true"><circle cx="50" cy="50" r="44" class="tr"/><circle cx="50" cy="50" r="44" class="tv" stroke-dasharray="276.46" stroke-dashoffset="236.97" transform="rotate(-90 50 50)"/></svg><div class="tpt"><b>14%</b><small>PUBLICADO</small></div><p class="tpl"><b>2 de 15</b> han subido su video</p></div><div class="rpgrid"><article class="rp is-no"><div class="rp-top"><h3>Diego</h3><span class="tag plain">Gemelos</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-10-29">Se comprometió a publicar el <b>jue 29 oct</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Diego.pdf?v=dg1" data-n="Guiones para Diego · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Diego.pdf?v=dg1" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-ok"><div class="rp-top"><h3>Nico</h3><span class="tag plain">Américas</span></div><span class="st ok">Grabado</span><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Nico.pdf?v=5a458c70" data-n="Guiones para Nico · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Nico.pdf?v=5a458c70" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-ok"><div class="rp-top"><h3>Lilia</h3><span class="tag plain">Gemelos</span></div><span class="st ok">Grabado</span><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Lilia.pdf?v=06efab5f" data-n="Guiones para Lilia · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Lilia.pdf?v=06efab5f" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Chris</h3><span class="tag plain">Arenas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-10-31">Se comprometió a publicar el <b>sáb 31 oct</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Chris.pdf?v=c5a66fc2" data-n="Guiones para Chris · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Chris.pdf?v=c5a66fc2" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Karla Rosado</h3><span class="tag plain">Arenas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-10-31">Se comprometió a publicar el <b>sáb 31 oct</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Karla_Rosado.pdf?v=2548b583" data-n="Guiones para Karla Rosado · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Karla_Rosado.pdf?v=2548b583" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Mia</h3><span class="tag plain">Petrolera</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-01">Se comprometió a publicar el <b>dom 1 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Mia.pdf?v=7a5067be" data-n="Guiones para Mia · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Mia.pdf?v=7a5067be" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Omar</h3><span class="tag plain">Arenas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-10-31">Se comprometió a publicar el <b>sáb 31 oct</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Omar.pdf?v=0fc9653f" data-n="Guiones para Omar · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Omar.pdf?v=0fc9653f" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Vianey</h3><span class="tag plain">Arenas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-01">Se comprometió a publicar el <b>dom 1 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Vianey.pdf?v=49706463" data-n="Guiones para Vianey · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Vianey.pdf?v=49706463" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Valeria</h3><span class="tag plain">Petrolera</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-01">Se comprometió a publicar el <b>dom 1 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Valeria.pdf?v=d00c83fb" data-n="Guiones para Valeria · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Valeria.pdf?v=d00c83fb" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Ali</h3><span class="tag plain">Americas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-09">Se comprometió a publicar el <b>lun 9 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Ali.pdf?v=90c9666e" data-n="Guiones para Ali · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Ali.pdf?v=90c9666e" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Brandon</h3><span class="tag plain">Terranova</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-09">Se comprometió a publicar el <b>lun 9 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Brandon.pdf?v=265277db" data-n="Guiones para Brandon · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Brandon.pdf?v=265277db" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-none"><div class="rp-top"><h3>Citlalli</h3><span class="tag plain">Arenas</span></div><span class="st na">Sin guion</span><p class="cmt">Le falta un formulario. Cuando lo mande, le hacemos su guion.</p></article><article class="rp is-no"><div class="rp-top"><h3>Eddy</h3><span class="tag plain">Gemelos</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-08">Se comprometió a publicar el <b>dom 8 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Eddy.pdf?v=e08eab3c" data-n="Guiones para Eddy · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Eddy.pdf?v=e08eab3c" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Juan Andrés</h3><span class="tag plain">Arenas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-05">Se comprometió a publicar el <b>jue 5 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Juan_Andres.pdf?v=4f69d709" data-n="Guiones para Juan Andrés · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Juan_Andres.pdf?v=4f69d709" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Ofelia</h3><span class="tag plain">Gemelos</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-09">Se comprometió a publicar el <b>lun 9 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Ofelia.pdf?v=edf35b27" data-n="Guiones para Ofelia · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Ofelia.pdf?v=edf35b27" target="_blank" rel="noopener">Ver</a></div></article></div></div><div class="tier" id="tier-c" data-tier-pane="c" hidden><div class="tprog" role="img" aria-label="0% publicado"><svg viewBox="0 0 100 100" width="96" height="96" aria-hidden="true"><circle cx="50" cy="50" r="44" class="tr"/><circle cx="50" cy="50" r="44" class="tv" stroke-dasharray="276.46" stroke-dashoffset="276.46" transform="rotate(-90 50 50)"/></svg><div class="tpt"><b>0%</b><small>PUBLICADO</small></div><p class="tpl"><b>0 de 6</b> han subido su video</p></div><div class="rpgrid"><article class="rp is-no"><div class="rp-top"><h3>Vanessa</h3><span class="tag plain">Gemelos</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-10-31">Se comprometió a publicar el <b>sáb 31 oct</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Vanessa.pdf?v=vn1" data-n="Guiones para Vanessa · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Vanessa.pdf?v=vn1" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Esperanza</h3><span class="tag plain">Petrolera</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-06">Se comprometió a publicar el <b>vie 6 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Esperanza.pdf?v=c76605e9" data-n="Guiones para Esperanza · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Esperanza.pdf?v=c76605e9" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Cristian</h3><span class="tag plain">Gemelos</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-07">Se comprometió a publicar el <b>sáb 7 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Cristian.pdf?v=e9978201" data-n="Guiones para Cristian · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Cristian.pdf?v=e9978201" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Claudia</h3><span class="tag plain">Arenas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-09">Se comprometió a publicar el <b>lun 9 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Claudia.pdf?v=1d10b3eb" data-n="Guiones para Claudia · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Claudia.pdf?v=1d10b3eb" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Camila</h3><span class="tag plain">Petrolera</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-06">Se comprometió a publicar el <b>vie 6 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Camila.pdf?v=3c498941" data-n="Guiones para Camila · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Camila.pdf?v=3c498941" target="_blank" rel="noopener">Ver</a></div></article><article class="rp is-no"><div class="rp-top"><h3>Daniela</h3><span class="tag plain">Americas</span></div><span class="st no">Sin grabar</span><p class="cmt" data-due="2026-11-07">Se comprometió a publicar el <b>sáb 7 nov</b><span class="dd"></span></p><p class="rp-l">2 propuestas</p><div class="rp-btns"><button type="button" class="dl" data-f="Guiones_Daniela.pdf?v=7976a5e8" data-n="Guiones para Daniela · Carrera Hangar 2026.pdf">Descargar PDF</button><a class="view" href="guiones/Guiones_Daniela.pdf?v=7976a5e8" target="_blank" rel="noopener">Ver</a></div></article></div></div>
     <p class="msg" id="dlmsg" aria-live="polite"></p>
     <div class="sub" aria-label="Ir a ejemplos"><button class="chip" type="button" data-go="ugc">Ejemplos UGC</button><button class="chip" type="button" data-go="trends">Trends y frases</button></div>
   </section>
@@ -604,6 +818,332 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
   </div>
   <section class="gonext gn2"><p>Ya tienes tu guion. Falta ver cómo se ve al grabarlo.</p><button type="button" class="nextbtn" data-tab-go="moodboard">Ir al moodboard →</button></section>
 </main>
+
+<div class="wrap pane cal" id="tab-calendario" role="tabpanel" hidden>
+<section class="cal-hero">
+  <div class="cal-hero-head">
+    <div>
+    <p class="cal-eyebrow">Seguimiento · RPs</p>
+    <h2>Quién ya cumplió<br><span>y quién no</span></h2>
+    </div>
+    <div class="cal-count" role="img" aria-label="Faltan días para el sábado 14 de noviembre">
+      <div class="cal-flips"><div class="cal-flip"><span id="calD1">0</span></div><div class="cal-flip"><span id="calD2">0</span></div></div>
+      <p>días para el último día de publicación</p>
+    </div>
+  </div>
+  <div class="cal-top">
+    <div class="cal-ring">
+      <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="12"/><g id="calRing"></g></svg>
+      <div class="cal-ring-c"><b id="calRingPub">0</b><span>de <span id="calRingN">0</span></span></div>
+    </div>
+    <div class="cal-sum">
+      <ol class="cal-tl2">
+        <li><b id="calHoyL">Hoy</b><span><b><span id="calHoyPub">0</span> de <span id="calHoyN">0</span></b> RPs ya publicaron su video</span><span><b id="calHoyCm">0</b> comprometidos · <b id="calHoySin">0</b> sin compromiso</span></li>
+        <li><b>Sáb 14 nov</b><span>Último día para publicar el video</span></li>
+        <li><b>Dom 22 nov</b><span>Carrera y entrega del premio</span></li>
+      </ol>
+      <div class="cal-legend">
+        <span class="cs-pub"><i></i>Publicó</span>
+        <span class="cs-venc"><i></i>No cumplió</span>
+        <span class="cs-pend"><i></i>Pendiente</span>
+        <span class="cs-sin"><i></i>Sin compromiso</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cal-panel" aria-label="Calendario de compromisos">
+  <div class="cal-head">
+    <button type="button" class="cal-nav" id="calPrev" aria-label="Mes anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <div class="cal-title"><h3 id="calMonth">Octubre 2026</h3><p>Toca un nombre para ver su status</p></div>
+    <button type="button" class="cal-nav" id="calNext" aria-label="Mes siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+  </div>
+  <div class="cal-filters" id="calFilters" role="group" aria-label="Filtrar por status"></div>
+  <div class="cal-keys" id="calKeys"></div>
+  <div class="cal-chipkey" aria-hidden="true">
+    <span class="cs-pub"><i></i>Publicó (día que publicó)</span>
+    <span class="cs-venc"><i></i>No cumplió</span>
+    <span class="cs-pend"><i></i>Pendiente</span>
+    <span class="cs-sin"><i></i>Sin fecha (día del 1er formulario)</span>
+  </div>
+  <div class="cal-dow"><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span></div>
+  <div class="cal-days" id="calDays"></div>
+</section>
+
+<section class="cal-card-s cal-keyd">
+  <h3>Fechas clave</h3>
+  <ul>
+    <li><b>Vie 13 – Lun 16 nov</b><span>Buen Fin: kits a $250</span></li>
+    <li><b>Sáb 14 nov</b><span>Último día para publicar tu video</span></li>
+    <li><b>Mar 17 nov</b><span>Cierra la venta general de kits</span></li>
+    <li><b>Jue 19 nov · 4:00 p. m.</b><span>Medición de vistas (capturas de 4:00 a 4:30 p. m.)</span></li>
+    <li><b>Dom 22 nov</b><span>Carrera y entrega del premio en efectivo</span></li>
+  </ul>
+</section>
+
+<section class="cal-lists">
+  <details class="cal-card-s">
+    <summary>Sin compromiso (14)</summary>
+    <div class="cal-tgs" id="calSin"></div>
+  </details>
+  <details class="cal-card-s">
+    <summary>Ya publicaron (<span id="calSumPub">0</span>)</summary>
+    <ul class="cal-pubs" id="calPub"></ul>
+  </details>
+</section>
+
+<p class="cal-note">Datos del registro de RPs al 30 de octubre de 2026. Cada RP aparece una sola vez: el día que publicó, su fecha de compromiso o, si no tiene fecha, el día que respondió el 1er formulario. Toca cualquier nombre para ver su detalle.</p>
+
+<div class="cal-modal" id="calModal" hidden>
+  <div class="cal-sheet" role="dialog" aria-modal="true" aria-labelledby="calMName">
+    <div class="cal-mtop">
+      <span class="cal-pill" id="calMStatus"></span>
+      <span class="cal-pill ghost" id="calMTier"></span>
+      <button type="button" class="cal-x" id="calMClose" aria-label="Cerrar">×</button>
+    </div>
+    <h3 id="calMName"></h3>
+    <p class="cal-msub" id="calMSub"></p>
+    <div class="cal-sec"><h4>Status</h4><p id="calMTxt"></p></div>
+    <div class="cal-sec" id="calMPubSec" hidden><h4>Tiempo para publicar</h4><p id="calMTime"></p><div class="cal-btns"><a class="cal-btn" id="calMGuion" target="_blank" rel="noopener">Guion</a><a class="cal-btn solid" id="calMVideo" target="_blank" rel="noopener">Ver video</a></div></div>
+    <div class="cal-sec" id="calMDaysSec" hidden><h4>Sus días de grabación</h4><p id="calMDays"></p><div class="cal-btns"><button type="button" class="cal-btn solid" id="calMCal">Agregar a mi calendario</button></div></div>
+  </div>
+</div>
+<script type="application/json" id="cal-data">[{"n": "Alain Jesús Buenfil Medina", "s": "Alain Buenfil", "t": "A", "d": "2026-10-24", "p": true, "rs": "2026-10-22", "pd": "2026-10-24", "v": "https://www.instagram.com/reels/De5LtksBuq9/", "dp": 2, "g": "guiones/Guiones_Alain.pdf", "cm": true, "dd": ["2026-10-22"]}, {"n": "Aritzy Morales Perera", "s": "Aritzy Morales", "t": "A", "d": "2026-10-25", "p": true, "rs": "2026-10-14", "pd": "2026-10-25", "v": "https://www.instagram.com/reels/De7dOOEN4MG/", "dp": 11, "g": "guiones/Guiones_Ary.pdf", "cm": true, "dd": ["2026-10-27", "2026-10-28", "2026-10-31", "2026-11-01"]}, {"n": "Chris Hernández Priego", "s": "Chris Hernández", "t": "A", "d": null, "p": false, "cm": true, "dd": ["2026-10-25"], "fr": "2026-10-14"}, {"n": "Eli Manuel Cerino Isidro", "s": "Eli Cerino", "t": "A", "d": null, "p": false, "cm": true, "dd": ["2026-10-19", "2026-10-20", "2026-10-21", "2026-10-26", "2026-10-27", "2026-10-28", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-09", "2026-11-10", "2026-11-11"], "fr": "2026-10-14"}, {"n": "Henry Zuriel Azmitia Hernández", "s": "Henry Azmitia", "t": "A", "d": "2026-10-25", "p": true, "rs": "2026-10-14", "pd": "2026-10-25", "v": "https://www.instagram.com/reels/De7CSORuQKB/", "dp": 11, "g": "", "cm": true, "dd": ["2026-10-20", "2026-10-22", "2026-10-23", "2026-10-24", "2026-10-27", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-03", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-10", "2026-11-12"]}, {"n": "Ingrid Domínguez Hernández", "s": "Ingrid Domínguez", "t": "A", "d": null, "p": false, "cm": true, "dd": ["2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31"], "fr": "2026-10-22"}, {"n": "Karen Anette Escalante Pérez", "s": "Karen Escalante", "t": "A", "d": "2026-10-25", "p": true, "rs": "2026-10-13", "pd": "2026-10-25", "v": "https://www.instagram.com/p/De7HvX7RENP/", "dp": 12, "g": "guiones/Guiones_Nutri.pdf", "cm": true, "dd": ["2026-10-20", "2026-10-24", "2026-10-25", "2026-10-28", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-05", "2026-11-07", "2026-11-08", "2026-11-11"]}, {"n": "Karen Monserrat Mayo Ramón", "s": "Karen Mayo", "t": "A", "d": "2026-10-29", "p": true, "cm": true, "dd": ["2026-10-31", "2026-11-01", "2026-11-08"], "pd": "2026-10-29", "rs": "2026-10-14", "dp": 15, "v": "https://www.instagram.com/reel/DfGCieHS-d4/", "g": "guiones/Guiones_Karen.pdf"}, {"n": "Karla Miranda Velázquez", "s": "Karla Miranda", "t": "A", "d": "2026-10-24", "p": true, "rs": "2026-10-13", "pd": "2026-10-24", "v": "https://www.instagram.com/p/De5eJWZN-wF/", "dp": 11, "g": "guiones/Guiones_Karla.pdf", "cm": true, "dd": ["2026-10-19", "2026-10-23", "2026-10-26", "2026-10-29", "2026-11-03", "2026-11-04"]}, {"n": "Luis Moscoso Guiochin", "s": "Luis Moscoso", "t": "A", "d": null, "p": false, "cm": true, "dd": ["2026-10-24", "2026-10-25", "2026-10-31", "2026-11-01", "2026-11-07", "2026-11-08"], "fr": "2026-10-13"}, {"n": "Luisa Fernanda Castillo López", "s": "Luisa Castillo", "t": "A", "d": "2026-10-25", "p": true, "rs": "2026-10-14", "pd": "2026-10-25", "v": "https://www.instagram.com/p/De7HiXJx3XT/", "dp": 11, "g": "guiones/Guiones_Lucii.pdf", "cm": true, "dd": ["2026-10-19", "2026-10-21", "2026-10-26", "2026-11-02", "2026-11-04", "2026-11-09", "2026-11-11"]}, {"n": "Lurline Yarely Tolosa Priego", "s": "Lurline Tolosa", "t": "A", "d": null, "p": false, "cm": true, "dd": ["2026-10-19", "2026-10-23", "2026-10-25", "2026-10-26", "2026-10-30", "2026-11-01", "2026-11-02", "2026-11-06", "2026-11-08", "2026-11-09"], "fr": "2026-10-14"}, {"n": "Miranda Becerra", "s": "Miranda Becerra", "t": "A", "d": "2026-10-22", "p": true, "rs": "2026-10-14", "pd": "2026-10-22", "v": "https://www.instagram.com/p/De0BDopiLVp/", "dp": 8, "g": "guiones/Guiones_Mirinda.pdf", "cm": true, "dd": ["2026-10-19", "2026-10-20", "2026-10-21", "2026-10-23", "2026-10-26", "2026-10-27", "2026-10-28", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-09", "2026-11-10", "2026-11-11"]}, {"n": "Nereyda Ramón Gómez", "s": "Nereyda Ramón", "t": "A", "d": null, "p": false, "cm": true, "dd": ["2026-10-27", "2026-10-28", "2026-11-06", "2026-11-07"], "fr": "2026-10-13"}, {"n": "Nilka Danae Castillo", "s": "Nilka Castillo", "t": "A", "d": "2026-10-29", "p": true, "cm": true, "dd": ["2026-10-31", "2026-11-01", "2026-11-07", "2026-11-08"], "pd": "2026-10-29", "rs": "2026-10-13", "dp": 16, "v": "https://www.instagram.com/reel/DfF4EagPyj9/", "g": "guiones/Guiones_Nilka.pdf"}, {"n": "Regino Ortiz Godines", "s": "Regino Ortiz", "t": "A", "d": "2026-10-24", "p": true, "rs": "2026-10-13", "pd": "2026-10-24", "v": "https://www.instagram.com/reels/De5o_BNC4br/", "dp": 11, "g": "guiones/Guiones_Regino.pdf", "cm": true, "dd": ["2026-10-22"]}, {"n": "Rodrigo Ulises Morales Alejandro", "s": "Rodrigo Morales", "t": "A", "d": "2026-10-25", "p": true, "rs": "2026-10-13", "pd": "2026-10-25", "v": "https://www.instagram.com/reels/De720DesL3H/", "dp": 12, "g": "guiones/Guiones_Rodri.pdf", "cm": true, "dd": ["2026-10-19", "2026-10-23", "2026-10-26", "2026-10-29", "2026-11-03", "2026-11-04"]}, {"n": "Sandy Cámara Gómez", "s": "Sandy Cámara", "t": "A", "d": "2026-11-09", "p": false, "cm": true, "dd": ["2026-11-06"], "fr": "2026-10-15"}, {"n": "Ximena Michelle Lara Moreno", "s": "Ximena Lara", "t": "A", "d": null, "p": false, "cm": true, "dd": ["2026-10-28", "2026-11-10"], "fr": "2026-10-22"}, {"n": "Yoana Gabriela Zempoaltecatl de la Cruz", "s": "Yoana Zempoaltecatl", "t": "A", "d": null, "p": false, "cm": true, "dd": ["2026-11-09", "2026-11-10"], "fr": "2026-10-22"}, {"n": "Brandon Su Gómez", "s": "Brandon Su", "t": "B", "d": "2026-11-09", "p": false, "cm": true, "dd": [], "fr": "2026-10-15"}, {"n": "Christopher Huerta Camil", "s": "Christopher Huerta", "t": "B", "d": "2026-10-31", "p": false, "cm": true, "dd": []}, {"n": "Citlalli Yatzil Marín Frías", "s": "Citlalli Marín", "t": "B", "d": null, "p": false, "cm": false, "dd": [], "fr": "2026-10-13"}, {"n": "Diego Iván Fernández Ligonio", "s": "Diego Ligonio", "t": "B", "d": "2026-10-29", "p": false, "cm": true, "dd": ["2026-10-19", "2026-10-20", "2026-10-21", "2026-10-22", "2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12"]}, {"n": "Eddy Armando López Escalante", "s": "Eddy López", "t": "B", "d": "2026-11-08", "p": false, "cm": true, "dd": [], "fr": "2026-10-14"}, {"n": "Juan Andrés Acopa Escalante", "s": "Juan Andrés Acopa", "t": "B", "d": "2026-11-05", "p": false, "cm": true, "dd": [], "fr": "2026-10-14"}, {"n": "Karla Samantha Rosado Lazaga", "s": "Karla Rosado", "t": "B", "d": "2026-10-31", "p": false, "cm": true, "dd": []}, {"n": "Lilia Zetina Alamilla", "s": "Lilia Zetina", "t": "B", "d": "2026-10-29", "p": true, "cm": true, "dd": [], "pd": "2026-11-02", "rs": "2026-10-14", "dp": 19, "v": "https://www.instagram.com/reel/DfOhhbPRzcx/"}, {"n": "Mia Sheccid Margarita Sánchez Madrigal", "s": "Mia Sánchez", "t": "B", "d": "2026-11-01", "p": false, "cm": true, "dd": []}, {"n": "Nicol Vidal Reyes", "s": "Nicol Vidal", "t": "B", "d": "2026-11-01", "p": true, "cm": true, "dd": [], "pd": "2026-11-01", "rs": "2026-10-14", "dp": 18, "v": "https://www.instagram.com/reel/DfN752HApV7/"}, {"n": "Ofelia Pérez Navarro", "s": "Ofelia Pérez", "t": "B", "d": "2026-11-09", "p": false, "cm": true, "dd": [], "fr": "2026-10-14"}, {"n": "Omar Díaz del Castillo Osorio", "s": "Omar Díaz", "t": "B", "d": "2026-10-31", "p": false, "cm": true, "dd": []}, {"n": "Valeria Hernández De la Cruz", "s": "Valeria Hernández", "t": "B", "d": "2026-11-01", "p": false, "cm": true, "dd": []}, {"n": "Vianey Guillén Avalos", "s": "Vianey Guillén", "t": "B", "d": "2026-11-01", "p": false, "cm": true, "dd": []}, {"n": "Angie Marcela", "s": "Angie Marcela", "t": "C", "d": null, "p": false, "cm": false, "dd": [], "fr": "2026-10-14"}, {"n": "Camila Santos Soberano", "s": "Camila Santos", "t": "C", "d": "2026-11-06", "p": false, "cm": true, "dd": [], "fr": "2026-10-13"}, {"n": "Claudia Marín", "s": "Claudia Marín", "t": "C", "d": "2026-11-09", "p": false, "cm": true, "dd": [], "fr": "2026-10-14"}, {"n": "Cristian Tosca Jarillo", "s": "Cristian Tosca", "t": "C", "d": "2026-11-07", "p": false, "cm": true, "dd": []}, {"n": "Daniela Alamilla Hernández", "s": "Daniela Alamilla", "t": "C", "d": "2026-11-07", "p": false, "cm": true, "dd": [], "fr": "2026-10-14"}, {"n": "Joshua Bravo Aguilar", "s": "Joshua Bravo", "t": "C", "d": null, "p": false, "cm": false, "dd": [], "fr": "2026-10-13"}, {"n": "Miranda Hernández Gómez", "s": "Miranda Hernández", "t": "C", "d": null, "p": false, "cm": false, "dd": [], "fr": "2026-10-14"}, {"n": "Monserrat De Los Ángeles Monserrat López", "s": "Monserrat López", "t": "C", "d": null, "p": false, "cm": false, "dd": [], "fr": "2026-10-13"}, {"n": "Olga Esperanza Chacón Reyes", "s": "Olga Chacón", "t": "C", "d": "2026-11-06", "p": false, "cm": true, "dd": []}, {"n": "Paloma Morales Perera", "s": "Paloma Morales", "t": "C", "d": null, "p": false, "cm": false, "dd": [], "fr": "2026-10-14"}, {"n": "Valeria Aguirre", "s": "Valeria Aguirre", "t": "C", "d": null, "p": false, "cm": false, "dd": [], "fr": "2026-10-14"}, {"n": "Vanessa Rivera Guillén", "s": "Vanessa Rivera", "t": "C", "d": "2026-10-31", "p": false, "cm": true, "dd": ["2026-11-07", "2026-11-08"]}, {"n": "Ali", "s": "Ali", "t": "B", "d": "2026-11-09", "p": false, "cm": true, "dd": []}]</script>
+<script>
+(function(){
+var D=JSON.parse(document.getElementById('cal-data').textContent);
+/* Hoy según la hora de Ciudad de México (UTC-06), no según el reloj del celular */
+function hoyMX(){try{var f=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Mexico_City',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());if(/^\d{4}-\d{2}-\d{2}$/.test(f))return f}catch(e){}var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
+var HOY=hoyMX(), N=D.length;
+var MM=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+var MESES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+var DIAS=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+var LBL={pub:'Publicó',venc:'No cumplió',pend:'Pendiente',sin:'Sin fecha'};
+var TIPO={pub:'publicó',venc:'no cumplió',pend:'pendiente',sin:'sin fecha · respondió el 1er formulario'};
+var ORD={pub:0,venc:1,pend:2,disp:3,sin:4};
+var KD={
+  '2026-11-13':{t:'Buen Fin · kits a $250',s:'Buen Fin',k:'bf'},
+  '2026-11-14':{t:'Último día para publicar',s:'Corte',k:'corte'},
+  '2026-11-17':{t:'Cierra venta de kits',s:'Cierra venta',k:'venta'},
+  '2026-11-19':{t:'Medición · 4:00 p. m.',s:'Medición 4 p. m.',k:'med'},
+  '2026-11-22':{t:'Carrera y premio',s:'Carrera',k:'carrera'}
+};
+if(!KD[HOY])KD[HOY]={t:'Hoy',s:'Hoy',k:'hoy'};
+var MO=[[2026,9],[2026,10]], mi=(HOY>='2026-11-01'?1:0), F='all', curI=-1, lastF=null;
+var EXP={}, PMAX=8, selDay=HOY;
+
+function p2(n){return (n<10?'0':'')+n;}
+function iso(d){return d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate());}
+function pd(s){var a=s.split('-');return new Date(+a[0],+a[1]-1,+a[2]);}
+function fmt(s){var d=pd(s);return DIAS[d.getDay()]+' '+d.getDate()+' '+MM[d.getMonth()];}
+function fmtL(s){var t=fmt(s);return t.charAt(0).toLowerCase()+t.slice(1);}
+function dif(s){return Math.round((pd(s)-pd(HOY))/864e5);}
+function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function plural(n,a,b){return n+' '+(n===1?a:b);}
+function slug(t){return String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
+
+var FIRST={}; D.forEach(function(r){var f=r.s.split(' ')[0]; FIRST[f]=(FIRST[f]||0)+1;});
+function lab(r){var p=r.s.split(' '); return (FIRST[p[0]]>1&&p[1]) ? p[0]+' '+p[1].charAt(0)+'.' : p[0];}
+
+function st(r){
+  if(!r.cm) return 'sin';
+  if(r.p) return 'pub';
+  var late=(r.dd||[]).some(function(x){return x<HOY;})||(r.d&&r.d<HOY);
+  return late?'venc':'pend';
+}
+var C={pub:0,venc:0,pend:0,sin:0};
+D.forEach(function(r){C[st(r)]++;});
+var CM=N-C.sin;
+
+/* Marcas por día: cada día de grabación de cada RP comprometido */
+var CH={}, SHOW=4;
+/* Cada RP una sola vez: día que publicó / fecha de compromiso / día que respondió el 1er formulario */
+D.forEach(function(r,i){ var d=r.d||r.fr; if(!d) return; (CH[d]=CH[d]||[]).push({i:i,s:st(r)}); });
+
+function filtersHTML(){
+  var defs=[['all','Todos',N],['pub','Publicó',C.pub],['venc','No cumplió',C.venc],['pend','Pendiente',C.pend],['sin','Sin fecha',C.sin]];
+  return defs.map(function(x){
+    return '<button type="button" class="cal-f" aria-pressed="'+(F===x[0])+'" data-f="'+x[0]+'">'+x[1]+' <b>'+x[2]+'</b></button>';
+  }).join('');
+}
+function keysHTML(m,y){
+  var out=[];
+  Object.keys(KD).forEach(function(s){
+    var d=pd(s); if(d.getMonth()!==m||d.getFullYear()!==y) return;
+    var k=KD[s].k, solid=(k==='corte'||k==='carrera'||k==='hoy');
+    out.push('<span class="cal-chip ck-'+k+(solid?' solid':'')+'">'+esc(fmt(s))+' · '+esc(KD[s].t)+'</span>');
+  });
+  return out.join('');
+}
+function chipHTML(c){
+  var r=D[c.i], tip=r.n+' · '+LBL[c.s];
+  return '<button type="button" class="cal-rc cs-'+c.s+'" data-i="'+c.i+'" title="'+esc(tip)+'" aria-label="'+esc(tip)+'"><span>'+esc(lab(r))+'</span></button>';
+}
+function dayHTML(x,m){
+  var s=iso(x), out=x.getMonth()!==m, k=KD[s];
+  var cls='cal-day'+(out?' out':'')+(s===HOY?' today':'')+((s>='2026-11-13'&&s<='2026-11-16')?' bf':'');
+  var top='<div class="cal-dn"><span>'+x.getDate()+'</span>'+
+    (k&&k.k!=='hoy'?'<em class="cal-kp ck-'+k.k+'">'+esc(k.s)+'</em>':'')+
+    (s===HOY?'<em class="cal-hoy">Hoy</em>':'')+'</div>';
+  var items=(CH[s]||[]).filter(function(c){return F==='all'||c.s===F;});
+  items.sort(function(a,b){return (ORD[a.s]-ORD[b.s])||D[a.i].s.localeCompare(D[b.i].s);});
+  var open=!!EXP[s], shown=(open||items.length<=SHOW+1)?items:items.slice(0,SHOW);
+  var list=shown.map(chipHTML).join('');
+  if(shown.length<items.length||open&&items.length>SHOW+1)
+    list+='<button type="button" class="cal-more" data-more="'+s+'">'+(open?'Ver menos':'Ver '+(items.length-SHOW)+' más')+'</button>';
+  return '<div class="'+cls+'">'+top+'<div class="cal-rcs">'+list+'</div></div>';
+}
+function render(){
+  var y=MO[mi][0], m=MO[mi][1];
+  document.getElementById('calMonth').textContent=MESES[m]+' '+y;
+  document.getElementById('calPrev').disabled=(mi===0);
+  document.getElementById('calNext').disabled=(mi===MO.length-1);
+  document.getElementById('calFilters').innerHTML=filtersHTML();
+  var keys=document.getElementById('calKeys'), kh=keysHTML(m,y);
+  keys.innerHTML=kh; keys.hidden=!kh;
+  var first=new Date(y,m,1), off=(first.getDay()+6)%7, dim=new Date(y,m+1,0).getDate();
+  var total=Math.ceil((off+dim)/7)*7, h='';
+  for(var c=0;c<total;c++){h+=dayHTML(new Date(y,m,1-off+c),m);}
+  document.getElementById('calDays').innerHTML=h;
+}
+function listsHTML(){
+  var sin='';
+  ['A','B','C'].forEach(function(t){
+    var ids=[]; D.forEach(function(r,i){if(r.t===t&&st(r)==='sin')ids.push(i);});
+    sin+='<div class="cal-tg"><h4>Tier '+t+' · '+ids.length+'</h4><ul>'+
+      ids.map(function(i){return '<li><button type="button" class="cal-nm" data-i="'+i+'">'+esc(D[i].s)+'</button></li>';}).join('')+
+      '</ul></div>';
+  });
+  document.getElementById('calSin').innerHTML=sin;
+  var pub=[]; D.forEach(function(r,i){if(st(r)==='pub')pub.push(i);});
+  pub.sort(function(a,b){return D[a].d<D[b].d?-1:(D[a].d>D[b].d?1:0);});
+  document.getElementById('calPub').innerHTML=pub.map(function(i){
+    return '<li><button type="button" class="cal-nm" data-i="'+i+'">'+esc(D[i].s)+'</button></li>';
+  }).join('');
+}
+function countdown(){
+  var n=Math.max(0,dif('2026-11-14')), t=p2(n);
+  document.getElementById('calD1').textContent=t.charAt(0);
+  document.getElementById('calD2').textContent=t.charAt(1);
+}
+function ring(){
+  var R=50, L=2*Math.PI*R, off=0, h='';
+  [['pub',C.pub],['venc',C.venc],['pend',C.pend],['sin',C.sin]].forEach(function(p){
+    if(!p[1]) return;
+    var len=L*p[1]/N;
+    h+='<circle class="cal-arc cs-'+p[0]+'" cx="60" cy="60" r="'+R+'" stroke-dasharray="'+Math.max(len-1.5,0.1).toFixed(2)+' '+L.toFixed(2)+'" stroke-dashoffset="'+(-off).toFixed(2)+'"/>';
+    off+=len;
+  });
+  document.getElementById('calRing').innerHTML=h;
+}
+
+/* Archivo de calendario (.ics) con aviso 1 día antes y 1 hora antes */
+function icsFor(r){
+  var fut=(r.dd||[]).filter(function(x){return x>=HOY;}), evs=[];
+  if(!r.p && r.d && r.d>=HOY && fut.indexOf(r.d)<0) evs.push({d:r.d,t:'Publicar video · Carrera Hangar',ds:'Fecha para publicar el video de '+r.s+'. El corte es el sábado 14 de noviembre.'});
+  fut.forEach(function(x){evs.push({d:x,t:'Grabar · '+r.s+' · Carrera Hangar',ds:'Día de grabación de '+r.s+'.'});});
+  var L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Ingenioso//Carrera Hangar 2026//ES','CALSCALE:GREGORIAN','METHOD:PUBLISH'];
+  evs.forEach(function(e,k){
+    var ds=e.d.replace(/-/g,'');
+    L.push('BEGIN:VEVENT','UID:'+slug(r.s)+'-'+k+'-'+ds+'@carrera-hangar-2026','DTSTAMP:'+HOY.replace(/-/g,'')+'T120000Z',
+      'DTSTART:'+ds+'T150000Z','DTEND:'+ds+'T153000Z','SUMMARY:'+e.t,'DESCRIPTION:'+e.ds,
+      'BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:Recordatorio: mañana','TRIGGER:-P1D','END:VALARM',
+      'BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:Recordatorio: en 1 hora','TRIGGER:-PT1H','END:VALARM',
+      'END:VEVENT');
+  });
+  L.push('END:VCALENDAR');
+  return L.join('\r\n');
+}
+
+var modal=document.getElementById('calModal');
+function openM(i){
+  curI=i;
+  var r=D[i], q=st(r), dd=r.dd||[];
+  var past=dd.filter(function(x){return x<HOY;}), fut=dd.filter(function(x){return x>=HOY;});
+  var txt='';
+  if(q==='pub'){
+    txt='Publicó su video'+(r.d?' el '+fmt(r.d):'')+'.';
+  } else if(q==='venc'){
+    var nPast=past.length||(r.d?Math.abs(dif(r.d)):0);
+    txt='Tiene '+plural(nPast,'día','días')+' sin publicar su video.';
+  } else if(q==='pend'){
+    var cand=fut.slice();
+    if(r.d&&r.d>=HOY&&!r.p&&cand.indexOf(r.d)<0) cand.push(r.d);
+    cand.sort();
+    txt=cand.length?(dd.length?'Próximo día de grabación: ':'Día para publicar su video: ')+fmt(cand[0])+'.':'Sin fecha de grabación próxima.';
+  } else {
+    txt=r.fr?'Respondió el formulario el '+fmtL(r.fr)+'. Sin días de grabación confirmados.':'Sin días de grabación confirmados.';
+  }
+  var pill=document.getElementById('calMStatus'); pill.textContent=LBL[q]; pill.className='cal-pill cs-'+q;
+  document.getElementById('calMTier').textContent='Tier '+r.t;
+  document.getElementById('calMName').textContent=r.n;
+  document.getElementById('calMSub').textContent=r.cm?(dd.length?'Confirmó '+plural(dd.length,'día de grabación','días de grabación'):'Se comprometió a publicar su video'):(r.fr?'Respondió el '+fmtL(r.fr):'Sin días de grabación confirmados');
+  document.getElementById('calMTxt').textContent=txt;
+  var isPub=(q==='pub');
+  var hasFut=(!isPub && q!=='sin' && (fut.length>0 || (r.d&&r.d>=HOY&&!r.p)));
+  document.getElementById('calMPubSec').hidden=!isPub;
+  document.getElementById('calMDaysSec').hidden=!hasFut;
+  if(isPub){
+    var gb=document.getElementById('calMGuion'), vb=document.getElementById('calMVideo');
+    if(r.g){gb.setAttribute('href',r.g); gb.removeAttribute('aria-disabled'); gb.removeAttribute('title');}
+    else{gb.removeAttribute('href'); gb.setAttribute('aria-disabled','true'); gb.setAttribute('title','Este RP no tiene guion cargado');}
+    vb.setAttribute('href',r.v||'#');
+    document.getElementById('calMTime').textContent='Tardó '+plural(r.dp,'día','días')+' en publicar.';
+  }
+  if(hasFut){
+    document.getElementById('calMDays').textContent = fut.length
+      ? 'Tiene '+plural(fut.length,'día de grabación por venir','días de grabación por venir')+'.'
+      : 'Fecha para publicar: '+fmt(r.d)+'.';
+  }
+  lastF=document.activeElement;
+  modal.hidden=false;
+  document.getElementById('calMClose').focus();
+}
+function closeM(){
+  modal.hidden=true;
+  if(lastF&&lastF.focus) lastF.focus();
+}
+
+var root=document.getElementById('tab-calendario');
+root.addEventListener('click',function(e){
+  var t=e.target;
+  var f=t.closest('[data-f]'); if(f){F=f.getAttribute('data-f'); render(); return;}
+  var mo=t.closest('[data-more]'); if(mo){var mk=mo.getAttribute('data-more'); EXP[mk]=!EXP[mk]; render(); return;}
+  var dy=t.closest('[data-day]'); if(dy&&dy.closest('#calDays')){selDay=dy.getAttribute('data-day'); render(); return;}
+  var rp=t.closest('[data-i]');
+  if(rp&&rp.closest('#calDays,#calSin,#calPub,#calDayP')){openM(+rp.getAttribute('data-i')); return;}
+  if(t.closest('#calPrev')){if(mi>0){mi--; render();} return;}
+  if(t.closest('#calNext')){if(mi<MO.length-1){mi++; render();} return;}
+  if(t.closest('#calMClose')){closeM(); return;}
+  if(t.closest('#calMCal')){
+    if(curI<0) return;
+    var r=D[curI];
+    var blob=new Blob([icsFor(r)],{type:'text/calendar;charset=utf-8'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.href=url; a.download='carrera-hangar-'+slug(r.s)+'.ics';
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){URL.revokeObjectURL(url); a.remove();},1500);
+    return;
+  }
+  if(t===modal){closeM(); return;}
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden)closeM();});
+document.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.matches&&e.target.matches('#calDays .cal-day[data-day]')){selDay=e.target.getAttribute('data-day'); render(); var nd=document.querySelector('#calDays .cal-day[data-day="'+selDay+'"]'); if(nd) nd.focus();}});
+
+document.getElementById('calHoyL').textContent='Hoy · '+fmtL(HOY);
+document.getElementById('calHoyPub').textContent=C.pub;document.getElementById('calHoyN').textContent=N;
+document.getElementById('calHoyCm').textContent=CM;document.getElementById('calHoySin').textContent=C.sin;
+document.getElementById('calRingPub').textContent=C.pub;document.getElementById('calRingN').textContent=N;
+document.getElementById('calSumPub').textContent=C.pub;
+render();
+listsHTML();
+ring();
+countdown();
+})();
+
+</script>
+</div>
 <div class="pane" id="tab-premios" role="tabpanel" hidden><iframe id="premios-frame" title="Premios Carrera Hangar" scrolling="no"></iframe></div>
 
 <footer class="wrap made">
@@ -1000,10 +1540,10 @@ if('IntersectionObserver' in window){
 // Pestañas
 const pbrief=document.getElementById('tab-brief'),pg=document.getElementById('tab-guiones'),pb=document.getElementById('p-brief'),pm=document.getElementById('p-mood');
 const tabs=[...document.querySelectorAll('.tabbtn')];
-const KEYS=['brief','guiones','moodboard','premios'];const pp=document.getElementById('tab-premios');
+const KEYS=['brief','guiones','moodboard','premios','calendario'];const pp=document.getElementById('tab-premios');const pcal=document.getElementById('tab-calendario');
 function showTab(k,push){
   if(!KEYS.includes(k))k='brief';
-  pbrief.hidden=k==='guiones'||k==='premios';pg.hidden=k!=='guiones';pp.hidden=k!=='premios';pb.hidden=k!=='brief';pm.hidden=k!=='moodboard';
+  pbrief.hidden=k==='guiones'||k==='premios'||k==='calendario';pcal.hidden=k!=='calendario';pg.hidden=k!=='guiones';pp.hidden=k!=='premios';pb.hidden=k!=='brief';pm.hidden=k!=='moodboard';
   if(k==='premios'){var pf=document.getElementById('premios-frame');if(pf&&!pf.dataset.ok){pf.dataset.ok=1;pf.srcdoc=new TextDecoder().decode(Uint8Array.from(atob(PREMIOS_B64),function(c){return c.charCodeAt(0)}))}}
   tabs.forEach(t=>{const on=t.dataset.tab===k;t.classList.toggle('on',on);t.setAttribute('aria-selected',on)});
   document.querySelectorAll('video').forEach(v=>v.pause());
