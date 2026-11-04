@@ -774,8 +774,8 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
 #tab-inicio .vwchip .d{color:inherit;opacity:.6;font-weight:600;margin-left:6px;font-size:.74rem}
 /* coverflow */
 #tab-inicio .cf{position:relative;margin-top:14px;border-radius:24px;overflow:hidden;padding:18px 0 14px;background:radial-gradient(120% 100% at 50% 0%,#2a2418 0%,#14110c 60%,#0c0a07 100%);border:1px solid var(--faint)}
-#tab-inicio .cf-stage{position:relative;height:calc(clamp(170px,52vw,250px)*1.3334 + 22px);perspective:1100px;perspective-origin:50% 45%;touch-action:pan-y}
-#tab-inicio .cf-c{position:absolute;left:50%;top:6px;width:clamp(170px,52vw,250px);aspect-ratio:3/4;margin:0;padding:0;border:1px solid rgba(255,255,255,.28);border-radius:22px;overflow:hidden;cursor:pointer;color:#fff;font:inherit;text-align:left;background:#1b1b1b;box-shadow:0 22px 40px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.06);transition:transform .7s cubic-bezier(.22,.8,.26,1),opacity .6s ease,filter .6s ease;will-change:transform}
+#tab-inicio .cf-stage{position:relative;height:calc(clamp(200px,62vw,300px)*1.3334 + 22px);perspective:1200px;perspective-origin:50% 45%;touch-action:pan-y}
+#tab-inicio .cf-c{position:absolute;left:50%;top:6px;width:clamp(200px,62vw,300px);aspect-ratio:3/4;margin:0;padding:0;border:1px solid rgba(255,255,255,.28);border-radius:22px;overflow:hidden;cursor:pointer;color:#fff;font:inherit;text-align:left;background:#1b1b1b;box-shadow:0 22px 40px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.06);transition:transform .7s cubic-bezier(.22,.8,.26,1),opacity .6s ease,filter .6s ease;will-change:transform}
 #tab-inicio .cf-c img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
 #tab-inicio .cf-c::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.72) 100%);pointer-events:none}
 #tab-inicio .cf-c .cf-t{position:absolute;left:12px;right:12px;bottom:11px;z-index:2;font-weight:800;font-size:.95rem;line-height:1.2;text-shadow:0 1px 8px rgba(0,0,0,.6)}
@@ -1986,19 +1986,18 @@ set('nvWeekNote',(nSem?(nSem===1?'1 RP subió su video esta semana. ':nSem+' RPs
  items.forEach(function(it,i){var c=el('button','cf-c','<img src="'+esc(it.src)+'" alt="'+esc(it.alt)+'" loading="lazy" referrerpolicy="no-referrer" draggable="false">'+(it.bdg?'<span class="bdg">'+esc(it.bdg)+'</span>':'')+'<span class="cf-t">'+esc(it.t)+'</span>');c.type='button';c.setAttribute('aria-label',it.t);c.addEventListener('click',function(){if(i===cur){var t=document.querySelector('.tabbtn[data-tab="moodboard"]');if(t)t.click()}else{cur=i;draw();rest()}});st.appendChild(c);cards.push(c);dots.appendChild(document.createElement('i'))});
  function off(i){var d=i-cur;if(d>n/2)d-=n;if(d<-n/2)d+=n;return d}
  function draw(){cards.forEach(function(c,i){var d=off(i),a=Math.abs(d),W=c.offsetWidth||200;
-  c.style.transform='translateX(-50%) translateX('+(d*W*.6).toFixed(1)+'px) translateZ('+(-a*110)+'px) rotateY('+(-d*38)+'deg) scale('+(1-Math.min(a,3)*.05)+')';
-  c.style.opacity=a>2?0:(1-a*.12);c.style.zIndex=20-a;c.style.pointerEvents=a>2?'none':'';c.classList.toggle('off',a>0);c.tabIndex=a===0?0:-1});
+  c.style.transform='translateX(-50%) translateX('+(d*W*.52).toFixed(1)+'px) translateZ('+(-a*80)+'px) rotateY('+(-d*30)+'deg) scale('+(1-Math.min(a,3)*.05)+')';
+  c.style.opacity=a>3?0:(1-a*.1);c.style.zIndex=20-a;c.style.pointerEvents=a>3?'none':'';c.classList.toggle('off',a>0);c.tabIndex=a===0?0:-1});
   [].forEach.call(dots.children,function(d,i){d.classList.toggle('on',i===cur)});
   document.getElementById('cft').textContent=items[cur].t;document.getElementById('cfn').textContent=(cur+1)+' / '+n+' · toca la foto para ver más'}
  function step(k){cur=(cur+k+n)%n;draw()}
- function rest(){clearInterval(timer);timer=null;if(!matchMedia('(prefers-reduced-motion:reduce)').matches&&vis&&!hover)timer=setInterval(function(){if(!document.hidden)step(1)},3200)}
+ function rest(first){clearInterval(timer);clearTimeout(timer);timer=null;if(matchMedia('(prefers-reduced-motion:reduce)').matches||hover)return;if(first){timer=setTimeout(function(){if(!document.hidden)step(1);rest()},1000)}else timer=setInterval(function(){if(!document.hidden)step(1)},2400)}
  document.getElementById('cfp').addEventListener('click',function(){step(-1);rest()});document.getElementById('cfx').addEventListener('click',function(){step(1);rest()});
  root.addEventListener('mouseenter',function(){hover=true;rest()});root.addEventListener('mouseleave',function(){hover=false;rest()});
  root.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){step(-1);rest()}if(e.key==='ArrowRight'){step(1);rest()}});
  var sx=null;st.addEventListener('pointerdown',function(e){sx=e.clientX});st.addEventListener('pointerup',function(e){if(sx==null)return;var dx=e.clientX-sx;sx=null;if(Math.abs(dx)>40){step(dx<0?1:-1);rest();e.preventDefault()}});
  st.addEventListener('click',function(e){if(e.detail===0)return},true);
- if('IntersectionObserver' in window){new IntersectionObserver(function(es){vis=es[0].isIntersecting;rest()},{threshold:.2}).observe(root)}
- window.addEventListener('resize',draw);draw();rest()})();
+ window.addEventListener('resize',draw);draw();rest(true)})();
 
 /* Gráfica: igual que el calendario */
 (function(){var C={pub:0,venc:0,pend:0,sin:0},T={A:[0,0],B:[0,0],C:[0,0]};
