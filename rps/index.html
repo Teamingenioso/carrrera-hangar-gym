@@ -435,7 +435,7 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
 .rmd.link{cursor:pointer}
 .rmd button{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;border:0;background:transparent;color:#888;font-size:16px;line-height:1;cursor:pointer}
 .rmd button:hover{color:#fff}
-@media (max-width:520px){.rmd{top:auto;bottom:calc(10px + env(safe-area-inset-bottom,0px));right:10px;left:10px;width:auto;transform:none;border-radius:18px}.rmd.off{transform:translateY(160%)}.rmd.swap{transform:translateY(8px)}}
+@media (max-width:520px){.rmd{top:calc(env(safe-area-inset-top,0px) + 72px);bottom:auto;right:10px;left:10px;width:auto;transform:none;border-radius:18px;z-index:18}.rmd.off{transform:translateY(calc(-100% - 90px))}.rmd.swap{transform:translateY(-8px)}}
 @media (prefers-reduced-motion:reduce){.rmd,.rmd.swap{transition:none}}
 /* Pestaña Calendario: seguimiento de compromisos de RPs (estilo parrilla, branding del brief) */
 #tab-calendario{--st-pub:#3ddc84;--st-venc:#ff5a5a;--st-pend:#f5d400;--st-sin:#7a7a7a;--cal-bg:#121212;font-family:var(--bodyf,'Hanken Grotesk',Arial,sans-serif);padding:8px 16px 40px;display:flex;flex-direction:column;gap:20px}
@@ -822,7 +822,6 @@ header.top nav.tabs.hm .tabfold .tabbtn.on small{color:#000;opacity:.75}
 #tabscrim{position:fixed;inset:0;z-index:19;background:rgba(0,0,0,.6);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s}
 #tabscrim.on{opacity:1;visibility:visible;transition:opacity .3s}
 @media (prefers-reduced-motion:reduce){header.top nav.tabs.hm .tabfold .tabbtn,header.top nav.tabs.hm .tabbtn.home svg{transition:none!important}header.top nav.tabs.hm .tabbtn.home.on::after,header.top nav.tabs.hm .tabcur{animation:none}}
-@media (max-width:520px){.rmd{top:auto!important;bottom:calc(10px + env(safe-area-inset-bottom,0px))!important}.rmd.off{transform:translateY(160%)}.rmd.swap{transform:translateY(8px)}}
 /* Inicio · widget isotipo H */
 #tab-inicio .irow{display:grid;grid-template-columns:1fr;gap:16px;align-items:stretch;margin:22px 0 6px}
 #tab-inicio .irow .lastcall{margin:0!important;max-width:none}
@@ -1945,13 +1944,13 @@ function tick(){if(document.hidden)return;box.classList.add('swap');setTimeout(f
 setTimeout(function(){if(!closed){show();iv=setInterval(tick,phone?10000:4000)}},phone?3000:2500);
 function hide(t){box.classList.add('off');if(t)box.style.transform=t}
 X.addEventListener('click',function(e){e.stopPropagation();hide();if(!phone){closed=true;clearInterval(iv);try{sessionStorage.setItem('rmdx','1')}catch(e){}}});
-/* Celular: iPhone se oculta deslizando hacia abajo (el aviso vive abajo); Android deslizando a un lado. Web no cambia. */
+/* Celular: el aviso baja desde arriba como una notificación; iPhone se oculta deslizando hacia arriba; Android deslizando a un lado. Web no cambia. */
 if(phone){
 box.style.touchAction='none';
 box.addEventListener('pointerdown',function(e){if(e.target===X)return;sx=e.clientX;sy=e.clientY;dr=true;mv=false;box.style.transition='none'});
-document.addEventListener('pointermove',function(e){if(!dr)return;var dx=e.clientX-sx,dy=e.clientY-sy;if(Math.abs(dx)>6||Math.abs(dy)>6)mv=true;if(ios){if(dy>0)box.style.transform='translateY('+dy+'px)'}else{box.style.transform='translateX('+dx+'px)'}});
+document.addEventListener('pointermove',function(e){if(!dr)return;var dx=e.clientX-sx,dy=e.clientY-sy;if(Math.abs(dx)>6||Math.abs(dy)>6)mv=true;if(ios){if(dy<0)box.style.transform='translateY('+dy+'px)'}else{box.style.transform='translateX('+dx+'px)'}});
 function end(e){if(!dr)return;dr=false;box.style.transition='';var dx=e.clientX-sx,dy=e.clientY-sy;
-if(ios&&dy>40){hide('translateY(160%)');return}
+if(ios&&dy<-40){hide('translateY(calc(-100% - 90px))');return}
 if(!ios&&Math.abs(dx)>60){hide('translateX('+(dx<0?'-130%':'130%')+')');return}
 box.style.transform=''}
 document.addEventListener('pointerup',end);
