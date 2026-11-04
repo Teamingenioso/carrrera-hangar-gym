@@ -823,6 +823,25 @@ header.top nav.tabs.hm .tabfold .tabbtn.on small{color:#000;opacity:.75}
 #tabscrim.on{opacity:1;visibility:visible;transition:opacity .3s}
 @media (prefers-reduced-motion:reduce){header.top nav.tabs.hm .tabfold .tabbtn,header.top nav.tabs.hm .tabbtn.home svg{transition:none!important}header.top nav.tabs.hm .tabbtn.home.on::after,header.top nav.tabs.hm .tabcur{animation:none}}
 @media (max-width:520px){.rmd{top:auto!important;bottom:calc(10px + env(safe-area-inset-bottom,0px))!important}.rmd.off{transform:translateY(160%)}.rmd.swap{transform:translateY(8px)}}
+/* Inicio · widget isotipo H */
+#tab-inicio .irow{display:grid;grid-template-columns:1fr;gap:16px;align-items:stretch;margin:22px 0 6px}
+#tab-inicio .irow .lastcall{margin:0!important;max-width:none}
+#tab-inicio .pwid{position:relative;overflow:hidden;border-radius:22px;background:radial-gradient(110% 120% at 0% 0%,#2b2b28 0%,#1d1d1b 55%,#141413 100%);border:1px solid rgba(255,255,255,.08);box-shadow:0 14px 40px rgba(0,0,0,.4);min-height:236px;padding:22px 24px;display:flex;flex-direction:column;justify-content:space-between}
+#tab-inicio .pw-t{position:relative;z-index:2;display:flex;flex-direction:column;gap:2px}
+#tab-inicio .pw-n{font-family:'Anton','Impact',sans-serif;font-weight:400;font-size:clamp(54px,9vw,76px);line-height:1;color:var(--yellow);letter-spacing:.01em}
+#tab-inicio .pw-t span{color:#9a968b;font-weight:700;font-size:1rem}
+#tab-inicio .pw-f{position:relative;z-index:2;margin:0;color:#9a968b;font-size:.92rem;line-height:1.35;max-width:52%}
+#tab-inicio .pw-f em{display:inline-block;margin-top:8px;padding:3px 10px;border-radius:999px;background:var(--yellow);color:#111;font-style:normal;font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+#tab-inicio .pw-f b{display:block;color:#f4f1e8;font-weight:700;font-size:1.05rem}
+#tab-inicio .pw-h{position:absolute;right:7%;top:50%;height:104%;width:auto;transform:translateY(-50%);overflow:visible;z-index:1}
+#tab-inicio .pw-glow{filter:blur(7px);opacity:.75;z-index:1}
+#tab-inicio .pw-b{fill:rgba(255,255,255,.13)}
+#tab-inicio .pw-l{fill:var(--yellow);transform:translateY(80px);transition:transform 1.9s cubic-bezier(.2,.8,.2,1)}
+#tab-inicio .pw-l path{animation:pwwave 3.2s linear infinite}
+@keyframes pwwave{to{transform:translateX(-38px)}}
+@media (min-width:860px){#tab-inicio .irow{grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr)}}
+@media (max-width:859px){#tab-inicio .pwid{min-height:220px}#tab-inicio .pw-h{height:104%;right:8%}}
+@media (prefers-reduced-motion:reduce){#tab-inicio .pw-l,#tab-inicio .pw-l path{transition:none;animation:none}}
 /* Inicio · polaroids de videos publicados */
 #tab-inicio .pb{margin-top:16px;padding:18px 0 10px;color:var(--white)}
 #tab-inicio .pb-t{margin:0 0 20px;text-align:center;font-family:'Anton','Impact',var(--font);font-size:clamp(1.3rem,6vw,1.8rem);letter-spacing:.02em;color:var(--yellow);text-transform:uppercase}
@@ -909,7 +928,7 @@ header.top nav.tabs.hm .tabfold .tabbtn{transform:translate(0,-22px) scale(.5) r
 <p class="lead">Aquí ves lo que va pasando: quién ya subió su video, cómo vamos y lo que te puedes llevar. Se actualiza solo con la fecha de hoy.</p>
 <span class="ihoy" id="nvHoy">Hoy</span>
 </header>
-<section class="lastcall" aria-label="Cierre de inscripciones"><div class="lc-top"><p class="lc-ph"><i aria-hidden="true"></i>Cierre de ventas · Últimos días</p></div><div class="lc-cd" role="timer" aria-label="Tiempo para el cierre"><div><b id="lcd">--</b><small>DÍAS</small></div><div><b id="lch">--</b><small>HRS</small></div><div><b id="lcm">--</b><small>MIN</small></div><div><b id="lcs">--</b><small>SEG</small></div></div><h2 class="lc-h" id="lch2">Quedan pocos días</h2><p class="lc-n"><b>17 nov, 00:00:</b> inscripciones cerradas. Invita a tu gente hoy.</p></section>
+<div class="irow"><section class="lastcall" aria-label="Cierre de inscripciones"><div class="lc-top"><p class="lc-ph"><i aria-hidden="true"></i>Cierre de ventas · Últimos días</p></div><div class="lc-cd" role="timer" aria-label="Tiempo para el cierre"><div><b id="lcd">--</b><small>DÍAS</small></div><div><b id="lch">--</b><small>HRS</small></div><div><b id="lcm">--</b><small>MIN</small></div><div><b id="lcs">--</b><small>SEG</small></div></div><h2 class="lc-h" id="lch2">Quedan pocos días</h2><p class="lc-n"><b>17 nov, 00:00:</b> inscripciones cerradas. Invita a tu gente hoy.</p></section><aside class="pwid" id="pwid" aria-label="Porcentaje de RPs que ya publicaron"><div class="pw-t"><b class="pw-n" id="pwN">0%</b><span>Publicados</span></div><svg class="pw-h pw-glow" viewBox="-8 -8 54 92" aria-hidden="true"><defs><clipPath id="pwc1"><polygon points="12 .59 12 30.59 26 30.59 26 .59 38 .59 38 75.59 26 75.59 26 42.59 12 42.59 12 75.59 0 75.59 0 .59 12 .59"/></clipPath></defs><g clip-path="url(#pwc1)"><g class="pw-l" id="pwL1"><path d="M0 1.2q9.5-3.4 19 0t19 0 19 0 19 0V90H0z"/></g></g></svg><svg class="pw-h" viewBox="-8 -8 54 92" role="img" aria-labelledby="pwTt"><title id="pwTt">Isotipo H de Hangar lleno según el porcentaje de RPs que ya publicaron</title><defs><clipPath id="pwc2"><polygon points="12 .59 12 30.59 26 30.59 26 .59 38 .59 38 75.59 26 75.59 26 42.59 12 42.59 12 75.59 0 75.59 0 .59 12 .59"/></clipPath></defs><g clip-path="url(#pwc2)"><rect class="pw-b" x="-1" y="-1" width="40" height="78"/><g class="pw-l" id="pwL2"><path d="M0 1.2q9.5-3.4 19 0t19 0 19 0 19 0V90H0z"/></g></g></svg><p class="pw-f" id="pwF"></p></aside></div>
 <section class="isec" aria-labelledby="nvH1">
 <h2 id="nvH1">Ya subieron su video <em id="nvWeekTag" hidden>esta semana</em></h2>
 <p class="note" id="nvWeekNote"></p>
@@ -1221,8 +1240,8 @@ var FIRST={}; D.forEach(function(r){var f=r.s.split(' ')[0]; FIRST[f]=(FIRST[f]|
 function lab(r){var p=r.s.split(' '); return (FIRST[p[0]]>1&&p[1]) ? p[0]+' '+p[1].charAt(0)+'.' : p[0];}
 
 function st(r){
-  if(!r.cm) return 'sin';
   if(r.p) return 'pub';
+  if(!r.cm) return 'sin';
   var late=(r.dd||[]).some(function(x){return x<HOY;})||(r.d&&r.d<HOY);
   return late?'venc':'pend';
 }
@@ -1962,6 +1981,18 @@ var pubs=D.filter(function(r){return r.p&&r.pd}).sort(function(a,b){return a.pd<
 var nSem=pubs.filter(function(r){return r.pd>=lunes&&r.pd<=HOY}).length;
 var TOTAL=D.length;
 set('nvHoy','Hoy · '+DL[wd(HOY)]+' '+dm(HOY));
+
+/* Isotipo H: porcentaje de RPs publicados */
+(function(){var w=document.getElementById('pwid');if(!w)return;
+ var n=pubs.length,pct=TOTAL?n/TOTAL:0,P=Math.round(pct*100),hoy=pubs.filter(function(r){return r.pd===HOY}).length,y=(75.6*(1-pct)).toFixed(2),el1=document.getElementById('pwN');
+ document.getElementById('pwF').innerHTML='<b>'+n+' de '+TOTAL+'</b>RPs ya subieron su video'+(hoy?'<em>+'+hoy+' hoy</em>':'');
+ w.setAttribute('aria-label',P+'% de los RPs ya publicó su video');
+ var L=[document.getElementById('pwL1'),document.getElementById('pwL2')],done=false;
+ function go(){if(done)return;done=true;L.forEach(function(g){g.style.transform='translateY('+y+'px)'});
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){el1.textContent=P+'%';return}
+  var t0=null;function f(t){if(!t0)t0=t;var k=Math.min(1,(t-t0)/1900),e=1-Math.pow(1-k,3);el1.textContent=Math.round(P*e)+'%';if(k<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
+ el1.textContent='0%';
+ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();setTimeout(go,250)}},{threshold:.3});io.observe(w)}else go()})();
 
 /* Videos publicados: polaroids pegadas en un tablero */
 function slug(u){var m=/instagram\.com\/(?:reels?|p)\/([^\/?#]+)/.exec(u||'');return m?m[1]:''}
