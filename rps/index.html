@@ -1840,11 +1840,12 @@ function showTab(k,push){
   if(k==='premios'){var pf=document.getElementById('premios-frame');if(pf&&!pf.dataset.ok){pf.dataset.ok=1;pf.srcdoc=new TextDecoder().decode(Uint8Array.from(atob(PREMIOS_B64),function(c){return c.charCodeAt(0)}))}}
   tabs.forEach(t=>{const on=t.dataset.tab===k;t.classList.toggle('on',on);t.setAttribute('aria-selected',on)});if(window.tabsSync)window.tabsSync(k);
   document.querySelectorAll('video').forEach(v=>v.pause());
-  if(push){try{history.replaceState(null,'','#'+k)}catch(e){}const h=document.querySelector('header.top');window.scrollTo(0,h?h.offsetTop:0)}
+  if(push){if(location.hash.slice(1)!==k){try{history.pushState(null,'','#'+k)}catch(e){}}const h=document.querySelector('header.top');window.scrollTo(0,h?h.offsetTop:0)}
 }
 window.addEventListener('message',function(e){var pf=document.getElementById('premios-frame');if(pf&&e.source===pf.contentWindow&&e.data&&e.data.premiosH)pf.style.height=e.data.premiosH+'px'});
 tabs.forEach(t=>t.addEventListener('click',()=>showTab(t.dataset.tab,true)));
 window.addEventListener('hashchange',()=>showTab(location.hash.slice(1)));
+window.addEventListener('popstate',()=>showTab(location.hash.slice(1)));
 showTab(location.hash.slice(1));
 
 document.querySelectorAll('[data-tab-go]').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tabGo,true)));
