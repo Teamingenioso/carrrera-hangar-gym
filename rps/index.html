@@ -2000,15 +2000,22 @@ function slug(u){var m=/instagram\.com\/(?:reels?|p)\/([^\/?#]+)/.exec(u||'');re
  if(!pubs.length){root.outerHTML='<div class="iempty">Todavía nadie sube su video. El primero sale en esta pantalla.</div>';return}
  root.className='pb';
  root.innerHTML='<p class="pb-t">Ya subieron su video<small>CARRERA HANGAR 2026</small></p><div class="pgrid" id="pgrid"></div><div class="pb-more" id="pmore" hidden><button type="button"></button></div>';
- var grid=document.getElementById('pgrid'),SHOW=8,more=document.getElementById('pmore');
+ var grid=document.getElementById('pgrid'),SHOW=4,more=document.getElementById('pmore');
  function fit(ph){var f=ph.querySelector('iframe');if(f)ph.style.setProperty('--s',(ph.clientWidth/326).toFixed(4))}
  function loadV(ph){if(ph.dataset.l)return;ph.dataset.l=1;ph.style.setProperty('--s',(ph.clientWidth/326).toFixed(4));var f=document.createElement('iframe');f.src=ph.dataset.src;f.title='Video de '+(ph.dataset.t||'');f.setAttribute('scrolling','no');f.setAttribute('allowtransparency','true');f.allow='encrypted-media; autoplay';f.addEventListener('load',function(){ph.classList.add('ok')});ph.appendChild(f);setTimeout(function(){if(!ph.classList.contains('ok')){var l=ph.querySelector('.nvl');if(l)l.textContent='Toca Ver en Instagram'}},8000)}
  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);loadV(e.target)}})},{rootMargin:'500px 0px'}):null;
- function add(r){var s=slug(r.v),nm=r.s||r.n,nuevo=r.pd>=lunes;
+ function add(r,to){var s=slug(r.v),nm=r.s||r.n,nuevo=r.pd>=lunes;
   var c=el('figure','pol','<span class="pin" aria-hidden="true"></span><div class="ph"'+(s&&!r.ne?' data-src="https://www.instagram.com/p/'+s+'/embed/" data-t="'+esc(nm)+'"':'')+'>'+(r.ne&&r.v?'<a class="nvp'+(r.cv?' cv':'')+'" href="'+esc(r.v)+'" target="_blank" rel="noopener" aria-label="Ver el video de '+esc(nm)+' en Instagram">'+(r.cv?'<img src="'+esc(r.cv)+'" alt="Portada del video de '+esc(nm)+'" loading="lazy" draggable="false">':'')+'<i aria-hidden="true"></i><b>Ver el reel</b><small>Carrera Hangar 2026</small></a>':'<span class="nvl">Cargando video…</span>')+'</div><figcaption>'+(nuevo?'<span class="nw">Nuevo</span>':'')+'<span class="pn">'+esc(nm)+'</span><span class="pm">Tier '+r.t+' · subió '+cuando(r.pd)+(r.v?'<br><a href="'+esc(r.v)+'" target="_blank" rel="noopener">Ver en Instagram</a>':'')+'</span></figcaption>');
-  grid.appendChild(c);var ph=c.querySelector('.ph');if(r.ne){ph.classList.add('ok','ne')}else if(s){if(io)io.observe(ph);else loadV(ph)}}
- pubs.slice(0,SHOW).forEach(add);
- if(pubs.length>SHOW){more.hidden=false;var bt=more.querySelector('button');bt.textContent='Ver los '+(pubs.length-SHOW)+' videos anteriores';bt.addEventListener('click',function(){pubs.slice(SHOW).forEach(add);more.hidden=true})}
+  (to||grid).appendChild(c);var ph=c.querySelector('.ph');if(r.ne){ph.classList.add('ok','ne')}else if(s){if(io&&!to)io.observe(ph);else if(!to)loadV(ph)}return ph}
+ pubs.slice(0,SHOW).forEach(function(r){add(r)});
+ var extra=pubs.slice(SHOW);
+ if(extra.length){
+  var bg=document.createElement('div');bg.hidden=true;grid.parentNode.appendChild(bg);
+  var q=[];extra.forEach(function(r){var ph=add(r,bg);if(ph&&!r.ne&&ph.dataset.src)q.push(ph)});
+  (function next(){var ph=q.shift();if(!ph)return;loadV(ph);setTimeout(next,1800)})();
+  more.hidden=false;var bt=more.querySelector('button');bt.textContent='Ver más ('+extra.length+')';
+  bt.addEventListener('click',function(){while(bg.firstChild)grid.appendChild(bg.firstChild);bg.remove();[].forEach.call(grid.querySelectorAll('.ph'),fit);more.hidden=true});
+ }
  window.addEventListener('resize',function(){[].forEach.call(grid.querySelectorAll('.ph'),fit)});
 })();
 document.getElementById('nvWeekTag').hidden=!nSem;
