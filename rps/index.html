@@ -424,19 +424,6 @@ details.how summary:focus-visible{outline:3px solid var(--white);outline-offset:
 .st.na{background:#3a3a3a;color:#d0d0d0}.rp.is-none{border:2px dashed rgba(255,255,255,.18);opacity:.85}
 .cmt.dly b{color:#ff6b6b}.cmt .late{color:#ff6b6b}.cmt .hoy{color:var(--yellow)}
 
-.rmd{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:60;width:min(400px,calc(100% - 32px));display:flex;align-items:center;gap:14px;padding:14px 40px 14px 14px;border-radius:20px;background:rgba(28,28,28,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);box-shadow:0 14px 40px rgba(0,0,0,.5);color:#fff;transition:opacity .35s ease,transform .35s ease;cursor:default}
-.rmd.off{opacity:0;transform:translateY(16px);pointer-events:none}
-.rmd.swap{opacity:0;transform:translateY(8px)}
-.rmd .ri{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);display:grid;place-items:center;color:#f5a623}
-.rmd .ri svg{width:20px;height:20px}
-.rmd .rt{min-width:0}
-.rmd .rt b{display:block;font-size:.95rem;font-weight:800;line-height:1.25;letter-spacing:-.01em}
-.rmd .rt small{display:block;margin-top:4px;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#9a9a9a}
-.rmd.link{cursor:pointer}
-.rmd button{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;border:0;background:transparent;color:#888;font-size:16px;line-height:1;cursor:pointer}
-.rmd button:hover{color:#fff}
-@media (max-width:520px){.rmd{top:calc(env(safe-area-inset-top,0px) + 72px);bottom:auto;right:10px;left:10px;width:auto;transform:none;border-radius:18px;z-index:18}.rmd.off{transform:translateY(calc(-100% - 90px))}.rmd.swap{transform:translateY(-8px)}}
-@media (prefers-reduced-motion:reduce){.rmd,.rmd.swap{transition:none}}
 /* Pestaña Calendario: seguimiento de compromisos de RPs (estilo parrilla, branding del brief) */
 #tab-calendario{--st-pub:#3ddc84;--st-venc:#ff5a5a;--st-pend:#f5d400;--st-sin:#7a7a7a;--cal-bg:#121212;font-family:var(--bodyf,'Hanken Grotesk',Arial,sans-serif);padding:8px 16px 40px;display:flex;flex-direction:column;gap:20px}
 #tab-calendario[hidden]{display:none!important}
@@ -1942,41 +1929,8 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)pint
 window.addEventListener('pageshow',pinta);
 })();
 </script>
-<div class="rmd off" id="rmd" role="status" aria-live="polite"><span class="ri" id="rmdi"></span><span class="rt"><b id="rmdt"></b><small id="rmds"></small></span><button type="button" id="rmdx" aria-label="Cerrar aviso">×</button></div>
-<script>
-(function(){var box=document.getElementById('rmd');if(!box)return;var I=document.getElementById('rmdi'),T=document.getElementById('rmdt'),S=document.getElementById('rmds'),X=document.getElementById('rmdx');
-function sv(p){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>'}
-var IC={up:sv('<path d="M7 17 17 7"/><path d="M8 7h9v9"/>'),chat:sv('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>'),cal:sv('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>'),cam:sv('<rect x="3" y="7" width="13" height="11" rx="2"/><path d="m16 11 5-3v9l-5-3"/>'),flag:sv('<path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/>')};
-var M=[['up','Ya hay ganadores del reto: $3,600 en premios.','Toca para ver quién ganó','premios'],
-['chat','¿Dudas con tu guion o al grabar? Pregunta en el grupo.','Te ayudamos ahí mismo'],
-['cal','Publica antes del 14 de noviembre.','Para entrar a premios · Carrera Hangar'],
-['cam','¿Necesitas quien te grabe? Avísanos en el grupo.','Carrera Hangar'],
-['flag','Las inscripciones cierran el 17 de noviembre.','Invita a tu gente hoy']];
-var i=0,ua=navigator.userAgent,ios=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1),and=/Android/.test(ua),phone=ios||and,sx=0,sy=0,dr=false,mv=false,closed=false,iv=null;
-/* Web (escritorio): se cierra con × y no vuelve en la sesión. Celular: aparece a los 3 s y cada 10 s, aunque lo deslicen. */
-if(!phone){try{if(sessionStorage.getItem('rmdx')==='1')return}catch(e){}}
-function put(){var m=M[i];I.innerHTML=IC[m[0]];T.textContent=m[1];S.textContent=m[2];box.classList.toggle('link',!!m[3]);box.dataset.go=m[3]||''}
-put();
-function show(){box.classList.remove('off');box.style.transform=''}
-function tick(){if(document.hidden)return;box.classList.add('swap');setTimeout(function(){i=(i+1)%M.length;put();box.classList.remove('swap');if(!closed)show()},350)}
-setTimeout(function(){if(!closed){show();iv=setInterval(tick,phone?10000:4000)}},phone?3000:2500);
-function hide(t){box.classList.add('off');if(t)box.style.transform=t}
-X.addEventListener('click',function(e){e.stopPropagation();hide();if(!phone){closed=true;clearInterval(iv);try{sessionStorage.setItem('rmdx','1')}catch(e){}}});
-/* Celular: el aviso baja desde arriba como una notificación; iPhone se oculta deslizando hacia arriba; Android deslizando a un lado. Web no cambia. */
-if(phone){
-box.style.touchAction='none';
-box.addEventListener('pointerdown',function(e){if(e.target===X)return;sx=e.clientX;sy=e.clientY;dr=true;mv=false;box.style.transition='none'});
-document.addEventListener('pointermove',function(e){if(!dr)return;var dx=e.clientX-sx,dy=e.clientY-sy;if(Math.abs(dx)>6||Math.abs(dy)>6)mv=true;if(ios){if(dy<0)box.style.transform='translateY('+dy+'px)'}else{box.style.transform='translateX('+dx+'px)'}});
-function end(e){if(!dr)return;dr=false;box.style.transition='';var dx=e.clientX-sx,dy=e.clientY-sy;
-if(ios&&dy<-40){hide('translateY(calc(-100% - 90px))');return}
-if(!ios&&Math.abs(dx)>60){hide('translateX('+(dx<0?'-130%':'130%')+')');return}
-box.style.transform=''}
-document.addEventListener('pointerup',end);
-document.addEventListener('pointercancel',function(){dr=false;box.style.transition='';box.style.transform=''});
-}
-box.addEventListener('click',function(){if(mv){mv=false;return}if(box.dataset.go){var b=document.querySelector('.tabbtn[data-tab="'+box.dataset.go+'"]');if(b)b.click()}});
-})();
-</script>
+
+
 <script>
 /* Inicio · noticias (se calcula con cal-data y la fecha de Ciudad de México) */
 (function(){
